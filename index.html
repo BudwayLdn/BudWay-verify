@@ -28,7 +28,7 @@ let input=document.getElementById("code").value.toUpperCase();
 let response=await fetch("codes.json");
 let data=await response.json();
 
-if(data.validCodes.includes(input)){
+if(data.valid_Codes.includes(input)){
 document.getElementById("result").innerHTML="✅ AUTHENTIC BUDWAY PRODUCT";
 }else{
 document.getElementById("result").innerHTML="🚨 WARNING — CODE NOT FOUND";
