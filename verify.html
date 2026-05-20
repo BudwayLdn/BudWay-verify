@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>BudWay Verification</title>
 
@@ -17,82 +17,81 @@
 
 body{
     background:#020202;
-    color:white;
     min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
     overflow:hidden;
+    color:white;
 }
 
-.bg-glow{
+.background-glow{
     position:absolute;
-    width:700px;
-    height:700px;
+    width:800px;
+    height:800px;
     background:#00ff88;
-    filter:blur(180px);
-    opacity:0.12;
     border-radius:50%;
-    z-index:0;
+    filter:blur(220px);
+    opacity:0.12;
 }
 
 .container{
     position:relative;
     z-index:2;
     width:92%;
-    max-width:430px;
-    padding:35px 25px;
+    max-width:440px;
+    background:rgba(8,8,8,0.88);
+    border:1px solid rgba(0,255,136,0.16);
     border-radius:30px;
-    background:rgba(10,10,10,0.88);
-    border:1px solid rgba(0,255,136,0.15);
+    padding:38px 26px;
+    backdrop-filter:blur(18px);
     box-shadow:
     0 0 40px rgba(0,255,136,0.08),
-    inset 0 0 30px rgba(255,255,255,0.02);
-    backdrop-filter:blur(14px);
+    inset 0 0 25px rgba(255,255,255,0.02);
     text-align:center;
 }
 
 .logo{
-    font-size:68px;
+    font-size:70px;
     font-weight:900;
     letter-spacing:2px;
-    margin-bottom:10px;
+    margin-bottom:8px;
 }
 
 .logo-white{
-    color:#f2f2f2;
+    color:#f5f5f5;
 }
 
 .logo-green{
     color:#00ff88;
-    text-shadow:0 0 22px #00ff88;
+    text-shadow:0 0 20px #00ff88;
 }
 
 .subtitle{
-    color:#9e9e9e;
+    color:#8f8f8f;
+    font-size:13px;
     letter-spacing:3px;
-    font-size:15px;
-    margin-bottom:55px;
+    margin-bottom:45px;
 }
 
-.checkmark{
-    font-size:130px;
-    margin-bottom:25px;
+.verified-icon{
+    font-size:120px;
+    margin-bottom:20px;
     animation:pulse 2s infinite;
     filter:drop-shadow(0 0 25px #00ff88);
 }
 
 @keyframes pulse{
     0%{transform:scale(1);}
-    50%{transform:scale(1.06);}
+    50%{transform:scale(1.05);}
     100%{transform:scale(1);}
 }
 
 .status{
-    font-size:58px;
+    font-size:56px;
     font-weight:900;
     letter-spacing:4px;
-    margin-bottom:12px;
+    margin-bottom:10px;
 }
 
 .valid{
@@ -101,33 +100,41 @@ body{
 
 .message{
     color:#bdbdbd;
-    font-size:20px;
-    margin-bottom:45px;
+    font-size:18px;
+    margin-bottom:35px;
 }
 
 .strain-name{
-    font-size:46px;
+    font-size:42px;
     font-weight:800;
     color:#00ff88;
-    text-shadow:0 0 18px #00ff88;
-    margin-bottom:25px;
+    text-shadow:0 0 16px #00ff88;
+    margin-bottom:22px;
 }
 
-.strain-card{
+.strain-description{
+    color:#c9c9c9;
+    font-size:14px;
+    line-height:1.8;
+    margin-bottom:25px;
+    text-align:left;
+}
+
+.info-card{
     background:rgba(255,255,255,0.04);
-    border:1px solid rgba(0,255,136,0.18);
+    border:1px solid rgba(0,255,136,0.14);
     border-radius:22px;
     padding:18px;
-    margin-bottom:30px;
-    backdrop-filter:blur(12px);
+    margin-bottom:28px;
+    backdrop-filter:blur(10px);
 }
 
 .info-row{
     display:flex;
     justify-content:space-between;
-    align-items:center;
+    gap:15px;
     padding:12px 0;
-    border-bottom:1px solid rgba(255,255,255,0.07);
+    border-bottom:1px solid rgba(255,255,255,0.06);
 }
 
 .info-row:last-child{
@@ -136,40 +143,43 @@ body{
 
 .label{
     color:#00ff88;
-    font-size:13px;
-    letter-spacing:1px;
+    font-size:12px;
     font-weight:700;
+    letter-spacing:1px;
 }
 
 .value{
     color:#d9d9d9;
-    font-size:13px;
+    font-size:12px;
     text-align:right;
     max-width:60%;
+    line-height:1.5;
 }
 
 .serial{
-    color:#8a8a8a;
-    font-size:17px;
-    letter-spacing:4px;
-    margin-bottom:18px;
+    color:#8c8c8c;
+    font-size:16px;
+    letter-spacing:3px;
+    margin-bottom:14px;
 }
 
 .footer{
-    color:#5e5e5e;
-    font-size:13px;
+    color:#5f5f5f;
+    font-size:12px;
     letter-spacing:1px;
 }
 
-.invalid-box{
+.invalid-section{
     display:none;
 }
 
-.invalid .checkmark{
+.invalid-icon{
+    font-size:120px;
+    margin-bottom:20px;
     filter:drop-shadow(0 0 25px red);
 }
 
-.invalid .status{
+.invalid-text{
     color:red;
 }
 
@@ -178,77 +188,89 @@ body{
 
 <body>
 
-<div class="bg-glow"></div>
+<div class="background-glow"></div>
 
 <div class="container">
 
-    <div class="logo">
-        <span class="logo-white">BUD</span><span class="logo-green">WAY</span>
-    </div>
+<div class="logo">
+<span class="logo-white">BUD</span><span class="logo-green">WAY</span>
+</div>
 
-    <div class="subtitle">
-        PREMIUM PRODUCT VERIFICATION
-    </div>
+<div class="subtitle">
+OFFICIAL PRODUCT AUTHENTICATION
+</div>
 
-    <div id="verifiedSection">
+<div id="verifiedSection">
 
-        <div class="checkmark">✅</div>
+<div class="verified-icon">✅</div>
 
-        <div class="status valid">
-            VERIFIED
-        </div>
+<div class="status valid">
+VERIFIED
+</div>
 
-        <div class="message">
-            Authentic BudWay Product
-        </div>
+<div class="message">
+Authentic BudWay Cultivar
+</div>
 
-        <div class="strain-name" id="strainName"></div>
+<div class="strain-name" id="strainName"></div>
 
-        <div class="strain-card">
+<div class="strain-description" id="strainDescription"></div>
 
-            <div class="info-row">
-                <div class="label">TYPE</div>
-                <div class="value" id="strainType"></div>
-            </div>
+<div class="info-card">
 
-            <div class="info-row">
-                <div class="label">THC</div>
-                <div class="value" id="strainTHC"></div>
-            </div>
+<div class="info-row">
+<div class="label">TYPE</div>
+<div class="value" id="strainType"></div>
+</div>
 
-            <div class="info-row">
-                <div class="label">TERPENES</div>
-                <div class="value" id="strainTerpenes"></div>
-            </div>
+<div class="info-row">
+<div class="label">THC CONTENT</div>
+<div class="value" id="strainTHC"></div>
+</div>
 
-            <div class="info-row">
-                <div class="label">EFFECTS</div>
-                <div class="value" id="strainEffects"></div>
-            </div>
+<div class="info-row">
+<div class="label">GENETICS</div>
+<div class="value" id="strainLineage"></div>
+</div>
 
-        </div>
+<div class="info-row">
+<div class="label">FLAVOUR PROFILE</div>
+<div class="value" id="strainFlavour"></div>
+</div>
 
-        <div class="serial" id="serialNumber"></div>
+<div class="info-row">
+<div class="label">DOMINANT TERPENES</div>
+<div class="value" id="strainTerpenes"></div>
+</div>
 
-        <div class="footer">
-            OFFICIAL BUDWAY VERIFIED PRODUCT
-        </div>
+<div class="info-row">
+<div class="label">PRIMARY EFFECTS</div>
+<div class="value" id="strainEffects"></div>
+</div>
 
-    </div>
+</div>
 
-    <div id="invalidSection" class="invalid-box">
+<div class="serial" id="serialNumber"></div>
 
-        <div class="checkmark">❌</div>
+<div class="footer">
+LAB VERIFIED • SMALL BATCH CULTIVAR
+</div>
 
-        <div class="status">
-            INVALID
-        </div>
+</div>
 
-        <div class="message">
-            Product Not Recognised
-        </div>
+<div id="invalidSection" class="invalid-section">
 
-    </div>
+<div class="invalid-icon">❌</div>
+
+<div class="status invalid-text">
+INVALID
+</div>
+
+<div class="message">
+Product could not be authenticated
+</div>
+
+</div>
 
 </div>
 
@@ -257,43 +279,55 @@ body{
 const strains = [
 
 {
-    name:"Pink Starburst 🌸",
-    start:803541,
-    end:803542,
-    type:"Hybrid",
-    thc:"32%",
-    terpenes:"Sweet Candy • Cream",
-    effects:"Relaxed • Euphoric"
+name:"Pink Starburst 🌸",
+start:803541,
+end:803542,
+type:"Balanced Hybrid",
+thc:"28–32%",
+lineage:"Pink Runtz × Starburst Candy",
+flavour:"Candy gas, creamy berries, sugary citrus",
+terpenes:"Limonene • Caryophyllene • Linalool",
+effects:"Euphoric head high with calming body relaxation",
+description:"Pink Starburst is a premium exotic hybrid recognised for its dense trichome coverage, sweet confectionery aroma, and creamy gas undertones. This cultivar delivers balanced effects that combine cerebral uplift with long-lasting physical relaxation."
 },
 
 {
-    name:"Blueberry 🫐",
-    start:803547,
-    end:803559,
-    type:"Indica",
-    thc:"30%",
-    terpenes:"Berry • Earthy • Sweet",
-    effects:"Calm • Sleepy"
+name:"Blueberry 🫐",
+start:803547,
+end:803559,
+type:"Indica Dominant",
+thc:"24–29%",
+lineage:"Afghani × Thai Landrace",
+flavour:"Fresh blueberry, sweet earth, pine",
+terpenes:"Myrcene • Pinene • Caryophyllene",
+effects:"Heavy body relaxation and calming sedation",
+description:"Blueberry is a legendary indica cultivar celebrated for its unmistakable berry aroma and resin-rich flowers. Known for deeply relaxing effects and smooth smoke quality, it remains one of the most iconic fruit-forward strains ever cultivated."
 },
 
 {
-    name:"Blue Bubblegum Gelato 🫧",
-    start:803560,
-    end:803568,
-    type:"Hybrid",
-    thc:"33%",
-    terpenes:"Bubblegum • Cream • Diesel",
-    effects:"Happy • Relaxed"
+name:"Blue Bubblegum Gelato 🫧",
+start:803560,
+end:803568,
+type:"Exotic Hybrid",
+thc:"30–33%",
+lineage:"Bubblegum Gelato × Blue Zushi",
+flavour:"Sweet bubblegum, creamy gelato, diesel finish",
+terpenes:"Limonene • Caryophyllene • Humulene",
+effects:"Creative uplift paired with calming physical effects",
+description:"Blue Bubblegum Gelato combines loud candy terpenes with creamy dessert flavours and exotic fuel notes. Its frosted appearance, dense structure, and balanced euphoric effects make it a standout top-shelf hybrid cultivar."
 },
 
 {
-    name:"Mango Sapphire 🥭",
-    start:803569,
-    end:803584,
-    type:"Sativa Hybrid",
-    thc:"34%",
-    terpenes:"Mango • Citrus • Tropical Gas",
-    effects:"Energetic • Euphoric"
+name:"Mango Sapphire 🥭",
+start:803569,
+end:803584,
+type:"Sativa Dominant Hybrid",
+thc:"29–34%",
+lineage:"Mango Haze × Sapphire OG",
+flavour:"Tropical mango, citrus peel, exotic fuel",
+terpenes:"Terpinolene • Limonene • Ocimene",
+effects:"Energetic cerebral uplift with euphoric focus",
+description:"Mango Sapphire features vibrant tropical terpene expression layered with citrus zest and exotic gas undertones. This cultivar is known for its energetic head high, crystal-heavy flower structure, and long-lasting euphoric effects."
 }
 
 ];
@@ -309,36 +343,47 @@ let matchedStrain = null;
 
 for(let strain of strains){
 
-    if(code >= strain.start && code <= strain.end){
-        matchedStrain = strain;
-        break;
-    }
+if(code >= strain.start && code <= strain.end){
+matchedStrain = strain;
+break;
+}
+
 }
 
 if(matchedStrain){
 
-    document.getElementById("strainName").innerText =
-    matchedStrain.name;
+document.getElementById("strainName").innerText =
+matchedStrain.name;
 
-    document.getElementById("strainType").innerText =
-    matchedStrain.type;
+document.getElementById("strainDescription").innerText =
+matchedStrain.description;
 
-    document.getElementById("strainTHC").innerText =
-    matchedStrain.thc;
+document.getElementById("strainType").innerText =
+matchedStrain.type;
 
-    document.getElementById("strainTerpenes").innerText =
-    matchedStrain.terpenes;
+document.getElementById("strainTHC").innerText =
+matchedStrain.thc;
 
-    document.getElementById("strainEffects").innerText =
-    matchedStrain.effects;
+document.getElementById("strainLineage").innerText =
+matchedStrain.lineage;
 
-    document.getElementById("serialNumber").innerText =
-    "SERIAL " + code;
+document.getElementById("strainFlavour").innerText =
+matchedStrain.flavour;
+
+document.getElementById("strainTerpenes").innerText =
+matchedStrain.terpenes;
+
+document.getElementById("strainEffects").innerText =
+matchedStrain.effects;
+
+document.getElementById("serialNumber").innerText =
+"SERIAL " + code;
 
 }else{
 
-    verifiedSection.style.display = "none";
-    invalidSection.style.display = "block";
+verifiedSection.style.display = "none";
+invalidSection.style.display = "block";
+
 }
 
 </script>
