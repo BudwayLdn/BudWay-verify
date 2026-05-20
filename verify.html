@@ -27,114 +27,103 @@ body{
 
 .background-glow{
     position:absolute;
-    width:800px;
-    height:800px;
+    width:700px;
+    height:700px;
     background:#00ff88;
     border-radius:50%;
-    filter:blur(220px);
-    opacity:0.12;
+    filter:blur(200px);
+    opacity:0.10;
 }
 
 .container{
     position:relative;
     z-index:2;
     width:92%;
-    max-width:440px;
-    background:rgba(8,8,8,0.88);
-    border:1px solid rgba(0,255,136,0.16);
-    border-radius:30px;
-    padding:38px 26px;
+    max-width:400px;
+    background:rgba(10,10,10,0.90);
+    border:1px solid rgba(0,255,136,0.14);
+    border-radius:28px;
+    padding:28px 20px;
     backdrop-filter:blur(18px);
     box-shadow:
-    0 0 40px rgba(0,255,136,0.08),
-    inset 0 0 25px rgba(255,255,255,0.02);
+    0 0 35px rgba(0,255,136,0.08),
+    inset 0 0 20px rgba(255,255,255,0.02);
     text-align:center;
 }
 
 .logo{
-    font-size:70px;
+    font-size:58px;
     font-weight:900;
+    margin-bottom:6px;
     letter-spacing:2px;
-    margin-bottom:8px;
 }
 
 .logo-white{
-    color:#f5f5f5;
+    color:#ffffff;
 }
 
 .logo-green{
     color:#00ff88;
-    text-shadow:0 0 20px #00ff88;
+    text-shadow:0 0 18px #00ff88;
 }
 
 .subtitle{
-    color:#8f8f8f;
-    font-size:13px;
+    color:#808080;
+    font-size:11px;
     letter-spacing:3px;
-    margin-bottom:45px;
-}
-
-.verified-icon{
-    font-size:120px;
-    margin-bottom:20px;
-    animation:pulse 2s infinite;
-    filter:drop-shadow(0 0 25px #00ff88);
-}
-
-@keyframes pulse{
-    0%{transform:scale(1);}
-    50%{transform:scale(1.05);}
-    100%{transform:scale(1);}
-}
-
-.status{
-    font-size:56px;
-    font-weight:900;
-    letter-spacing:4px;
-    margin-bottom:10px;
-}
-
-.valid{
-    color:#ffffff;
-}
-
-.message{
-    color:#bdbdbd;
-    font-size:18px;
     margin-bottom:35px;
 }
 
-.strain-name{
+.icon{
+    font-size:95px;
+    margin-bottom:15px;
+    filter:drop-shadow(0 0 20px #00ff88);
+}
+
+.status{
     font-size:42px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:8px;
+}
+
+.message{
+    color:#b8b8b8;
+    font-size:15px;
+    margin-bottom:28px;
+}
+
+.strain-name{
+    font-size:30px;
     font-weight:800;
     color:#00ff88;
-    text-shadow:0 0 16px #00ff88;
-    margin-bottom:22px;
+    text-shadow:0 0 12px #00ff88;
+    margin-bottom:14px;
 }
 
 .strain-description{
-    color:#c9c9c9;
-    font-size:14px;
-    line-height:1.8;
-    margin-bottom:25px;
+    color:#bdbdbd;
+    font-size:10px;
+    line-height:1.5;
     text-align:left;
+    margin-bottom:16px;
 }
 
 .info-card{
-    background:rgba(255,255,255,0.04);
-    border:1px solid rgba(0,255,136,0.14);
-    border-radius:22px;
-    padding:18px;
-    margin-bottom:28px;
-    backdrop-filter:blur(10px);
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(0,255,136,0.10);
+    border-radius:16px;
+    padding:8px 12px;
+    margin-bottom:18px;
 }
 
 .info-row{
     display:flex;
     justify-content:space-between;
-    gap:15px;
-    padding:12px 0;
-    border-bottom:1px solid rgba(255,255,255,0.06);
+    align-items:flex-start;
+    gap:10px;
+    padding:6px 0;
+    border-bottom:1px solid rgba(255,255,255,0.05);
 }
 
 .info-row:last-child{
@@ -143,29 +132,30 @@ body{
 
 .label{
     color:#00ff88;
-    font-size:12px;
+    font-size:9px;
     font-weight:700;
     letter-spacing:1px;
+    white-space:nowrap;
 }
 
 .value{
-    color:#d9d9d9;
-    font-size:12px;
+    color:#d7d7d7;
+    font-size:9px;
+    line-height:1.4;
     text-align:right;
-    max-width:60%;
-    line-height:1.5;
+    max-width:62%;
 }
 
 .serial{
-    color:#8c8c8c;
-    font-size:16px;
-    letter-spacing:3px;
-    margin-bottom:14px;
+    color:#7d7d7d;
+    font-size:13px;
+    letter-spacing:2px;
+    margin-bottom:10px;
 }
 
 .footer{
-    color:#5f5f5f;
-    font-size:12px;
+    color:#5c5c5c;
+    font-size:10px;
     letter-spacing:1px;
 }
 
@@ -173,14 +163,14 @@ body{
     display:none;
 }
 
-.invalid-icon{
-    font-size:120px;
-    margin-bottom:20px;
-    filter:drop-shadow(0 0 25px red);
+.invalid{
+    color:red;
 }
 
-.invalid-text{
-    color:red;
+.invalid-icon{
+    font-size:95px;
+    margin-bottom:15px;
+    filter:drop-shadow(0 0 20px red);
 }
 
 </style>
@@ -202,9 +192,9 @@ OFFICIAL PRODUCT AUTHENTICATION
 
 <div id="verifiedSection">
 
-<div class="verified-icon">✅</div>
+<div class="icon">✅</div>
 
-<div class="status valid">
+<div class="status">
 VERIFIED
 </div>
 
@@ -224,7 +214,7 @@ Authentic BudWay Cultivar
 </div>
 
 <div class="info-row">
-<div class="label">THC CONTENT</div>
+<div class="label">THC</div>
 <div class="value" id="strainTHC"></div>
 </div>
 
@@ -234,17 +224,17 @@ Authentic BudWay Cultivar
 </div>
 
 <div class="info-row">
-<div class="label">FLAVOUR PROFILE</div>
+<div class="label">FLAVOUR</div>
 <div class="value" id="strainFlavour"></div>
 </div>
 
 <div class="info-row">
-<div class="label">DOMINANT TERPENES</div>
+<div class="label">TERPENES</div>
 <div class="value" id="strainTerpenes"></div>
 </div>
 
 <div class="info-row">
-<div class="label">PRIMARY EFFECTS</div>
+<div class="label">EFFECTS</div>
 <div class="value" id="strainEffects"></div>
 </div>
 
@@ -262,7 +252,7 @@ LAB VERIFIED • SMALL BATCH CULTIVAR
 
 <div class="invalid-icon">❌</div>
 
-<div class="status invalid-text">
+<div class="status invalid">
 INVALID
 </div>
 
@@ -285,10 +275,10 @@ end:803546,
 type:"Balanced Hybrid",
 thc:"28–32%",
 lineage:"Pink Runtz × Starburst Candy",
-flavour:"Candy gas, creamy berries, sugary citrus",
-terpenes:"Limonene • Caryophyllene • Linalool",
-effects:"Euphoric head high with calming body relaxation",
-description:"Pink Starburst is a premium exotic hybrid recognised for its dense trichome coverage, sweet confectionery aroma, and creamy gas undertones. This cultivar delivers balanced effects that combine cerebral uplift with long-lasting physical relaxation."
+flavour:"Candy gas, creamy berries",
+terpenes:"Limonene • Caryophyllene",
+effects:"Euphoric • Relaxing",
+description:"Pink Starburst is a premium candy-gas hybrid with creamy berry undertones and dense crystal-coated flowers."
 },
 
 {
@@ -297,11 +287,11 @@ start:803547,
 end:803559,
 type:"Indica Dominant",
 thc:"24–29%",
-lineage:"Afghani × Thai Landrace",
-flavour:"Fresh blueberry, sweet earth, pine",
-terpenes:"Myrcene • Pinene • Caryophyllene",
-effects:"Heavy body relaxation and calming sedation",
-description:"Blueberry is a legendary indica cultivar celebrated for its unmistakable berry aroma and resin-rich flowers. Known for deeply relaxing effects and smooth smoke quality, it remains one of the most iconic fruit-forward strains ever cultivated."
+lineage:"Afghani × Thai",
+flavour:"Blueberry, earth, pine",
+terpenes:"Myrcene • Pinene",
+effects:"Relaxing • Sedating",
+description:"Blueberry is a legendary indica cultivar recognised for its sweet berry aroma and deeply calming effects."
 },
 
 {
@@ -311,23 +301,23 @@ end:803568,
 type:"Exotic Hybrid",
 thc:"30–33%",
 lineage:"Bubblegum Gelato × Blue Zushi",
-flavour:"Sweet bubblegum, creamy gelato, diesel finish",
-terpenes:"Limonene • Caryophyllene • Humulene",
-effects:"Creative uplift paired with calming physical effects",
-description:"Blue Bubblegum Gelato combines loud candy terpenes with creamy dessert flavours and exotic fuel notes. Its frosted appearance, dense structure, and balanced euphoric effects make it a standout top-shelf hybrid cultivar."
+flavour:"Bubblegum, cream, diesel",
+terpenes:"Limonene • Humulene",
+effects:"Creative • Euphoric",
+description:"Blue Bubblegum Gelato blends creamy dessert terps with exotic gas for a balanced uplifting hybrid experience."
 },
 
 {
 name:"Mango Sapphire 🥭",
 start:803569,
 end:803584,
-type:"Sativa Dominant Hybrid",
+type:"Sativa Hybrid",
 thc:"29–34%",
 lineage:"Mango Haze × Sapphire OG",
-flavour:"Tropical mango, citrus peel, exotic fuel",
-terpenes:"Terpinolene • Limonene • Ocimene",
-effects:"Energetic cerebral uplift with euphoric focus",
-description:"Mango Sapphire features vibrant tropical terpene expression layered with citrus zest and exotic gas undertones. This cultivar is known for its energetic head high, crystal-heavy flower structure, and long-lasting euphoric effects."
+flavour:"Mango, citrus, fuel",
+terpenes:"Terpinolene • Ocimene",
+effects:"Energetic • Focused",
+description:"Mango Sapphire delivers tropical mango terpenes layered with citrus zest and powerful euphoric cerebral effects."
 }
 
 ];
