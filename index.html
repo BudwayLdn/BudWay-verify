@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+
 <title>BudWay Verification</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
+
 body{
 font-family:Arial;
 background:black;
@@ -11,23 +16,33 @@ color:white;
 text-align:center;
 padding:40px;
 }
+
 input{
 padding:12px;
 font-size:18px;
+width:250px;
+border:none;
+border-radius:10px;
 }
+
 button{
 padding:12px 20px;
 font-size:18px;
 background:lime;
 border:none;
 cursor:pointer;
+border-radius:10px;
+margin-top:20px;
 }
+
 .result{
 margin-top:25px;
 font-size:22px;
-white-space: pre-line;
+white-space:pre-line;
 }
+
 </style>
+
 </head>
 
 <body>
@@ -46,7 +61,7 @@ white-space: pre-line;
 
 <script>
 
-async function verifyCode(){
+function verifyCode(){
 
 let input = document.getElementById("code");
 
@@ -96,9 +111,9 @@ Strain: Mango Sapphire
 
 else{
 
-result.innerHTML = `❌ INVALID CODE`;
-
-}
+result.innerHTML = `
+❌ INVALID CODE
+`;
 
 }
 
@@ -107,4 +122,5 @@ result.innerHTML = `❌ INVALID CODE`;
 </script>
 
 </body>
+
 </html>
