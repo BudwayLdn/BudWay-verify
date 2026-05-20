@@ -23,13 +23,13 @@ body{
     align-items:center;
     overflow:hidden;
     color:white;
-    padding:12px;
+    padding:10px;
 }
 
 .background-glow{
     position:absolute;
-    width:650px;
-    height:650px;
+    width:600px;
+    height:600px;
     background:#00ff88;
     border-radius:50%;
     filter:blur(180px);
@@ -40,23 +40,23 @@ body{
     position:relative;
     z-index:2;
     width:100%;
-    max-width:360px;
-    background:rgba(10,10,10,0.92);
-    border:1px solid rgba(0,255,136,0.12);
-    border-radius:24px;
-    padding:22px 16px;
+    max-width:355px;
+    background:rgba(10,10,10,0.94);
+    border:1px solid rgba(0,255,136,0.10);
+    border-radius:22px;
+    padding:18px 14px;
     backdrop-filter:blur(16px);
     box-shadow:
-    0 0 30px rgba(0,255,136,0.06),
-    inset 0 0 16px rgba(255,255,255,0.02);
+    0 0 25px rgba(0,255,136,0.05),
+    inset 0 0 12px rgba(255,255,255,0.02);
     text-align:center;
 }
 
 .logo{
-    font-size:48px;
+    font-size:44px;
     font-weight:900;
-    margin-bottom:4px;
     letter-spacing:2px;
+    margin-bottom:2px;
 }
 
 .logo-white{
@@ -65,70 +65,54 @@ body{
 
 .logo-green{
     color:#00ff88;
-    text-shadow:0 0 14px #00ff88;
+    text-shadow:0 0 12px #00ff88;
 }
 
 .subtitle{
-    color:#7d7d7d;
-    font-size:10px;
+    color:#757575;
+    font-size:9px;
     letter-spacing:2px;
-    margin-bottom:26px;
-}
-
-.icon{
-    font-size:78px;
-    margin-bottom:10px;
-    filter:drop-shadow(0 0 16px #00ff88);
-}
-
-.status{
-    font-size:34px;
-    font-weight:900;
-    letter-spacing:2px;
-    margin-bottom:6px;
-}
-
-.message{
-    color:#b8b8b8;
-    font-size:13px;
     margin-bottom:20px;
 }
 
-.strain-name{
-    font-size:24px;
-    font-weight:800;
-    color:#00ff88;
-    text-shadow:0 0 10px #00ff88;
-    margin-bottom:10px;
+.icon{
+    font-size:72px;
+    margin-bottom:8px;
+    filter:drop-shadow(0 0 14px #00ff88);
 }
 
-.strain-description{
-    color:#b8b8b8;
-    font-size:9px;
-    line-height:1.45;
-    text-align:left;
+.status{
+    font-size:30px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:4px;
+}
+
+.message{
+    color:#b5b5b5;
+    font-size:11px;
+    margin-bottom:16px;
+}
+
+.strain-name{
+    font-size:21px;
+    font-weight:800;
+    color:#00ff88;
+    text-shadow:0 0 8px #00ff88;
     margin-bottom:12px;
 }
 
 .info-card{
     background:rgba(255,255,255,0.025);
     border:1px solid rgba(0,255,136,0.08);
-    border-radius:14px;
-    padding:7px 10px;
-    margin-bottom:14px;
+    border-radius:12px;
+    padding:8px 10px;
+    text-align:left;
+    margin-bottom:12px;
 }
 
-.info-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    gap:8px;
-    padding:5px 0;
-    border-bottom:1px solid rgba(255,255,255,0.04);
-}
-
-.info-row:last-child{
-    border-bottom:none;
+.info{
+    margin-bottom:8px;
 }
 
 .label{
@@ -136,27 +120,26 @@ body{
     font-size:8px;
     font-weight:700;
     letter-spacing:1px;
-    white-space:nowrap;
+    margin-bottom:2px;
 }
 
 .value{
-    color:#d5d5d5;
-    font-size:8px;
+    color:#d7d7d7;
+    font-size:9px;
     line-height:1.35;
-    text-align:right;
-    max-width:62%;
 }
 
 .serial{
     color:#7a7a7a;
-    font-size:11px;
+    font-size:10px;
     letter-spacing:2px;
-    margin-bottom:8px;
+    margin-top:10px;
 }
 
 .footer{
-    color:#5a5a5a;
-    font-size:9px;
+    color:#5f5f5f;
+    font-size:8px;
+    margin-top:8px;
     letter-spacing:1px;
 }
 
@@ -169,9 +152,9 @@ body{
 }
 
 .invalid-icon{
-    font-size:78px;
-    margin-bottom:10px;
-    filter:drop-shadow(0 0 16px red);
+    font-size:72px;
+    margin-bottom:8px;
+    filter:drop-shadow(0 0 14px red);
 }
 
 </style>
@@ -200,43 +183,26 @@ VERIFIED
 </div>
 
 <div class="message">
-Authentic BudWay Cultivar
+Authentic BudWay Product
 </div>
 
 <div class="strain-name" id="strainName"></div>
 
-<div class="strain-description" id="strainDescription"></div>
-
 <div class="info-card">
 
-<div class="info-row">
-<div class="label">TYPE</div>
-<div class="value" id="strainType"></div>
+<div class="info">
+<div class="label">GENETICS</div>
+<div class="value" id="strainGenetics"></div>
 </div>
 
-<div class="info-row">
-<div class="label">THC</div>
+<div class="info">
+<div class="label">THC / TYPE</div>
 <div class="value" id="strainTHC"></div>
 </div>
 
-<div class="info-row">
-<div class="label">GENETICS</div>
-<div class="value" id="strainLineage"></div>
-</div>
-
-<div class="info-row">
-<div class="label">FLAVOUR</div>
+<div class="info">
+<div class="label">FLAVOUR PROFILE</div>
 <div class="value" id="strainFlavour"></div>
-</div>
-
-<div class="info-row">
-<div class="label">TERPENES</div>
-<div class="value" id="strainTerpenes"></div>
-</div>
-
-<div class="info-row">
-<div class="label">EFFECTS</div>
-<div class="value" id="strainEffects"></div>
 </div>
 
 </div>
@@ -244,7 +210,7 @@ Authentic BudWay Cultivar
 <div class="serial" id="serialNumber"></div>
 
 <div class="footer">
-LAB VERIFIED • SMALL BATCH CULTIVAR
+TOP SHELF CALI 🔥
 </div>
 
 </div>
@@ -270,55 +236,30 @@ Product could not be authenticated
 const strains = [
 
 {
-name:"Pink Starburst 🌸",
-start:803541,
-end:803546,
-type:"Balanced Hybrid",
-thc:"28–32%",
-lineage:"Pink Runtz × Starburst Candy",
-flavour:"Candy gas, creamy berries",
-terpenes:"Limonene • Caryophyllene",
-effects:"Euphoric • Relaxing",
-description:"Premium candy-gas hybrid with creamy berry undertones and dense crystal-coated flowers."
-},
-
-{
-name:"Blueberry 🫐",
+name:"Legendary Blueberry 🫐",
 start:803547,
 end:803559,
-type:"Indica Dominant",
-thc:"24–29%",
-lineage:"Afghani × Thai",
-flavour:"Blueberry, earth, pine",
-terpenes:"Myrcene • Pinene",
-effects:"Relaxing • Sedating",
-description:"Legendary indica cultivar recognised for its sweet berry aroma and calming effects."
-},
-
-{
-name:"Blue Bubblegum Gelato 🫧",
-start:803560,
-end:803568,
-type:"Exotic Hybrid",
-thc:"30–33%",
-lineage:"Bubblegum Gelato × Blue Zushi",
-flavour:"Bubblegum, cream, diesel",
-terpenes:"Limonene • Humulene",
-effects:"Creative • Euphoric",
-description:"Creamy dessert terps blended with exotic gas for a balanced uplifting experience."
+genetics:"Afghani × Thai × Purple Thai",
+thc:"20–24% THC • 80/20 Indica Dominant",
+flavour:"Sweet blueberry, berry jam, vanilla, earthy spice, floral/herbal undertones"
 },
 
 {
 name:"Mango Sapphire 🥭",
 start:803569,
 end:803584,
-type:"Sativa Hybrid",
-thc:"29–34%",
-lineage:"Mango Haze × Sapphire OG",
-flavour:"Mango, citrus, fuel",
-terpenes:"Terpinolene • Ocimene",
-effects:"Energetic • Focused",
-description:"Tropical mango terpenes layered with citrus zest and powerful euphoric effects."
+genetics:"Bubba’s Gift × OG Kush × Afghan",
+thc:"21–23% THC • 85/15 Indica Dominant",
+flavour:"Tropical mango, coconut, citrus sour fruits, lavender, spicy herbs"
+},
+
+{
+name:"Pink StarBurst Gelato 🇺🇸",
+start:803541,
+end:803546,
+genetics:"Pink Starburst × Gelato",
+thc:"20–26% THC • 50/50 Hybrid",
+flavour:"Sweet strawberries, candy citrus, creamy dessert finish"
 }
 
 ];
@@ -346,26 +287,14 @@ if(matchedStrain){
 document.getElementById("strainName").innerText =
 matchedStrain.name;
 
-document.getElementById("strainDescription").innerText =
-matchedStrain.description;
-
-document.getElementById("strainType").innerText =
-matchedStrain.type;
+document.getElementById("strainGenetics").innerText =
+matchedStrain.genetics;
 
 document.getElementById("strainTHC").innerText =
 matchedStrain.thc;
 
-document.getElementById("strainLineage").innerText =
-matchedStrain.lineage;
-
 document.getElementById("strainFlavour").innerText =
 matchedStrain.flavour;
-
-document.getElementById("strainTerpenes").innerText =
-matchedStrain.terpenes;
-
-document.getElementById("strainEffects").innerText =
-matchedStrain.effects;
 
 document.getElementById("serialNumber").innerText =
 "SERIAL " + code;
