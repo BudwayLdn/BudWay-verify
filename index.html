@@ -49,7 +49,7 @@ white-space: pre-line;
 async function verify(){
 
 let input=document.getElementById("code").value.trim();
-
+let code = Number(input.value);
 let response=await fetch("codes.json");
 
 let data=await response.json();
