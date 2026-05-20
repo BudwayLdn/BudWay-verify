@@ -28,12 +28,19 @@ body{
 
 .background-glow{
     position:absolute;
-    width:600px;
-    height:600px;
+    width:650px;
+    height:650px;
     background:#00ff88;
     border-radius:50%;
     filter:blur(180px);
     opacity:0.08;
+    animation:pulse 4s infinite ease-in-out;
+}
+
+@keyframes pulse{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.08);}
+    100%{transform:scale(1);}
 }
 
 .container{
@@ -50,6 +57,7 @@ body{
     0 0 25px rgba(0,255,136,0.05),
     inset 0 0 12px rgba(255,255,255,0.02);
     text-align:center;
+    overflow:hidden;
 }
 
 .logo{
@@ -72,7 +80,60 @@ body{
     color:#757575;
     font-size:9px;
     letter-spacing:2px;
-    margin-bottom:20px;
+    margin-bottom:22px;
+}
+
+.loader-section{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    min-height:320px;
+}
+
+.loader-ring{
+    width:74px;
+    height:74px;
+    border:4px solid rgba(255,255,255,0.08);
+    border-top:4px solid #00ff88;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+    margin-bottom:22px;
+    box-shadow:0 0 18px rgba(0,255,136,0.35);
+}
+
+@keyframes spin{
+    100%{
+        transform:rotate(360deg);
+    }
+}
+
+.loading-text{
+    color:#d7d7d7;
+    font-size:13px;
+    letter-spacing:2px;
+    animation:flicker 1.5s infinite;
+}
+
+@keyframes flicker{
+    0%,100%{opacity:1;}
+    50%{opacity:0.45;}
+}
+
+.result-section{
+    display:none;
+    animation:fadeIn 0.7s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(8px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 .icon{
@@ -95,12 +156,12 @@ body{
 }
 
 .strain-name{
-    font-size:20px;
+    font-size:21px;
     font-weight:800;
     color:#00ff88;
     text-shadow:0 0 8px #00ff88;
     margin-bottom:12px;
-    line-height:1.2;
+    line-height:1.15;
 }
 
 .info-card{
@@ -144,12 +205,8 @@ body{
     letter-spacing:1px;
 }
 
-.invalid-section{
-    display:none;
-}
-
 .invalid{
-    color:red;
+    color:#ff3b3b;
 }
 
 .invalid-icon{
@@ -175,7 +232,17 @@ body{
 OFFICIAL PRODUCT AUTHENTICATION
 </div>
 
-<div id="verifiedSection">
+<div id="loaderSection" class="loader-section">
+
+<div class="loader-ring"></div>
+
+<div class="loading-text">
+VERIFYING PRODUCT...
+</div>
+
+</div>
+
+<div id="verifiedSection" class="result-section">
 
 <div class="icon">✅</div>
 
@@ -216,7 +283,7 @@ TOP SHELF CALI 🔥
 
 </div>
 
-<div id="invalidSection" class="invalid-section">
+<div id="invalidSection" class="result-section">
 
 <div class="invalid-icon">❌</div>
 
@@ -241,17 +308,17 @@ name:"Legendary Blueberry 🫐",
 start:803547,
 end:803559,
 genetics:"Afghani × Thai × Purple Thai",
-thc:"20–24% THC • 80/20 Indica",
-flavour:"Blueberry candy, vanilla, earthy spice"
+thc:"20–24% THC • 80/20 Indica Dominant",
+flavour:"Sweet blueberry, berry jam, vanilla, earthy spice, floral/herbal undertones"
 },
 
 {
-name:"Blue Bubblegum Gelato 🔵",
+name:"BLUE BUBBLEGUM GELATO 🔵",
 start:803560,
 end:803568,
 genetics:"Gelato 45 × Indiana Bubblegum",
-thc:"24–32% THC • 60/40 Indica",
-flavour:"Sugary bubblegum, berries, citrus herbs"
+thc:"24–32% THC • 60/40 Indica Dominant",
+flavour:"Sugary bubblegum, fresh berries, subtle herbal citrus undertones"
 },
 
 {
@@ -259,8 +326,8 @@ name:"Mango Sapphire 🥭",
 start:803569,
 end:803584,
 genetics:"Bubba’s Gift × OG Kush × Afghan",
-thc:"21–23% THC • 85/15 Indica",
-flavour:"Mango, coconut, citrus, lavender spice"
+thc:"21–23% THC • 85/15 Indica Dominant",
+flavour:"Tropical mango, coconut, citrus sour fruits, lavender, spicy herbs"
 },
 
 {
@@ -269,7 +336,7 @@ start:803541,
 end:803546,
 genetics:"Pink Starburst × Gelato",
 thc:"20–26% THC • 50/50 Hybrid",
-flavour:"Sweet strawberry candy, creamy citrus"
+flavour:"Sweet strawberries, candy citrus, creamy dessert finish"
 }
 
 ];
@@ -278,6 +345,7 @@ const params = new URLSearchParams(window.location.search);
 
 const code = parseInt(params.get("code"));
 
+const loaderSection = document.getElementById("loaderSection");
 const verifiedSection = document.getElementById("verifiedSection");
 const invalidSection = document.getElementById("invalidSection");
 
@@ -292,7 +360,13 @@ break;
 
 }
 
+setTimeout(()=>{
+
+loaderSection.style.display = "none";
+
 if(matchedStrain){
+
+verifiedSection.style.display = "block";
 
 document.getElementById("strainName").innerText =
 matchedStrain.name;
@@ -311,10 +385,11 @@ document.getElementById("serialNumber").innerText =
 
 }else{
 
-verifiedSection.style.display = "none";
 invalidSection.style.display = "block";
 
 }
+
+},2200);
 
 </script>
 
