@@ -1,205 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 <title>BudWay Verification</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
-
 <style>
-
-/* RESET */
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
-/* BODY */
-
 body{
-    font-family:'Space Grotesk',sans-serif;
-    background:#050505;
+    background:#020202;
     color:white;
-    height:100vh;
-    overflow:hidden;
+    min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
+    overflow:hidden;
 }
-
-/* BACKGROUND GLOW */
 
 .bg-glow{
     position:absolute;
     width:700px;
     height:700px;
-    background:radial-gradient(circle,#00ff8840 0%,transparent 70%);
-    filter:blur(60px);
-    animation:pulse 4s infinite;
+    background:#00ff88;
+    filter:blur(180px);
+    opacity:0.12;
+    border-radius:50%;
+    z-index:0;
+}
+
+.container{
+    position:relative;
+    z-index:2;
+    width:92%;
+    max-width:430px;
+    padding:35px 25px;
+    border-radius:30px;
+    background:rgba(10,10,10,0.88);
+    border:1px solid rgba(0,255,136,0.15);
+    box-shadow:
+    0 0 40px rgba(0,255,136,0.08),
+    inset 0 0 30px rgba(255,255,255,0.02);
+    backdrop-filter:blur(14px);
+    text-align:center;
+}
+
+.logo{
+    font-size:68px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:10px;
+}
+
+.logo-white{
+    color:#f2f2f2;
+}
+
+.logo-green{
+    color:#00ff88;
+    text-shadow:0 0 22px #00ff88;
+}
+
+.subtitle{
+    color:#9e9e9e;
+    letter-spacing:3px;
+    font-size:15px;
+    margin-bottom:55px;
+}
+
+.checkmark{
+    font-size:130px;
+    margin-bottom:25px;
+    animation:pulse 2s infinite;
+    filter:drop-shadow(0 0 25px #00ff88);
 }
 
 @keyframes pulse{
-    0%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.08);
-    }
-
-    100%{
-        transform:scale(1);
-    }
+    0%{transform:scale(1);}
+    50%{transform:scale(1.06);}
+    100%{transform:scale(1);}
 }
 
-/* MAIN CARD */
-
-.card{
-    position:relative;
-    width:420px;
-    padding:50px 40px;
-    border-radius:30px;
-    background:rgba(255,255,255,0.03);
-    border:1px solid rgba(255,255,255,0.08);
-    backdrop-filter:blur(20px);
-    text-align:center;
-    box-shadow:0 0 40px rgba(0,255,136,0.08);
-}
-
-/* LOGO */
-
-.logo{
-    font-size:42px;
-    font-weight:700;
-    letter-spacing:3px;
+.status{
+    font-size:58px;
+    font-weight:900;
+    letter-spacing:4px;
     margin-bottom:12px;
 }
 
-.logo span{
-    color:#00ff88;
+.valid{
+    color:#ffffff;
 }
 
-/* SUBTITLE */
-
-.subtitle{
-    color:#888;
-    font-size:14px;
+.message{
+    color:#bdbdbd;
+    font-size:20px;
     margin-bottom:45px;
+}
+
+.strain-name{
+    font-size:46px;
+    font-weight:800;
+    color:#00ff88;
+    text-shadow:0 0 18px #00ff88;
+    margin-bottom:25px;
+}
+
+.strain-card{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(0,255,136,0.18);
+    border-radius:22px;
+    padding:18px;
+    margin-bottom:30px;
+    backdrop-filter:blur(12px);
+}
+
+.info-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 0;
+    border-bottom:1px solid rgba(255,255,255,0.07);
+}
+
+.info-row:last-child{
+    border-bottom:none;
+}
+
+.label{
+    color:#00ff88;
+    font-size:13px;
+    letter-spacing:1px;
+    font-weight:700;
+}
+
+.value{
+    color:#d9d9d9;
+    font-size:13px;
+    text-align:right;
+    max-width:60%;
+}
+
+.serial{
+    color:#8a8a8a;
+    font-size:17px;
+    letter-spacing:4px;
+    margin-bottom:18px;
+}
+
+.footer{
+    color:#5e5e5e;
+    font-size:13px;
     letter-spacing:1px;
 }
 
-/* LOADER */
-
-.loader{
-    width:70px;
-    height:70px;
-    border-radius:50%;
-    border:5px solid rgba(255,255,255,0.08);
-    border-top:5px solid #00ff88;
-    margin:auto;
-    animation:spin 1s linear infinite;
-}
-
-@keyframes spin{
-    to{
-        transform:rotate(360deg);
-    }
-}
-
-/* VERIFY TEXT */
-
-.loading-text{
-    margin-top:25px;
-    color:#888;
-    font-size:15px;
-}
-
-/* RESULT */
-
-.result{
+.invalid-box{
     display:none;
-    animation:fade 0.5s ease;
 }
 
-@keyframes fade{
-    from{
-        opacity:0;
-        transform:translateY(10px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+.invalid .checkmark{
+    filter:drop-shadow(0 0 25px red);
 }
 
-/* CHECK ICON */
-
-.check{
-    font-size:90px;
-    margin-bottom:20px;
-}
-
-/* VERIFIED */
-
-.valid .check{
-    color:#00ff88;
-    text-shadow:0 0 30px #00ff88;
-}
-
-/* INVALID */
-
-.invalid .check{
-    color:#ff3b3b;
-    text-shadow:0 0 30px #ff3b3b;
-}
-
-/* STATUS */
-
-.status{
-    font-size:30px;
-    font-weight:700;
-    letter-spacing:2px;
-}
-
-/* INFO */
-
-.info{
-    margin-top:12px;
-    color:#999;
-    font-size:14px;
-}
-
-/* STRAIN */
-
-.strain{
-    margin-top:25px;
-    font-size:26px;
-    font-weight:700;
-    color:#00ff88;
-    text-shadow:0 0 20px #00ff88;
-}
-
-/* SERIAL */
-
-.serial{
-    margin-top:18px;
-    font-size:13px;
-    color:#666;
-    letter-spacing:2px;
-}
-
-/* FOOTER */
-
-.footer{
-    margin-top:12px;
-    font-size:11px;
-    color:#444;
+.invalid .status{
+    color:red;
 }
 
 </style>
@@ -209,159 +180,166 @@ body{
 
 <div class="bg-glow"></div>
 
-<div class="card">
+<div class="container">
 
     <div class="logo">
-        BUD<span>WAY</span>
+        <span class="logo-white">BUD</span><span class="logo-green">WAY</span>
     </div>
 
     <div class="subtitle">
         PREMIUM PRODUCT VERIFICATION
     </div>
 
-    <!-- LOADING -->
+    <div id="verifiedSection">
 
-    <div id="loading">
+        <div class="checkmark">✅</div>
 
-        <div class="loader"></div>
+        <div class="status valid">
+            VERIFIED
+        </div>
 
-        <div class="loading-text">
-            Verifying Product...
+        <div class="message">
+            Authentic BudWay Product
+        </div>
+
+        <div class="strain-name" id="strainName"></div>
+
+        <div class="strain-card">
+
+            <div class="info-row">
+                <div class="label">TYPE</div>
+                <div class="value" id="strainType"></div>
+            </div>
+
+            <div class="info-row">
+                <div class="label">THC</div>
+                <div class="value" id="strainTHC"></div>
+            </div>
+
+            <div class="info-row">
+                <div class="label">TERPENES</div>
+                <div class="value" id="strainTerpenes"></div>
+            </div>
+
+            <div class="info-row">
+                <div class="label">EFFECTS</div>
+                <div class="value" id="strainEffects"></div>
+            </div>
+
+        </div>
+
+        <div class="serial" id="serialNumber"></div>
+
+        <div class="footer">
+            OFFICIAL BUDWAY VERIFIED PRODUCT
         </div>
 
     </div>
 
-    <!-- RESULT -->
+    <div id="invalidSection" class="invalid-box">
 
-    <div id="result" class="result"></div>
+        <div class="checkmark">❌</div>
+
+        <div class="status">
+            INVALID
+        </div>
+
+        <div class="message">
+            Product Not Recognised
+        </div>
+
+    </div>
 
 </div>
 
 <script>
 
-/* SERIAL RANGES */
+const strains = [
 
-const strainRanges = [
+{
+    name:"Pink Starburst 🌸",
+    start:803541,
+    end:803542,
+    type:"Hybrid",
+    thc:"32%",
+    terpenes:"Sweet Candy • Cream",
+    effects:"Relaxed • Euphoric"
+},
 
-    {
-        start: 803541,
-        end: 803546,
-        strain: "Pink Starburst🩷"
-    },
+{
+    name:"Blueberry 🫐",
+    start:803547,
+    end:803559,
+    type:"Indica",
+    thc:"30%",
+    terpenes:"Berry • Earthy • Sweet",
+    effects:"Calm • Sleepy"
+},
 
-    {
-        start: 803547,
-        end: 803559,
-        strain: "Blueberry🫐"
-    },
+{
+    name:"Blue Bubblegum Gelato 🫧",
+    start:803560,
+    end:803568,
+    type:"Hybrid",
+    thc:"33%",
+    terpenes:"Bubblegum • Cream • Diesel",
+    effects:"Happy • Relaxed"
+},
 
-    {
-        start: 803560,
-        end: 803568,
-        strain: "Blue Bubblegum Gelato🍬🍨"
-    },
-
-    {
-        start: 803569,
-        end: 803584,
-        strain: "Mango Sapphire🥭"
-    }
+{
+    name:"Mango Sapphire 🥭",
+    start:803569,
+    end:803584,
+    type:"Sativa Hybrid",
+    thc:"34%",
+    terpenes:"Mango • Citrus • Tropical Gas",
+    effects:"Energetic • Euphoric"
+}
 
 ];
 
-/* GET SERIAL FROM URL */
-
 const params = new URLSearchParams(window.location.search);
 
-const serial = parseInt(params.get("code"));
+const code = parseInt(params.get("code"));
 
-const resultBox = document.getElementById("result");
+const verifiedSection = document.getElementById("verifiedSection");
+const invalidSection = document.getElementById("invalidSection");
 
-/* VERIFY */
+let matchedStrain = null;
 
-setTimeout(() => {
+for(let strain of strains){
 
-    document.getElementById("loading").style.display = "none";
-
-    let matchedProduct = null;
-
-    /* CHECK RANGES */
-
-    for (const item of strainRanges) {
-
-        if (serial >= item.start && serial <= item.end) {
-
-            matchedProduct = item;
-
-            break;
-
-        }
-
+    if(code >= strain.start && code <= strain.end){
+        matchedStrain = strain;
+        break;
     }
+}
 
-    /* VERIFIED */
+if(matchedStrain){
 
-    if (matchedProduct) {
+    document.getElementById("strainName").innerText =
+    matchedStrain.name;
 
-        resultBox.classList.add("valid");
+    document.getElementById("strainType").innerText =
+    matchedStrain.type;
 
-        resultBox.innerHTML = `
+    document.getElementById("strainTHC").innerText =
+    matchedStrain.thc;
 
-            <div class="check">✅</div>
+    document.getElementById("strainTerpenes").innerText =
+    matchedStrain.terpenes;
 
-            <div class="status">
-                VERIFIED
-            </div>
+    document.getElementById("strainEffects").innerText =
+    matchedStrain.effects;
 
-            <div class="info">
-                Authentic BudWay Product
-            </div>
+    document.getElementById("serialNumber").innerText =
+    "SERIAL " + code;
 
-            <div class="strain">
-                ${matchedProduct.strain}
-            </div>
+}else{
 
-            <div class="serial">
-                SERIAL ${serial}
-            </div>
-
-            <div class="footer">
-                OFFICIAL BUDWAY VERIFIED PRODUCT
-            </div>
-
-        `;
-
-    }
-
-    /* INVALID */
-
-    else {
-
-        resultBox.classList.add("invalid");
-
-        resultBox.innerHTML = `
-
-            <div class="check">❌</div>
-
-            <div class="status">
-                INVALID
-            </div>
-
-            <div class="info">
-                Serial Number Not Recognised
-            </div>
-
-            <div class="serial">
-                SERIAL ${serial || "UNKNOWN"}
-            </div>
-
-        `;
-
-    }
-
-    resultBox.style.display = "block";
-
-}, 2200);
+    verifiedSection.style.display = "none";
+    invalidSection.style.display = "block";
+}
 
 </script>
 
