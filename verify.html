@@ -23,38 +23,39 @@ body{
     align-items:center;
     overflow:hidden;
     color:white;
+    padding:12px;
 }
 
 .background-glow{
     position:absolute;
-    width:700px;
-    height:700px;
+    width:650px;
+    height:650px;
     background:#00ff88;
     border-radius:50%;
-    filter:blur(200px);
-    opacity:0.10;
+    filter:blur(180px);
+    opacity:0.08;
 }
 
 .container{
     position:relative;
     z-index:2;
-    width:92%;
-    max-width:400px;
-    background:rgba(10,10,10,0.90);
-    border:1px solid rgba(0,255,136,0.14);
-    border-radius:28px;
-    padding:28px 20px;
-    backdrop-filter:blur(18px);
+    width:100%;
+    max-width:360px;
+    background:rgba(10,10,10,0.92);
+    border:1px solid rgba(0,255,136,0.12);
+    border-radius:24px;
+    padding:22px 16px;
+    backdrop-filter:blur(16px);
     box-shadow:
-    0 0 35px rgba(0,255,136,0.08),
-    inset 0 0 20px rgba(255,255,255,0.02);
+    0 0 30px rgba(0,255,136,0.06),
+    inset 0 0 16px rgba(255,255,255,0.02);
     text-align:center;
 }
 
 .logo{
-    font-size:58px;
+    font-size:48px;
     font-weight:900;
-    margin-bottom:6px;
+    margin-bottom:4px;
     letter-spacing:2px;
 }
 
@@ -64,66 +65,66 @@ body{
 
 .logo-green{
     color:#00ff88;
-    text-shadow:0 0 18px #00ff88;
+    text-shadow:0 0 14px #00ff88;
 }
 
 .subtitle{
-    color:#808080;
-    font-size:11px;
-    letter-spacing:3px;
-    margin-bottom:35px;
+    color:#7d7d7d;
+    font-size:10px;
+    letter-spacing:2px;
+    margin-bottom:26px;
 }
 
 .icon{
-    font-size:95px;
-    margin-bottom:15px;
-    filter:drop-shadow(0 0 20px #00ff88);
+    font-size:78px;
+    margin-bottom:10px;
+    filter:drop-shadow(0 0 16px #00ff88);
 }
 
 .status{
-    font-size:42px;
+    font-size:34px;
     font-weight:900;
-    letter-spacing:3px;
-    margin-bottom:8px;
+    letter-spacing:2px;
+    margin-bottom:6px;
 }
 
 .message{
     color:#b8b8b8;
-    font-size:15px;
-    margin-bottom:28px;
+    font-size:13px;
+    margin-bottom:20px;
 }
 
 .strain-name{
-    font-size:30px;
+    font-size:24px;
     font-weight:800;
     color:#00ff88;
-    text-shadow:0 0 12px #00ff88;
-    margin-bottom:14px;
+    text-shadow:0 0 10px #00ff88;
+    margin-bottom:10px;
 }
 
 .strain-description{
-    color:#bdbdbd;
-    font-size:10px;
-    line-height:1.5;
+    color:#b8b8b8;
+    font-size:9px;
+    line-height:1.45;
     text-align:left;
-    margin-bottom:16px;
+    margin-bottom:12px;
 }
 
 .info-card{
-    background:rgba(255,255,255,0.03);
-    border:1px solid rgba(0,255,136,0.10);
-    border-radius:16px;
-    padding:8px 12px;
-    margin-bottom:18px;
+    background:rgba(255,255,255,0.025);
+    border:1px solid rgba(0,255,136,0.08);
+    border-radius:14px;
+    padding:7px 10px;
+    margin-bottom:14px;
 }
 
 .info-row{
     display:flex;
     justify-content:space-between;
     align-items:flex-start;
-    gap:10px;
-    padding:6px 0;
-    border-bottom:1px solid rgba(255,255,255,0.05);
+    gap:8px;
+    padding:5px 0;
+    border-bottom:1px solid rgba(255,255,255,0.04);
 }
 
 .info-row:last-child{
@@ -132,30 +133,30 @@ body{
 
 .label{
     color:#00ff88;
-    font-size:9px;
+    font-size:8px;
     font-weight:700;
     letter-spacing:1px;
     white-space:nowrap;
 }
 
 .value{
-    color:#d7d7d7;
-    font-size:9px;
-    line-height:1.4;
+    color:#d5d5d5;
+    font-size:8px;
+    line-height:1.35;
     text-align:right;
     max-width:62%;
 }
 
 .serial{
-    color:#7d7d7d;
-    font-size:13px;
+    color:#7a7a7a;
+    font-size:11px;
     letter-spacing:2px;
-    margin-bottom:10px;
+    margin-bottom:8px;
 }
 
 .footer{
-    color:#5c5c5c;
-    font-size:10px;
+    color:#5a5a5a;
+    font-size:9px;
     letter-spacing:1px;
 }
 
@@ -168,9 +169,9 @@ body{
 }
 
 .invalid-icon{
-    font-size:95px;
-    margin-bottom:15px;
-    filter:drop-shadow(0 0 20px red);
+    font-size:78px;
+    margin-bottom:10px;
+    filter:drop-shadow(0 0 16px red);
 }
 
 </style>
@@ -278,7 +279,7 @@ lineage:"Pink Runtz × Starburst Candy",
 flavour:"Candy gas, creamy berries",
 terpenes:"Limonene • Caryophyllene",
 effects:"Euphoric • Relaxing",
-description:"Pink Starburst is a premium candy-gas hybrid with creamy berry undertones and dense crystal-coated flowers."
+description:"Premium candy-gas hybrid with creamy berry undertones and dense crystal-coated flowers."
 },
 
 {
@@ -291,7 +292,7 @@ lineage:"Afghani × Thai",
 flavour:"Blueberry, earth, pine",
 terpenes:"Myrcene • Pinene",
 effects:"Relaxing • Sedating",
-description:"Blueberry is a legendary indica cultivar recognised for its sweet berry aroma and deeply calming effects."
+description:"Legendary indica cultivar recognised for its sweet berry aroma and calming effects."
 },
 
 {
@@ -304,7 +305,7 @@ lineage:"Bubblegum Gelato × Blue Zushi",
 flavour:"Bubblegum, cream, diesel",
 terpenes:"Limonene • Humulene",
 effects:"Creative • Euphoric",
-description:"Blue Bubblegum Gelato blends creamy dessert terps with exotic gas for a balanced uplifting hybrid experience."
+description:"Creamy dessert terps blended with exotic gas for a balanced uplifting experience."
 },
 
 {
@@ -317,7 +318,7 @@ lineage:"Mango Haze × Sapphire OG",
 flavour:"Mango, citrus, fuel",
 terpenes:"Terpinolene • Ocimene",
 effects:"Energetic • Focused",
-description:"Mango Sapphire delivers tropical mango terpenes layered with citrus zest and powerful euphoric cerebral effects."
+description:"Tropical mango terpenes layered with citrus zest and powerful euphoric effects."
 }
 
 ];
