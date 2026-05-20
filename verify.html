@@ -1,3 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BudWay Ldn Verification</title>
+
+<style>
+
+body{
+    margin:0;
+    padding:0;
+    background:#050505;
+    color:white;
+    font-family:Arial, sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.container{
+    width:90%;
+    max-width:550px;
+    background:#111;
+    border:1px solid #222;
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 0 30px rgba(0,255,100,0.15);
+}
+
+h1,h2{
+    margin-top:0;
+}
+
+.verified{
+    color:#00ff66;
+    font-size:32px;
+    text-align:center;
+}
+
+.invalid{
+    color:#ff4d4d;
+    font-size:32px;
+    text-align:center;
+}
+
+.card{
+    margin-top:25px;
+    background:#181818;
+    border-radius:16px;
+    padding:22px;
+    border:1px solid #2d2d2d;
+}
+
+.card p{
+    line-height:1.6;
+    color:#ddd;
+}
+
+strong{
+    color:white;
+}
+
+.winner-box{
+    margin-top:20px;
+    padding:20px;
+    border-radius:16px;
+    background:linear-gradient(135deg,#00ff66,#111);
+    border:2px solid gold;
+    text-align:center;
+    animation:pulse 1.5s infinite;
+}
+
+.winner-box h3{
+    color:gold;
+    margin-bottom:10px;
+}
+
+.authentic{
+    margin-top:20px;
+    padding:14px;
+    background:#0f2417;
+    border:1px solid #00ff66;
+    border-radius:12px;
+    color:#9fffc1;
+}
+
+.loading{
+    text-align:center;
+    font-size:20px;
+    color:#aaa;
+}
+
+@keyframes pulse{
+    0%{
+        box-shadow:0 0 8px gold;
+    }
+    50%{
+        box-shadow:0 0 25px gold;
+    }
+    100%{
+        box-shadow:0 0 8px gold;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div id="result">
+
+<div class="loading">
+Verifying Product...
+</div>
+
+</div>
+
+</div>
+
 <script>
 
 const params = new URLSearchParams(window.location.search);
@@ -10,15 +134,10 @@ const strains = [
     start: 803541,
     end: 803546,
     winner: 803542,
-
     genetics: "Pink Starburst X Gelato",
     thc: "20% - 26%",
     type: "50/50 Hybrid",
-
-    flavour: `
-    Candy-like sweetness with juicy strawberries,
-    zesty citrus, and a creamy smooth finish.
-    `
+    flavour: "Candy-like sweetness with juicy strawberries, zesty citrus, and a creamy smooth finish."
 },
 
 {
@@ -26,15 +145,10 @@ const strains = [
     start: 803547,
     end: 803559,
     winner: 803551,
-
     genetics: "Afghani X Thai X Purple Thai",
     thc: "20% - 24%",
     type: "80/20 Indica Dominant",
-
-    flavour: `
-    Sweet blueberry, berry jam, vanilla,
-    earthy spice, and floral/herbal undertones.
-    `
+    flavour: "Sweet blueberry, berry jam, vanilla, earthy spice, and floral/herbal undertones."
 },
 
 {
@@ -42,15 +156,10 @@ const strains = [
     start: 803560,
     end: 803568,
     winner: 803564,
-
     genetics: "Gelato 45 X Indiana Bubblegum",
     thc: "24% - 32%",
     type: "60/40 Indica Dominant",
-
-    flavour: `
-    Sugary bubblegum, fresh berries,
-    with subtle herbal and citrus undertones.
-    `
+    flavour: "Sugary bubblegum, fresh berries, with subtle herbal and citrus undertones."
 },
 
 {
@@ -58,35 +167,33 @@ const strains = [
     start: 803569,
     end: 803584,
     winner: 803578,
-
     genetics: "Bubba’s Gift X OG Kush X Afghan",
     thc: "21% - 23%",
     type: "85/15 Indica Dominant",
-
-    flavour: `
-    Tropical cocktail flavours with mango,
-    coconut, citrus sour fruits,
-    lavender, and spicy herbs.
-    `
+    flavour: "Tropical cocktail flavours with mango, coconut, citrus sour fruits, lavender, and spicy herbs."
 }
 
 ];
 
-const result = document.getElementById("result");
+function verifyProduct(){
 
-function verifyProduct() {
+    const result = document.getElementById("result");
 
-    if (!code) {
+    if(!code){
 
         result.innerHTML = `
 
-        <div class="invalid-box">
+        <div class="invalid">
+        ❌
+        </div>
 
-            <h1>❌ No Serial Entered</h1>
+        <div class="card">
 
-            <p>
-            Please enter a valid BudWay Ldn serial number.
-            </p>
+        <h2>No Serial Number Entered</h2>
+
+        <p>
+        Please scan a valid BudWay Ldn package QR code.
+        </p>
 
         </div>
 
@@ -101,23 +208,23 @@ function verifyProduct() {
         item => serial >= item.start && serial <= item.end
     );
 
-    if (strain) {
+    if(strain){
 
         let winnerHTML = "";
 
-        if (serial === strain.winner) {
+        if(serial === strain.winner){
 
             winnerHTML = `
 
             <div class="winner-box">
 
-                <h2>
-                You were our lucky winner for this strain! 🎉🎉🎉
-                </h2>
+            <h3>
+            You were our lucky winner for this strain! 🎉🎉🎉
+            </h3>
 
-                <p>
-                — £10 off your Next Order!
-                </p>
+            <p>
+            — £10 off your Next Order!
+            </p>
 
             </div>
 
@@ -126,57 +233,47 @@ function verifyProduct() {
 
         result.innerHTML = `
 
-        <div class="verified-container">
+        <div class="verified">
+        ✅
+        </div>
 
-            <div class="verified-icon">
-                ✅
-            </div>
+        <div class="card">
 
-            <h1 class="verified-title">
-                Product Verified
-            </h1>
+        <h2>${strain.name}</h2>
 
-            <div class="strain-card">
+        <p>
+        <strong>Serial Number:</strong>
+        ${serial}
+        </p>
 
-                <h2 class="strain-name">
-                    ${strain.name}
-                </h2>
+        <p>
+        <strong>Genetics:</strong>
+        ${strain.genetics}
+        </p>
 
-                <p class="strain-detail">
-                    <strong>Serial Number:</strong>
-                    ${serial}
-                </p>
+        <p>
+        <strong>THC:</strong>
+        ${strain.thc}
+        </p>
 
-                <p class="strain-detail">
-                    <strong>Genetics:</strong>
-                    ${strain.genetics}
-                </p>
+        <p>
+        <strong>Type:</strong>
+        ${strain.type}
+        </p>
 
-                <p class="strain-detail">
-                    <strong>THC:</strong>
-                    ${strain.thc}
-                </p>
+        <p>
+        <strong>Flavour Profile:</strong>
+        ${strain.flavour}
+        </p>
 
-                <p class="strain-detail">
-                    <strong>Type:</strong>
-                    ${strain.type}
-                </p>
+        ${winnerHTML}
 
-                <p class="strain-detail">
-                    <strong>Flavour Profile:</strong>
-                    ${strain.flavour}
-                </p>
+        <div class="authentic">
 
-                ${winnerHTML}
+        This product is authentic and officially verified
+        by BudWay Ldn.
 
-                <div class="authentic-box">
-
-                    This product is authentic and officially verified
-                    by BudWay Ldn.
-
-                </div>
-
-            </div>
+        </div>
 
         </div>
 
@@ -186,14 +283,18 @@ function verifyProduct() {
 
         result.innerHTML = `
 
-        <div class="invalid-box">
+        <div class="invalid">
+        ❌
+        </div>
 
-            <h1>❌ Verification Failed</h1>
+        <div class="card">
 
-            <p>
-            This serial number is not registered in the
-            BudWay Ldn authenticity database.
-            </p>
+        <h2>Verification Failed</h2>
+
+        <p>
+        This serial number is not registered in the
+        BudWay Ldn authenticity database.
+        </p>
 
         </div>
 
@@ -201,6 +302,9 @@ function verifyProduct() {
     }
 }
 
-setTimeout(verifyProduct, 2000);
+setTimeout(verifyProduct, 1500);
 
 </script>
+
+</body>
+</html>
