@@ -1,397 +1,206 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>BudWay Verification</title>
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
-}
-
-body{
-    background:#020202;
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    overflow:hidden;
-    color:white;
-    padding:10px;
-}
-
-.background-glow{
-    position:absolute;
-    width:650px;
-    height:650px;
-    background:#00ff88;
-    border-radius:50%;
-    filter:blur(180px);
-    opacity:0.08;
-    animation:pulse 4s infinite ease-in-out;
-}
-
-@keyframes pulse{
-    0%{transform:scale(1);}
-    50%{transform:scale(1.08);}
-    100%{transform:scale(1);}
-}
-
-.container{
-    position:relative;
-    z-index:2;
-    width:100%;
-    max-width:355px;
-    background:rgba(10,10,10,0.94);
-    border:1px solid rgba(0,255,136,0.10);
-    border-radius:22px;
-    padding:18px 14px;
-    backdrop-filter:blur(16px);
-    box-shadow:
-    0 0 25px rgba(0,255,136,0.05),
-    inset 0 0 12px rgba(255,255,255,0.02);
-    text-align:center;
-    overflow:hidden;
-}
-
-.logo{
-    font-size:44px;
-    font-weight:900;
-    letter-spacing:2px;
-    margin-bottom:2px;
-}
-
-.logo-white{
-    color:#ffffff;
-}
-
-.logo-green{
-    color:#00ff88;
-    text-shadow:0 0 12px #00ff88;
-}
-
-.subtitle{
-    color:#757575;
-    font-size:9px;
-    letter-spacing:2px;
-    margin-bottom:22px;
-}
-
-.loader-section{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    min-height:320px;
-}
-
-.loader-ring{
-    width:74px;
-    height:74px;
-    border:4px solid rgba(255,255,255,0.08);
-    border-top:4px solid #00ff88;
-    border-radius:50%;
-    animation:spin 1s linear infinite;
-    margin-bottom:22px;
-    box-shadow:0 0 18px rgba(0,255,136,0.35);
-}
-
-@keyframes spin{
-    100%{
-        transform:rotate(360deg);
-    }
-}
-
-.loading-text{
-    color:#d7d7d7;
-    font-size:13px;
-    letter-spacing:2px;
-    animation:flicker 1.5s infinite;
-}
-
-@keyframes flicker{
-    0%,100%{opacity:1;}
-    50%{opacity:0.45;}
-}
-
-.result-section{
-    display:none;
-    animation:fadeIn 0.7s ease;
-}
-
-@keyframes fadeIn{
-    from{
-        opacity:0;
-        transform:translateY(8px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-.icon{
-    font-size:72px;
-    margin-bottom:8px;
-    filter:drop-shadow(0 0 14px #00ff88);
-}
-
-.status{
-    font-size:30px;
-    font-weight:900;
-    letter-spacing:2px;
-    margin-bottom:4px;
-}
-
-.message{
-    color:#b5b5b5;
-    font-size:11px;
-    margin-bottom:16px;
-}
-
-.strain-name{
-    font-size:21px;
-    font-weight:800;
-    color:#00ff88;
-    text-shadow:0 0 8px #00ff88;
-    margin-bottom:12px;
-    line-height:1.15;
-}
-
-.info-card{
-    background:rgba(255,255,255,0.025);
-    border:1px solid rgba(0,255,136,0.08);
-    border-radius:12px;
-    padding:8px 10px;
-    text-align:left;
-    margin-bottom:12px;
-}
-
-.info{
-    margin-bottom:8px;
-}
-
-.label{
-    color:#00ff88;
-    font-size:8px;
-    font-weight:700;
-    letter-spacing:1px;
-    margin-bottom:2px;
-}
-
-.value{
-    color:#d7d7d7;
-    font-size:9px;
-    line-height:1.35;
-}
-
-.serial{
-    color:#7a7a7a;
-    font-size:10px;
-    letter-spacing:2px;
-    margin-top:10px;
-}
-
-.footer{
-    color:#5f5f5f;
-    font-size:8px;
-    margin-top:8px;
-    letter-spacing:1px;
-}
-
-.invalid{
-    color:#ff3b3b;
-}
-
-.invalid-icon{
-    font-size:72px;
-    margin-bottom:8px;
-    filter:drop-shadow(0 0 14px red);
-}
-
-</style>
-</head>
-
-<body>
-
-<div class="background-glow"></div>
-
-<div class="container">
-
-<div class="logo">
-<span class="logo-white">BUD</span><span class="logo-green">WAY</span>
-</div>
-
-<div class="subtitle">
-OFFICIAL PRODUCT AUTHENTICATION
-</div>
-
-<div id="loaderSection" class="loader-section">
-
-<div class="loader-ring"></div>
-
-<div class="loading-text">
-VERIFYING PRODUCT...
-</div>
-
-</div>
-
-<div id="verifiedSection" class="result-section">
-
-<div class="icon">✅</div>
-
-<div class="status">
-VERIFIED
-</div>
-
-<div class="message">
-Authentic BudWay Product
-</div>
-
-<div class="strain-name" id="strainName"></div>
-
-<div class="info-card">
-
-<div class="info">
-<div class="label">GENETICS</div>
-<div class="value" id="strainGenetics"></div>
-</div>
-
-<div class="info">
-<div class="label">THC / TYPE</div>
-<div class="value" id="strainTHC"></div>
-</div>
-
-<div class="info">
-<div class="label">FLAVOUR PROFILE</div>
-<div class="value" id="strainFlavour"></div>
-</div>
-
-</div>
-
-<div class="serial" id="serialNumber"></div>
-
-<div class="footer">
-TOP SHELF CALI 🔥
-</div>
-
-</div>
-
-<div id="invalidSection" class="result-section">
-
-<div class="invalid-icon">❌</div>
-
-<div class="status invalid">
-INVALID
-</div>
-
-<div class="message">
-Product could not be authenticated
-</div>
-
-</div>
-
-</div>
-
 <script>
+
+const params = new URLSearchParams(window.location.search);
+const code = params.get("code");
 
 const strains = [
 
 {
-name:"Legendary Blueberry 🫐",
-start:803547,
-end:803559,
-genetics:"Afghani × Thai × Purple Thai",
-thc:"20–24% THC • 80/20 Indica Dominant",
-flavour:"Sweet blueberry, berry jam, vanilla, earthy spice, floral/herbal undertones"
+    name: "Pink StarBurst Gelato 🇺🇸",
+    start: 803541,
+    end: 803546,
+    winner: 803542,
+
+    genetics: "Pink Starburst X Gelato",
+    thc: "20% - 26%",
+    type: "50/50 Hybrid",
+
+    flavour: `
+    Candy-like sweetness with juicy strawberries,
+    zesty citrus, and a creamy smooth finish.
+    `
 },
 
 {
-name:"BLUE BUBBLEGUM GELATO 🔵",
-start:803560,
-end:803568,
-genetics:"Gelato 45 × Indiana Bubblegum",
-thc:"24–32% THC • 60/40 Indica Dominant",
-flavour:"Sugary bubblegum, fresh berries, subtle herbal citrus undertones"
+    name: "Legendary Blueberry 🫐",
+    start: 803547,
+    end: 803559,
+    winner: 803551,
+
+    genetics: "Afghani X Thai X Purple Thai",
+    thc: "20% - 24%",
+    type: "80/20 Indica Dominant",
+
+    flavour: `
+    Sweet blueberry, berry jam, vanilla,
+    earthy spice, and floral/herbal undertones.
+    `
 },
 
 {
-name:"Mango Sapphire 🥭",
-start:803569,
-end:803584,
-genetics:"Bubba’s Gift × OG Kush × Afghan",
-thc:"21–23% THC • 85/15 Indica Dominant",
-flavour:"Tropical mango, coconut, citrus sour fruits, lavender, spicy herbs"
+    name: "Blue Bubblegum Gelato 🔥",
+    start: 803560,
+    end: 803568,
+    winner: 803564,
+
+    genetics: "Gelato 45 X Indiana Bubblegum",
+    thc: "24% - 32%",
+    type: "60/40 Indica Dominant",
+
+    flavour: `
+    Sugary bubblegum, fresh berries,
+    with subtle herbal and citrus undertones.
+    `
 },
 
 {
-name:"Pink StarBurst Gelato 🇺🇸",
-start:803541,
-end:803546,
-genetics:"Pink Starburst × Gelato",
-thc:"20–26% THC • 50/50 Hybrid",
-flavour:"Sweet strawberries, candy citrus, creamy dessert finish"
+    name: "Mango Sapphire 🥭",
+    start: 803569,
+    end: 803584,
+    winner: 803578,
+
+    genetics: "Bubba’s Gift X OG Kush X Afghan",
+    thc: "21% - 23%",
+    type: "85/15 Indica Dominant",
+
+    flavour: `
+    Tropical cocktail flavours with mango,
+    coconut, citrus sour fruits,
+    lavender, and spicy herbs.
+    `
 }
 
 ];
 
-const params = new URLSearchParams(window.location.search);
+const result = document.getElementById("result");
 
-const code = parseInt(params.get("code"));
+function verifyProduct() {
 
-const loaderSection = document.getElementById("loaderSection");
-const verifiedSection = document.getElementById("verifiedSection");
-const invalidSection = document.getElementById("invalidSection");
+    if (!code) {
 
-let matchedStrain = null;
+        result.innerHTML = `
 
-for(let strain of strains){
+        <div class="invalid-box">
 
-if(code >= strain.start && code <= strain.end){
-matchedStrain = strain;
-break;
+            <h1>❌ No Serial Entered</h1>
+
+            <p>
+            Please enter a valid BudWay Ldn serial number.
+            </p>
+
+        </div>
+
+        `;
+
+        return;
+    }
+
+    const serial = parseInt(code);
+
+    const strain = strains.find(
+        item => serial >= item.start && serial <= item.end
+    );
+
+    if (strain) {
+
+        let winnerHTML = "";
+
+        if (serial === strain.winner) {
+
+            winnerHTML = `
+
+            <div class="winner-box">
+
+                <h2>
+                You were our lucky winner for this strain! 🎉🎉🎉
+                </h2>
+
+                <p>
+                — £10 off your Next Order!
+                </p>
+
+            </div>
+
+            `;
+        }
+
+        result.innerHTML = `
+
+        <div class="verified-container">
+
+            <div class="verified-icon">
+                ✅
+            </div>
+
+            <h1 class="verified-title">
+                Product Verified
+            </h1>
+
+            <div class="strain-card">
+
+                <h2 class="strain-name">
+                    ${strain.name}
+                </h2>
+
+                <p class="strain-detail">
+                    <strong>Serial Number:</strong>
+                    ${serial}
+                </p>
+
+                <p class="strain-detail">
+                    <strong>Genetics:</strong>
+                    ${strain.genetics}
+                </p>
+
+                <p class="strain-detail">
+                    <strong>THC:</strong>
+                    ${strain.thc}
+                </p>
+
+                <p class="strain-detail">
+                    <strong>Type:</strong>
+                    ${strain.type}
+                </p>
+
+                <p class="strain-detail">
+                    <strong>Flavour Profile:</strong>
+                    ${strain.flavour}
+                </p>
+
+                ${winnerHTML}
+
+                <div class="authentic-box">
+
+                    This product is authentic and officially verified
+                    by BudWay Ldn.
+
+                </div>
+
+            </div>
+
+        </div>
+
+        `;
+
+    } else {
+
+        result.innerHTML = `
+
+        <div class="invalid-box">
+
+            <h1>❌ Verification Failed</h1>
+
+            <p>
+            This serial number is not registered in the
+            BudWay Ldn authenticity database.
+            </p>
+
+        </div>
+
+        `;
+    }
 }
 
-}
-
-setTimeout(()=>{
-
-loaderSection.style.display = "none";
-
-if(matchedStrain){
-
-verifiedSection.style.display = "block";
-
-document.getElementById("strainName").innerText =
-matchedStrain.name;
-
-document.getElementById("strainGenetics").innerText =
-matchedStrain.genetics;
-
-document.getElementById("strainTHC").innerText =
-matchedStrain.thc;
-
-document.getElementById("strainFlavour").innerText =
-matchedStrain.flavour;
-
-document.getElementById("serialNumber").innerText =
-"SERIAL " + code;
-
-}else{
-
-invalidSection.style.display = "block";
-
-}
-
-},2200);
+setTimeout(verifyProduct, 2000);
 
 </script>
-
-</body>
-</html>
