@@ -53,10 +53,124 @@ let response=await fetch("codes.json");
 
 let data=await response.json();
 
-if(data.valid_codes.includes(input)){
+if(code >= 803541 && code <= 803542){
 
-document.getElementById("result").innerHTML=
-"✅ AUTHENTIC BUDWAY PRODUCT";
+result.innerHTML = `
+✅ AUTHENTIC BUDWAY PRODUCT
+
+Strain: Pink Starburst
+
+Type: Hybrid
+
+Serial Range: 803541–803542
+
+Flavour Profile:
+Sweet candy, strawberry, floral gas
+
+Effects:
+Uplifting, euphoric, talkative
+
+THC: 25%–27%
+
+CBD: <1%
+
+Dominant Terpenes:
+Limonene
+Pinene
+Caryophyllene
+`
+
+}
+
+else if(code >= 803547 && code <= 803559){
+
+result.innerHTML = `
+✅ AUTHENTIC BUDWAY PRODUCT
+
+Strain: Blueberry
+
+Type: Indica Dominant Hybrid
+
+Serial Range: 803547–803559
+
+Flavour Profile:
+Fresh blueberries, sweet earth, berry candy
+
+Effects:
+Relaxing, euphoric, sleepy
+
+THC: 18%–24%
+
+CBD: <1%
+
+Dominant Terpenes:
+Myrcene
+Pinene
+Caryophyllene
+`
+}
+
+else if(code >= 803560 && code <= 803568){
+
+result.innerHTML = `
+✅ AUTHENTIC BUDWAY PRODUCT
+
+Strain: Blue Bubblegum Gelato
+
+Type: Hybrid
+
+Serial Range: 803560–803568
+
+Flavour Profile:
+Bubblegum, creamy gelato, blueberry sweets
+
+Effects:
+Balanced, calming, happy
+
+THC: 28%–30%
+
+CBD: <1%
+
+Dominant Terpenes:
+Limonene
+Myrcene
+Humulene
+`
+}
+
+else if(code >= 803569 && code <= 803584){
+
+result.innerHTML = `
+✅ AUTHENTIC BUDWAY PRODUCT
+
+Strain: Mango Sapphire
+
+Type: Sativa Dominant Hybrid
+
+Serial Range: 803569–803584
+
+Flavour Profile:
+Tropical mango, citrus, sweet gas
+
+Effects:
+Energetic, creative, uplifting
+
+THC: 29%–31%
+
+CBD: <1%
+
+Dominant Terpenes:
+Limonene
+Ocimene
+Caryophyllene
+`
+}
+
+else{
+
+result.innerHTML = "❌ INVALID CODE"
+
+}
 
 }else{
 
