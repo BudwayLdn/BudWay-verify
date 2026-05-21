@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>BudWay Ldn Verification</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -18,87 +19,144 @@ body{
 font-family:Arial,sans-serif;
 background:#050505;
 color:white;
-min-height:100vh;
+height:100vh;
+overflow:hidden;
 display:flex;
 justify-content:center;
 align-items:center;
-padding:20px;
-overflow-x:hidden;
+padding:10px;
 }
 
-.container{
-width:100%;
-max-width:420px;
-background:#0d0d0d;
-border:1px solid #1aff8c30;
-border-radius:22px;
-padding:24px;
-box-shadow:0 0 18px rgba(0,255,140,0.15);
+/* BACKGROUND GLOW */
+
+.bg-glow{
+position:fixed;
+width:300px;
+height:300px;
+background:#00ff8850;
+border-radius:50%;
+filter:blur(120px);
+top:-100px;
+left:-100px;
+z-index:0;
+opacity:0.35;
+pointer-events:none;
 }
+
+.bg-glow2{
+position:fixed;
+width:250px;
+height:250px;
+background:#d4af3750;
+border-radius:50%;
+filter:blur(120px);
+bottom:-100px;
+right:-100px;
+z-index:0;
+opacity:0.25;
+pointer-events:none;
+}
+
+/* MAIN CARD */
+
+.container{
+position:relative;
+z-index:2;
+width:100%;
+max-width:390px;
+height:95vh;
+background:rgba(12,12,12,0.92);
+border:1px solid rgba(0,255,136,0.18);
+border-radius:24px;
+padding:18px;
+backdrop-filter:blur(8px);
+display:flex;
+flex-direction:column;
+justify-content:flex-start;
+overflow:hidden;
+box-shadow:
+0 0 20px rgba(0,255,136,0.12),
+0 0 40px rgba(0,255,136,0.04);
+}
+
+/* LOGO */
 
 .logo{
 text-align:center;
-margin-bottom:20px;
+margin-bottom:15px;
+flex-shrink:0;
 }
 
 .logo h1{
 font-size:2rem;
 font-weight:900;
 letter-spacing:2px;
-color:#1aff8c;
+color:#00ff88;
+text-shadow:0 0 12px rgba(0,255,136,0.5);
 }
 
 .logo span{
 color:#d4af37;
 }
 
-.input-box{
+/* INPUT */
+
+.input-wrap{
 display:flex;
 gap:10px;
-margin-bottom:20px;
+margin-bottom:14px;
+flex-shrink:0;
 }
 
 input{
 flex:1;
-padding:14px;
+height:50px;
 border:none;
 outline:none;
-border-radius:12px;
+border-radius:14px;
+padding:0 14px;
 background:#111;
 color:white;
 font-size:1rem;
-border:1px solid #1aff8c30;
+border:1px solid rgba(0,255,136,0.15);
+}
+
+input::placeholder{
+color:#777;
 }
 
 button{
-padding:14px 18px;
+width:120px;
 border:none;
-border-radius:12px;
-background:#1aff8c;
+border-radius:14px;
+background:linear-gradient(135deg,#00ff88,#00cc6a);
 color:black;
-font-weight:700;
+font-weight:800;
+font-size:0.95rem;
 cursor:pointer;
-transition:0.2s ease;
+transition:0.2s;
 }
 
 button:hover{
-transform:scale(1.03);
+transform:scale(1.02);
 }
+
+/* LOADER */
 
 .loader{
 display:none;
+flex-direction:column;
 justify-content:center;
 align-items:center;
-flex-direction:column;
-padding:25px 0;
+padding:20px 0;
 }
 
 .spinner{
-width:42px;
-height:42px;
-border:4px solid #222;
-border-top:4px solid #1aff8c;
+width:44px;
+height:44px;
 border-radius:50%;
+border:4px solid #222;
+border-top:4px solid #00ff88;
 animation:spin 0.8s linear infinite;
 margin-bottom:14px;
 }
@@ -109,9 +167,13 @@ transform:rotate(360deg);
 }
 }
 
+/* RESULT */
+
 .result{
 display:none;
-animation:fade 0.4s ease;
+flex:1;
+overflow:hidden;
+animation:fade 0.3s ease;
 }
 
 @keyframes fade{
@@ -126,111 +188,160 @@ transform:translateY(0);
 }
 
 .status{
-padding:14px;
-border-radius:14px;
-margin-bottom:18px;
-font-weight:700;
-text-align:center;
-}
-
-.authentic{
-background:#0f2a1d;
-border:1px solid #1aff8c50;
-color:#1aff8c;
-}
-
-.fake{
-background:#2a1010;
-border:1px solid #ff4d4d50;
-color:#ff5c5c;
-}
-
-.strain-card{
-background:#111;
-border-radius:18px;
-padding:18px;
-border:1px solid #1aff8c20;
-}
-
-.strain-name{
-font-size:1.3rem;
+padding:12px;
+border-radius:16px;
 font-weight:800;
+text-align:center;
 margin-bottom:14px;
-color:#1aff8c;
-}
-
-.info{
-display:flex;
-justify-content:space-between;
-padding:8px 0;
-border-bottom:1px solid #222;
 font-size:0.95rem;
 }
 
-.info:last-child{
+.authentic{
+background:rgba(0,255,136,0.08);
+border:1px solid rgba(0,255,136,0.3);
+color:#00ff88;
+}
+
+.fake{
+background:rgba(255,0,0,0.08);
+border:1px solid rgba(255,0,0,0.25);
+color:#ff5c5c;
+}
+
+/* STRAIN CARD */
+
+.card{
+background:#101010;
+border-radius:20px;
+padding:16px;
+border:1px solid rgba(0,255,136,0.12);
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.strain{
+font-size:1.25rem;
+font-weight:900;
+color:#00ff88;
+text-align:center;
+margin-bottom:6px;
+}
+
+.row{
+display:flex;
+justify-content:space-between;
+gap:10px;
+padding-bottom:8px;
+border-bottom:1px solid #1d1d1d;
+font-size:0.88rem;
+}
+
+.row:last-child{
 border-bottom:none;
+padding-bottom:0;
 }
 
 .label{
-color:#aaa;
+color:#888;
+font-weight:600;
 }
 
-.winner-box{
-margin-top:18px;
-padding:16px;
-border-radius:16px;
-background:#1b1400;
+/* WINNER BOX */
+
+.winner{
+margin-top:12px;
+padding:14px;
+border-radius:18px;
+background:linear-gradient(135deg,#2c2200,#1a1400);
 border:1px solid #d4af37;
 text-align:center;
+animation:glow 2s infinite alternate;
 }
 
-.winner-box h3{
+@keyframes glow{
+from{
+box-shadow:0 0 8px rgba(212,175,55,0.2);
+}
+to{
+box-shadow:0 0 18px rgba(212,175,55,0.45);
+}
+}
+
+.winner h3{
 color:#ffd95e;
-margin-bottom:8px;
+margin-bottom:6px;
+font-size:1rem;
+}
+
+.winner p{
+font-size:0.85rem;
+margin-bottom:10px;
+color:#eee;
 }
 
 .code{
-margin-top:10px;
 display:inline-block;
-padding:10px 16px;
+padding:10px 18px;
 border-radius:12px;
 background:#d4af37;
 color:black;
 font-weight:900;
 letter-spacing:1px;
+font-size:1rem;
 }
+
+/* FOOTER */
 
 .footer{
-margin-top:20px;
+margin-top:auto;
+padding-top:12px;
 text-align:center;
-font-size:0.8rem;
-color:#666;
+font-size:0.72rem;
+color:#555;
+flex-shrink:0;
 }
 
-@media(max-width:480px){
+/* MOBILE */
+
+@media(max-height:750px){
 
 .container{
-padding:18px;
-border-radius:18px;
+height:98vh;
+padding:14px;
 }
 
 .logo h1{
 font-size:1.7rem;
 }
 
-.input-box{
-flex-direction:column;
+input{
+height:46px;
 }
 
 button{
-width:100%;
+width:100px;
+font-size:0.85rem;
+}
+
+.card{
+padding:14px;
+gap:8px;
+}
+
+.row{
+font-size:0.8rem;
 }
 
 }
+
 </style>
 </head>
 
 <body>
+
+<div class="bg-glow"></div>
+<div class="bg-glow2"></div>
 
 <div class="container">
 
@@ -238,14 +349,21 @@ width:100%;
 <h1>BUD<span>WAY</span></h1>
 </div>
 
-<div class="input-box">
-<input type="number" id="serialInput" placeholder="Enter Serial Number">
-<button onclick="verifyCode()">VERIFY</button>
+<div class="input-wrap">
+<input
+type="number"
+id="serialInput"
+placeholder="Enter Serial Number"
+/>
+
+<button onclick="verifyCode()">
+VERIFY
+</button>
 </div>
 
 <div class="loader" id="loader">
 <div class="spinner"></div>
-<p>Verifying Product...</p>
+<p>Authenticating Product...</p>
 </div>
 
 <div class="result" id="result"></div>
@@ -257,6 +375,7 @@ BudWay Ldn © 2026
 </div>
 
 <script>
+
 const strains = [
 
 {
@@ -307,7 +426,9 @@ flavour:"Tropical Mango Coconut Citrus"
 
 function verifyCode(){
 
-const serial = Number(document.getElementById("serialInput").value);
+const serial = Number(
+document.getElementById("serialInput").value
+);
 
 const loader = document.getElementById("loader");
 const result = document.getElementById("result");
@@ -324,8 +445,10 @@ let found = null;
 for(let strain of strains){
 
 if(serial >= strain.start && serial <= strain.end){
+
 found = strain;
 break;
+
 }
 
 }
@@ -337,11 +460,24 @@ let winnerHTML = "";
 if(serial === found.winner){
 
 winnerHTML = `
-<div class="winner-box">
-<h3>🎉 WINNER 🎉</h3>
-<p>You were our lucky winner for this strain!</p>
-<div class="code">BW-10</div>
+
+<div class="winner">
+
+<h3>
+🎉 YOU WON 🎉
+</h3>
+
+<p>
+You were our lucky winner for this strain!
+£10 OFF your next order.
+</p>
+
+<div class="code">
+BW-10
 </div>
+
+</div>
+
 `;
 
 }
@@ -352,33 +488,33 @@ result.innerHTML = `
 ✅ Authentic BudWay Product
 </div>
 
-<div class="strain-card">
+<div class="card">
 
-<div class="strain-name">
+<div class="strain">
 ${found.name}
 </div>
 
-<div class="info">
+<div class="row">
 <span class="label">Serial</span>
 <span>${serial}</span>
 </div>
 
-<div class="info">
+<div class="row">
 <span class="label">Genetics</span>
 <span>${found.genetics}</span>
 </div>
 
-<div class="info">
+<div class="row">
 <span class="label">THC</span>
 <span>${found.thc}</span>
 </div>
 
-<div class="info">
+<div class="row">
 <span class="label">Type</span>
 <span>${found.type}</span>
 </div>
 
-<div class="info">
+<div class="row">
 <span class="label">Flavour</span>
 <span>${found.flavour}</span>
 </div>
@@ -386,6 +522,7 @@ ${found.name}
 ${winnerHTML}
 
 </div>
+
 `;
 
 }else{
@@ -415,6 +552,7 @@ verifyCode();
 }
 
 });
+
 </script>
 
 </body>
