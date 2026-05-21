@@ -1,199 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>BudWay Ldn</title>
+<title>Sweet Shop Verification</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 <style>
 
-/* RESET */
-
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
-
-/* BODY */
 
 body{
-    font-family:'Space Grotesk',sans-serif;
-    background:#050505;
-    color:white;
-    height:100vh;
-    overflow:hidden;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+font-family:'Inter',sans-serif;
+background:#050505;
+color:white;
+overflow:hidden;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
 }
 
-/* BACKGROUND GLOW */
-
-.bg-glow{
-    position:absolute;
-    width:700px;
-    height:700px;
-    background:radial-gradient(circle,#00ff8840 0%,transparent 70%);
-    filter:blur(60px);
-    animation:pulse 4s infinite;
+body::before{
+content:'';
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at top left,#00ff88 0%,transparent 30%),
+radial-gradient(circle at bottom right,#ffd700 0%,transparent 30%);
+opacity:.18;
+z-index:-2;
 }
 
-@keyframes pulse{
-
-    0%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.08);
-    }
-
-    100%{
-        transform:scale(1);
-    }
-
+.grid{
+position:fixed;
+inset:0;
+background:
+linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+background-size:40px 40px;
+z-index:-1;
 }
-
-/* CARD */
 
 .card{
-    position:relative;
-    width:420px;
-    padding:55px 40px;
-    border-radius:30px;
-    background:rgba(255,255,255,0.03);
-    border:1px solid rgba(255,255,255,0.08);
-    backdrop-filter:blur(20px);
-    text-align:center;
-    box-shadow:0 0 40px rgba(0,255,136,0.08);
+width:90%;
+max-width:420px;
+background:rgba(10,10,10,.92);
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(20px);
+border-radius:28px;
+padding:32px;
+text-align:center;
+position:relative;
+overflow:hidden;
+box-shadow:
+0 0 40px rgba(0,0,0,.8),
+0 0 40px rgba(0,255,136,.15);
 }
 
-/* LOGO */
+.glow{
+position:absolute;
+width:260px;
+height:260px;
+border-radius:50%;
+background:radial-gradient(circle,#00ff88,transparent 70%);
+top:-120px;
+right:-120px;
+opacity:.25;
+filter:blur(25px);
+}
 
 .logo{
-    font-size:46px;
-    font-weight:700;
-    letter-spacing:3px;
-    margin-bottom:12px;
+font-family:'Orbitron',sans-serif;
+font-size:2.2rem;
+font-weight:900;
+letter-spacing:2px;
+margin-bottom:10px;
+background:linear-gradient(90deg,#00ff88,white,#ffd700);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
-
-.logo span{
-    color:#00ff88;
-}
-
-/* TEXT */
 
 .subtitle{
-    color:#888;
-    font-size:14px;
-    margin-bottom:45px;
-    letter-spacing:1px;
-    line-height:1.6;
+font-size:.9rem;
+color:#a0a0a0;
+margin-bottom:28px;
 }
 
-/* INPUT */
-
-input{
-    width:100%;
-    padding:18px;
-    border:none;
-    outline:none;
-    border-radius:16px;
-    background:#111;
-    color:white;
-    font-size:17px;
-    text-align:center;
-    border:1px solid rgba(255,255,255,0.08);
-    transition:0.3s;
+.input-box{
+width:100%;
+padding:16px;
+border:none;
+outline:none;
+border-radius:16px;
+background:#111;
+color:white;
+font-size:1rem;
+text-align:center;
+margin-bottom:18px;
+border:1px solid rgba(255,255,255,.08);
+font-family:'Orbitron',sans-serif;
 }
 
-input:focus{
-    border-color:#00ff88;
-    box-shadow:0 0 20px rgba(0,255,136,0.25);
+.btn{
+width:100%;
+padding:16px;
+border:none;
+border-radius:16px;
+background:linear-gradient(90deg,#00ff88,#00c96b);
+color:black;
+font-weight:700;
+font-size:1rem;
+cursor:pointer;
+transition:.3s;
 }
 
-/* BUTTON */
-
-button{
-    width:100%;
-    margin-top:20px;
-    padding:18px;
-    border:none;
-    border-radius:16px;
-    background:#00ff88;
-    color:black;
-    font-size:16px;
-    font-weight:700;
-    cursor:pointer;
-    transition:0.3s;
+.btn:hover{
+transform:scale(1.03);
+box-shadow:0 0 25px rgba(0,255,136,.35);
 }
-
-button:hover{
-    transform:translateY(-2px);
-    box-shadow:0 0 25px rgba(0,255,136,0.4);
-}
-
-/* FOOTER */
 
 .footer{
-    margin-top:30px;
-    color:#555;
-    font-size:11px;
-    letter-spacing:1px;
+margin-top:20px;
+font-size:.75rem;
+color:#777;
 }
 
 </style>
-
 </head>
 
 <body>
 
-<div class="bg-glow"></div>
+<div class="grid"></div>
 
 <div class="card">
 
-    <div class="logo">
-        BUD<span>WAY</span>
-    </div>
+<div class="glow"></div>
 
-    <div class="subtitle">
-        Premium Product Verification Portal
-    </div>
+<div class="logo">SWEET SHOP</div>
 
-    <input
-        type="number"
-        id="serialInput"
-        placeholder="ENTER SERIAL NUMBER"
-    >
+<div class="subtitle">
+Premium Authenticity Verification
+</div>
 
-    <button onclick="goVerify()">
-        VERIFY PRODUCT
-    </button>
+<input 
+type="text" 
+id="serialInput" 
+class="input-box"
+placeholder="ENTER SERIAL NUMBER"
+/>
 
-    <div class="footer">
-        OFFICIAL BUDWAY AUTHENTICATION SYSTEM
-    </div>
+<button class="btn" onclick="verifySerial()">
+VERIFY PRODUCT
+</button>
+
+<div class="footer">
+Protected by Sweet Shop Verification Technology
+</div>
 
 </div>
 
 <script>
 
-function goVerify(){
+function verifySerial(){
 
-    let serial =
-    document.getElementById("serialInput").value;
+const serial = document.getElementById('serialInput').value.trim();
 
-    if(serial.trim() !== ""){
+if(serial){
 
-        window.location.href =
-        "verify.html?code=" + serial;
+window.location.href = 
+`verify.html?code=${serial}`;
 
-    }
+}
 
 }
 
