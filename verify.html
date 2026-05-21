@@ -1,455 +1,420 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 <title>BudWay Ldn Verification</title>
 
 <style>
-
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+-webkit-tap-highlight-color:transparent;
 }
 
 body{
-    background:#050505;
-    color:white;
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:10px;
-    overflow:hidden;
+font-family:Arial,sans-serif;
+background:#050505;
+color:white;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+overflow-x:hidden;
 }
-
-/* WHITE + GREEN GLOW */
-
-.background-glow-green{
-    position:fixed;
-    width:320px;
-    height:320px;
-    background:#00ff66;
-    filter:blur(140px);
-    opacity:0.14;
-    z-index:0;
-}
-
-.background-glow-white{
-    position:fixed;
-    width:260px;
-    height:260px;
-    background:white;
-    filter:blur(120px);
-    opacity:0.07;
-    z-index:0;
-}
-
-/* MAIN CARD */
 
 .container{
-    position:relative;
-    z-index:2;
-    width:100%;
-    max-width:390px;
-    background:#111;
-    border:1px solid #222;
-    border-radius:20px;
-    padding:18px;
-    text-align:center;
-    box-shadow:0 0 28px rgba(0,255,100,0.12);
+width:100%;
+max-width:420px;
+background:#0d0d0d;
+border:1px solid #1aff8c30;
+border-radius:22px;
+padding:24px;
+box-shadow:0 0 18px rgba(0,255,140,0.15);
 }
 
-/* TITLES */
-
-.title{
-    color:#00ff66;
-    font-size:28px;
-    margin-bottom:6px;
+.logo{
+text-align:center;
+margin-bottom:20px;
 }
 
-.subtitle{
-    color:#888;
-    margin-bottom:16px;
-    font-size:12px;
+.logo h1{
+font-size:2rem;
+font-weight:900;
+letter-spacing:2px;
+color:#1aff8c;
 }
 
-/* LOADER */
+.logo span{
+color:#d4af37;
+}
+
+.input-box{
+display:flex;
+gap:10px;
+margin-bottom:20px;
+}
+
+input{
+flex:1;
+padding:14px;
+border:none;
+outline:none;
+border-radius:12px;
+background:#111;
+color:white;
+font-size:1rem;
+border:1px solid #1aff8c30;
+}
+
+button{
+padding:14px 18px;
+border:none;
+border-radius:12px;
+background:#1aff8c;
+color:black;
+font-weight:700;
+cursor:pointer;
+transition:0.2s ease;
+}
+
+button:hover{
+transform:scale(1.03);
+}
 
 .loader{
-    width:50px;
-    height:50px;
-    border-radius:50%;
-    border:4px solid #222;
-    border-top:4px solid #00ff66;
-    margin:18px auto;
-    animation:spin 1s linear infinite;
+display:none;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+padding:25px 0;
+}
+
+.spinner{
+width:42px;
+height:42px;
+border:4px solid #222;
+border-top:4px solid #1aff8c;
+border-radius:50%;
+animation:spin 0.8s linear infinite;
+margin-bottom:14px;
 }
 
 @keyframes spin{
-    100%{
-        transform:rotate(360deg);
-    }
+100%{
+transform:rotate(360deg);
+}
 }
 
-/* ICONS */
-
-.verified-icon{
-    font-size:52px;
-    color:#00ff66;
-    margin-bottom:6px;
+.result{
+display:none;
+animation:fade 0.4s ease;
 }
 
-.invalid-icon{
-    font-size:52px;
-    color:#ff3b3b;
-    margin-bottom:6px;
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(10px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
-/* STATUS */
-
-.status-title{
-    font-size:22px;
-    margin-bottom:14px;
+.status{
+padding:14px;
+border-radius:14px;
+margin-bottom:18px;
+font-weight:700;
+text-align:center;
 }
 
-/* STRAIN CARD */
+.authentic{
+background:#0f2a1d;
+border:1px solid #1aff8c50;
+color:#1aff8c;
+}
+
+.fake{
+background:#2a1010;
+border:1px solid #ff4d4d50;
+color:#ff5c5c;
+}
 
 .strain-card{
-    margin-top:12px;
-    background:#181818;
-    border-radius:14px;
-    padding:14px;
-    border:1px solid #2b2b2b;
-    text-align:left;
+background:#111;
+border-radius:18px;
+padding:18px;
+border:1px solid #1aff8c20;
 }
 
 .strain-name{
-    color:#00ff66;
-    margin-bottom:12px;
-    font-size:20px;
-    line-height:1.2;
+font-size:1.3rem;
+font-weight:800;
+margin-bottom:14px;
+color:#1aff8c;
 }
 
-.strain-card p{
-    margin-bottom:8px;
-    line-height:1.35;
-    color:#ddd;
-    font-size:12.5px;
+.info{
+display:flex;
+justify-content:space-between;
+padding:8px 0;
+border-bottom:1px solid #222;
+font-size:0.95rem;
 }
 
-.strain-card strong{
-    color:white;
+.info:last-child{
+border-bottom:none;
 }
 
-/* AUTHENTIC */
-
-.authentic-box{
-    margin-top:12px;
-    background:#0d2415;
-    border:1px solid #00ff66;
-    padding:10px;
-    border-radius:10px;
-    color:#92ffb7;
-    text-align:center;
-    font-size:11px;
-    line-height:1.4;
+.label{
+color:#aaa;
 }
-
-/* WINNER BOX */
 
 .winner-box{
-    margin-bottom:12px;
-    padding:14px;
-    border-radius:12px;
-    background:linear-gradient(135deg,#00ff66,#111);
-    border:2px solid gold;
-    text-align:center;
-    animation:pulse 1.5s infinite;
+margin-top:18px;
+padding:16px;
+border-radius:16px;
+background:#1b1400;
+border:1px solid #d4af37;
+text-align:center;
 }
 
-.winner-box h2{
-    color:gold;
-    margin-bottom:6px;
-    font-size:15px;
-    line-height:1.3;
+.winner-box h3{
+color:#ffd95e;
+margin-bottom:8px;
 }
 
-.winner-box p{
-    color:white;
-    font-size:13px;
-    font-weight:bold;
-    margin-bottom:8px;
+.code{
+margin-top:10px;
+display:inline-block;
+padding:10px 16px;
+border-radius:12px;
+background:#d4af37;
+color:black;
+font-weight:900;
+letter-spacing:1px;
 }
-
-.discount-code{
-    background:black;
-    border:1px solid gold;
-    border-radius:8px;
-    padding:8px;
-    color:gold;
-    font-size:16px;
-    font-weight:bold;
-    letter-spacing:1px;
-}
-
-@keyframes pulse{
-    0%{
-        box-shadow:0 0 8px gold;
-    }
-
-    50%{
-        box-shadow:0 0 18px gold;
-    }
-
-    100%{
-        box-shadow:0 0 8px gold;
-    }
-}
-
-/* FOOTER */
 
 .footer{
-    margin-top:14px;
-    color:#666;
-    font-size:10px;
+margin-top:20px;
+text-align:center;
+font-size:0.8rem;
+color:#666;
 }
 
+@media(max-width:480px){
+
+.container{
+padding:18px;
+border-radius:18px;
+}
+
+.logo h1{
+font-size:1.7rem;
+}
+
+.input-box{
+flex-direction:column;
+}
+
+button{
+width:100%;
+}
+
+}
 </style>
 </head>
 
 <body>
 
-<div class="background-glow-green"></div>
-<div class="background-glow-white"></div>
-
 <div class="container">
 
-<h1 class="title">
-BudWay Ldn
-</h1>
-
-<p class="subtitle">
-Authenticity Verification System
-</p>
-
-<div id="result">
-
-<div class="loader"></div>
-
-<p style="color:#888;font-size:13px;">
-Verifying Product...
-</p>
-
+<div class="logo">
+<h1>BUD<span>WAY</span></h1>
 </div>
 
+<div class="input-box">
+<input type="number" id="serialInput" placeholder="Enter Serial Number">
+<button onclick="verifyCode()">VERIFY</button>
+</div>
+
+<div class="loader" id="loader">
+<div class="spinner"></div>
+<p>Verifying Product...</p>
+</div>
+
+<div class="result" id="result"></div>
+
 <div class="footer">
-© 2026 BudWay Ldn — Premium Lab Tested Flower
+BudWay Ldn © 2026
 </div>
 
 </div>
 
 <script>
-
-const params = new URLSearchParams(window.location.search);
-const code = params.get("code");
-
-const products = [
+const strains = [
 
 {
-    name: "Pink StarBurst Gelato 🩷",
-    start: 803541,
-    end: 803546,
-    winner: 803542,
-
-    genetics: "Pink Starburst X Gelato",
-    thc: "20% - 26%",
-    type: "50/50 Hybrid",
-
-    flavour:
-    "Sweet strawberries, citrus finish, creamy texture."
+name:"Pink StarBurst Gelato",
+start:803541,
+end:803546,
+winner:803542,
+genetics:"Pink Starburst x Gelato",
+thc:"20-26%",
+type:"50/50 Hybrid",
+flavour:"Candy Strawberry Citrus Creamy"
 },
 
 {
-    name: "Legendary Blueberry 🫐",
-    start: 803547,
-    end: 803559,
-    winner: 803551,
-
-    genetics: "Afghani X Thai X Purple Thai",
-    thc: "20% - 24%",
-    type: "80/20 Indica Dominant",
-
-    flavour:
-    "Blueberry jam, vanilla, earthy spice, floral herbs."
+name:"Legendary Blueberry",
+start:803547,
+end:803559,
+winner:803551,
+genetics:"Afghani x Thai x Purple Thai",
+thc:"20-24%",
+type:"80/20 Indica",
+flavour:"Blueberry Jam Vanilla Earthy Spice"
 },
 
 {
-    name: "Blue Bubblegum Gelato 💙🍬🍨",
-    start: 803560,
-    end: 803568,
-    winner: 803564,
-
-    genetics: "Gelato 45 X Indiana Bubblegum",
-    thc: "24% - 32%",
-    type: "60/40 Indica Dominant",
-
-    flavour:
-    "Sugary bubblegum, fresh berries, herbs and citrus."
+name:"Blue Bubblegum Gelato",
+start:803560,
+end:803568,
+winner:803564,
+genetics:"Gelato 45 x Indiana Bubblegum",
+thc:"24-32%",
+type:"60/40 Indica",
+flavour:"Sugary Bubblegum Berries Citrus"
 },
 
 {
-    name: "Mango Sapphire 🥭",
-    start: 803569,
-    end: 803584,
-    winner: 803578,
-
-    genetics: "Bubba’s Gift X OG Kush X Afghan",
-    thc: "21% - 23%",
-    type: "85/15 Indica Dominant",
-
-    flavour:
-    "Mango, coconut, citrus fruits, lavender herbs."
+name:"Mango Sapphire",
+start:803569,
+end:803584,
+winner:803578,
+genetics:"Bubba’s Gift x OG Kush x Afghan",
+thc:"21-23%",
+type:"85/15 Indica",
+flavour:"Tropical Mango Coconut Citrus"
 }
 
 ];
 
-function verifyProduct(){
+function verifyCode(){
 
-    const result = document.getElementById("result");
+const serial = Number(document.getElementById("serialInput").value);
 
-    if(!code){
+const loader = document.getElementById("loader");
+const result = document.getElementById("result");
 
-        result.innerHTML = `
+result.style.display = "none";
+loader.style.display = "flex";
 
-        <div class="invalid-icon">
-        ❌
-        </div>
+setTimeout(()=>{
 
-        <h2 class="status-title" style="color:#ff3b3b;">
-        No Serial Number
-        </h2>
+loader.style.display = "none";
 
-        <p style="color:#aaa;font-size:13px;">
-        Please enter a valid BudWay serial number.
-        </p>
+let found = null;
 
-        `;
+for(let strain of strains){
 
-        return;
-    }
-
-    const serial = parseInt(code);
-
-    const product = products.find(
-        item => serial >= item.start && serial <= item.end
-    );
-
-    if(product){
-
-        let winnerHTML = "";
-
-        if(serial === product.winner){
-
-            winnerHTML = `
-
-            <div class="winner-box">
-
-                <h2>
-                You were our lucky winner! 🎉
-                </h2>
-
-                <p>
-                £10 off your next order
-                </p>
-
-                <div class="discount-code">
-                BW-10
-                </div>
-
-            </div>
-
-            `;
-        }
-
-        result.innerHTML = `
-
-        <div class="verified-icon">
-        ✅
-        </div>
-
-        <h2 class="status-title" style="color:#00ff66;">
-        Product Verified
-        </h2>
-
-        <div class="strain-card">
-
-            ${winnerHTML}
-
-            <h2 class="strain-name">
-            ${product.name}
-            </h2>
-
-            <p>
-            <strong>Serial:</strong>
-            ${serial}
-            </p>
-
-            <p>
-            <strong>Genetics:</strong>
-            ${product.genetics}
-            </p>
-
-            <p>
-            <strong>THC:</strong>
-            ${product.thc}
-            </p>
-
-            <p>
-            <strong>Type:</strong>
-            ${product.type}
-            </p>
-
-            <p>
-            <strong>Flavour:</strong>
-            ${product.flavour}
-            </p>
-
-            <div class="authentic-box">
-
-            Authentic BudWay Ldn Product Verified
-
-            </div>
-
-        </div>
-
-        `;
-
-    } else {
-
-        result.innerHTML = `
-
-        <div class="invalid-icon">
-        ❌
-        </div>
-
-        <h2 class="status-title" style="color:#ff3b3b;">
-        Verification Failed
-        </h2>
-
-        <p style="color:#aaa;font-size:13px;">
-        Serial number not found in database.
-        </p>
-
-        `;
-    }
+if(serial >= strain.start && serial <= strain.end){
+found = strain;
+break;
 }
 
-setTimeout(verifyProduct,1200);
+}
 
+if(found){
+
+let winnerHTML = "";
+
+if(serial === found.winner){
+
+winnerHTML = `
+<div class="winner-box">
+<h3>🎉 WINNER 🎉</h3>
+<p>You were our lucky winner for this strain!</p>
+<div class="code">BW-10</div>
+</div>
+`;
+
+}
+
+result.innerHTML = `
+
+<div class="status authentic">
+✅ Authentic BudWay Product
+</div>
+
+<div class="strain-card">
+
+<div class="strain-name">
+${found.name}
+</div>
+
+<div class="info">
+<span class="label">Serial</span>
+<span>${serial}</span>
+</div>
+
+<div class="info">
+<span class="label">Genetics</span>
+<span>${found.genetics}</span>
+</div>
+
+<div class="info">
+<span class="label">THC</span>
+<span>${found.thc}</span>
+</div>
+
+<div class="info">
+<span class="label">Type</span>
+<span>${found.type}</span>
+</div>
+
+<div class="info">
+<span class="label">Flavour</span>
+<span>${found.flavour}</span>
+</div>
+
+${winnerHTML}
+
+</div>
+`;
+
+}else{
+
+result.innerHTML = `
+
+<div class="status fake">
+❌ Invalid Serial Number
+</div>
+
+`;
+
+}
+
+result.style.display = "block";
+
+},700);
+
+}
+
+document
+.getElementById("serialInput")
+.addEventListener("keypress",function(e){
+
+if(e.key==="Enter"){
+verifyCode();
+}
+
+});
 </script>
 
 </body>
