@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>BudWay Ldn Verification</title>
+<title>BudWay Verification</title>
 
 <style>
 
@@ -12,11 +12,10 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
--webkit-tap-highlight-color:transparent;
+font-family:Arial,sans-serif;
 }
 
 body{
-font-family:Arial,sans-serif;
 background:#050505;
 height:100vh;
 overflow:hidden;
@@ -28,56 +27,47 @@ color:white;
 
 /* BACKGROUND */
 
-.bg{
-position:fixed;
-inset:0;
-overflow:hidden;
-z-index:0;
-}
-
 .glow1,
 .glow2{
-position:absolute;
+position:fixed;
 border-radius:50%;
 filter:blur(120px);
 opacity:0.18;
+z-index:0;
+pointer-events:none;
 }
 
 .glow1{
 width:300px;
 height:300px;
 background:#00ff88;
-top:-100px;
-left:-100px;
+top:-120px;
+left:-120px;
 }
 
 .glow2{
 width:250px;
 height:250px;
 background:#d4af37;
-bottom:-100px;
-right:-100px;
+bottom:-120px;
+right:-120px;
 }
 
-/* MAIN BOX */
+/* CARD */
 
 .container{
 position:relative;
 z-index:2;
 width:92%;
 max-width:380px;
-height:95vh;
-background:rgba(12,12,12,0.92);
+background:rgba(10,10,10,0.92);
 border:1px solid rgba(0,255,136,0.18);
-border-radius:26px;
+border-radius:24px;
 padding:18px;
 backdrop-filter:blur(8px);
-display:flex;
-flex-direction:column;
-overflow:hidden;
 box-shadow:
 0 0 25px rgba(0,255,136,0.08),
-0 0 45px rgba(0,255,136,0.04);
+0 0 40px rgba(0,255,136,0.03);
 }
 
 /* LOGO */
@@ -85,7 +75,6 @@ box-shadow:
 .logo{
 text-align:center;
 margin-bottom:18px;
-flex-shrink:0;
 }
 
 .logo h1{
@@ -93,61 +82,21 @@ font-size:2rem;
 font-weight:900;
 letter-spacing:2px;
 color:#00ff88;
-text-shadow:0 0 12px rgba(0,255,136,0.4);
+text-shadow:0 0 12px rgba(0,255,136,0.35);
 }
 
 .logo span{
 color:#d4af37;
 }
 
-/* SEARCH BAR */
-
-.search-box{
-display:flex;
-margin-bottom:16px;
-flex-shrink:0;
-}
-
-.search-box input{
-flex:1;
-height:52px;
-background:#111;
-border:1px solid rgba(0,255,136,0.12);
-border-radius:16px 0 0 16px;
-outline:none;
-padding:0 16px;
-color:white;
-font-size:1rem;
-}
-
-.search-box input::placeholder{
-color:#777;
-}
-
-.search-box button{
-width:110px;
-border:none;
-border-radius:0 16px 16px 0;
-background:linear-gradient(135deg,#00ff88,#00c96b);
-color:black;
-font-weight:900;
-cursor:pointer;
-font-size:0.95rem;
-transition:0.2s;
-}
-
-.search-box button:hover{
-transform:scale(1.01);
-}
-
 /* LOADER */
 
 .loader{
-display:none;
+display:flex;
 flex-direction:column;
-justify-content:center;
 align-items:center;
-padding:25px 0;
+justify-content:center;
+padding:20px 0;
 }
 
 .spinner{
@@ -171,13 +120,12 @@ transform:rotate(360deg);
 .result{
 display:none;
 animation:fade 0.35s ease;
-overflow:hidden;
 }
 
 @keyframes fade{
 from{
 opacity:0;
-transform:translateY(8px);
+transform:translateY(10px);
 }
 to{
 opacity:1;
@@ -206,7 +154,7 @@ border:1px solid rgba(255,0,0,0.25);
 color:#ff5c5c;
 }
 
-/* CARD */
+/* STRAIN CARD */
 
 .card{
 background:#101010;
@@ -223,7 +171,7 @@ font-size:1.2rem;
 font-weight:900;
 text-align:center;
 color:#00ff88;
-margin-bottom:5px;
+margin-bottom:6px;
 }
 
 .row{
@@ -232,7 +180,7 @@ justify-content:space-between;
 gap:10px;
 padding-bottom:8px;
 border-bottom:1px solid #1d1d1d;
-font-size:0.85rem;
+font-size:0.84rem;
 }
 
 .row:last-child{
@@ -251,7 +199,7 @@ font-weight:700;
 margin-top:12px;
 padding:14px;
 border-radius:18px;
-background:linear-gradient(135deg,#2c2200,#1b1500);
+background:linear-gradient(135deg,#2c2200,#1a1400);
 border:1px solid #d4af37;
 text-align:center;
 animation:pulse 2s infinite alternate;
@@ -259,23 +207,22 @@ animation:pulse 2s infinite alternate;
 
 @keyframes pulse{
 from{
-box-shadow:0 0 8px rgba(212,175,55,0.18);
+box-shadow:0 0 8px rgba(212,175,55,0.2);
 }
 to{
-box-shadow:0 0 18px rgba(212,175,55,0.38);
+box-shadow:0 0 18px rgba(212,175,55,0.4);
 }
 }
 
 .winner h3{
-font-size:1rem;
-margin-bottom:8px;
 color:#ffd95e;
+margin-bottom:8px;
 }
 
 .winner p{
 font-size:0.82rem;
-color:#eee;
 margin-bottom:10px;
+color:#eee;
 }
 
 .code{
@@ -288,48 +235,11 @@ font-weight:900;
 letter-spacing:1px;
 }
 
-/* FOOTER */
-
 .footer{
-margin-top:auto;
-padding-top:12px;
+margin-top:16px;
 text-align:center;
 font-size:0.72rem;
 color:#555;
-}
-
-/* MOBILE FIT */
-
-@media(max-height:760px){
-
-.container{
-height:98vh;
-padding:15px;
-}
-
-.logo h1{
-font-size:1.7rem;
-}
-
-.search-box input{
-height:48px;
-font-size:0.9rem;
-}
-
-.search-box button{
-width:95px;
-font-size:0.82rem;
-}
-
-.card{
-padding:14px;
-gap:8px;
-}
-
-.row{
-font-size:0.78rem;
-}
-
 }
 
 </style>
@@ -337,31 +247,13 @@ font-size:0.78rem;
 
 <body>
 
-<div class="bg">
 <div class="glow1"></div>
 <div class="glow2"></div>
-</div>
 
 <div class="container">
 
 <div class="logo">
 <h1>BUD<span>WAY</span></h1>
-</div>
-
-<!-- ONLY ONE INPUT -->
-
-<div class="search-box">
-
-<input
-type="number"
-id="serialInput"
-placeholder="Enter Serial Number"
-/>
-
-<button onclick="verifyCode()">
-VERIFY
-</button>
-
 </div>
 
 <div class="loader" id="loader">
@@ -432,17 +324,12 @@ flavour:"Tropical Mango Coconut Citrus"
 
 ];
 
-function verifyCode(){
+const params = new URLSearchParams(window.location.search);
 
-const serial = Number(
-document.getElementById("serialInput").value
-);
+const serial = Number(params.get("code"));
 
 const loader = document.getElementById("loader");
 const result = document.getElementById("result");
-
-result.style.display = "none";
-loader.style.display = "flex";
 
 setTimeout(()=>{
 
@@ -548,18 +435,6 @@ result.innerHTML = `
 result.style.display = "block";
 
 },700);
-
-}
-
-document
-.getElementById("serialInput")
-.addEventListener("keypress",function(e){
-
-if(e.key==="Enter"){
-verifyCode();
-}
-
-});
 
 </script>
 
