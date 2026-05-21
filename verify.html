@@ -26,15 +26,29 @@ body{
     overflow:hidden;
 }
 
-.background-glow{
+/* WHITE + GREEN GLOW */
+
+.background-glow-green{
     position:fixed;
     width:320px;
     height:320px;
     background:#00ff66;
     filter:blur(140px);
-    opacity:0.12;
+    opacity:0.14;
     z-index:0;
 }
+
+.background-glow-white{
+    position:fixed;
+    width:260px;
+    height:260px;
+    background:white;
+    filter:blur(120px);
+    opacity:0.07;
+    z-index:0;
+}
+
+/* MAIN CARD */
 
 .container{
     position:relative;
@@ -49,6 +63,8 @@ body{
     box-shadow:0 0 28px rgba(0,255,100,0.12);
 }
 
+/* TITLES */
+
 .title{
     color:#00ff66;
     font-size:28px;
@@ -60,6 +76,8 @@ body{
     margin-bottom:16px;
     font-size:12px;
 }
+
+/* LOADER */
 
 .loader{
     width:50px;
@@ -77,6 +95,8 @@ body{
     }
 }
 
+/* ICONS */
+
 .verified-icon{
     font-size:52px;
     color:#00ff66;
@@ -89,10 +109,14 @@ body{
     margin-bottom:6px;
 }
 
+/* STATUS */
+
 .status-title{
     font-size:22px;
     margin-bottom:14px;
 }
+
+/* STRAIN CARD */
 
 .strain-card{
     margin-top:12px;
@@ -121,6 +145,8 @@ body{
     color:white;
 }
 
+/* AUTHENTIC */
+
 .authentic-box{
     margin-top:12px;
     background:#0d2415;
@@ -132,6 +158,8 @@ body{
     font-size:11px;
     line-height:1.4;
 }
+
+/* WINNER BOX */
 
 .winner-box{
     margin-bottom:12px;
@@ -182,6 +210,8 @@ body{
     }
 }
 
+/* FOOTER */
+
 .footer{
     margin-top:14px;
     color:#666;
@@ -193,7 +223,8 @@ body{
 
 <body>
 
-<div class="background-glow"></div>
+<div class="background-glow-green"></div>
+<div class="background-glow-white"></div>
 
 <div class="container">
 
@@ -257,7 +288,7 @@ const products = [
 },
 
 {
-    name: "Blue Bubblegum Gelato 🍬🍨",
+    name: "Blue Bubblegum Gelato 💙🍬🍨",
     start: 803560,
     end: 803568,
     winner: 803564,
