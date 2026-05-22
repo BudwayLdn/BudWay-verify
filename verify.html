@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sweet Shop Verification</title>
+<title>BudWay Ldn Verification</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
 
@@ -264,6 +264,44 @@ margin-bottom:8px;
 color:var(--secondary);
 }
 
+.winner{
+display:none;
+margin-top:22px;
+padding:22px;
+border-radius:22px;
+text-align:center;
+background:
+linear-gradient(135deg,#2b1b00,#120d00);
+border:1px solid rgba(255,215,0,.4);
+box-shadow:
+0 0 35px rgba(255,215,0,.18),
+inset 0 0 25px rgba(255,215,0,.05);
+animation:goldPulse 2s infinite;
+}
+
+@keyframes goldPulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.02);}
+100%{transform:scale(1);}
+}
+
+.winner h3{
+font-family:'Orbitron',sans-serif;
+color:#ffd700;
+margin-bottom:10px;
+}
+
+.code{
+margin-top:14px;
+padding:12px;
+background:black;
+border-radius:12px;
+border:1px dashed #ffd700;
+font-family:'Orbitron',sans-serif;
+font-size:1rem;
+letter-spacing:2px;
+}
+
 .footer{
 margin-top:24px;
 text-align:center;
@@ -295,10 +333,9 @@ color:#ff7b7b;
 
 <div class="glow"></div>
 
-<div class="logo">SWEET SHOP</div>
-
+<div class="logo">BUDWAY LDN</div>
 <div class="subtitle">
-Sweet Shop Authenticity Verification
+Premium Authenticity Verification System
 </div>
 
 <div class="loader">
@@ -308,7 +345,7 @@ Sweet Shop Authenticity Verification
 <div id="realContent" style="display:none;">
 
 <div class="serial-box">
-<div class="serial-label">ENTER SERIAL</div>
+<div class="serial-label">VERIFIED SERIAL</div>
 <div class="serial" id="serialNumber"></div>
 </div>
 
@@ -363,12 +400,22 @@ LAB VERIFIED AUTHENTIC
 </div>
 
 <strong>
-Sweet Shop Certified Premium Product
+BudWay Certified Premium Flower
 </strong>
 </div>
 
-<div class="footer">
-Protected by Sweet Shop Verification Technology
+<div class="winner" id="winnerBox">
+
+<h3>🎉 WINNER PACK FOUND</h3>
+
+<p>
+You were our lucky winner for this strain! 🎉🎉🎉
+<br><br>
+£10 OFF YOUR NEXT ORDER
+</p>
+
+<div class="code">
+BW-10
 </div>
 
 </div>
@@ -378,8 +425,15 @@ Protected by Sweet Shop Verification Technology
 <h3>⚠ INVALID SERIAL</h3>
 
 <p>
-This Sweet Shop product could not be verified.
+This BudWay product could not be verified.
+Please contact BudWay Ldn support if you believe this is an error.
 </p>
+
+</div>
+
+<div class="footer">
+Protected by BudWay Ldn Verification Technology
+</div>
 
 </div>
 
@@ -391,15 +445,25 @@ This Sweet Shop product could not be verified.
 
 <script>
 
+/* ======================================
+GET SERIAL FROM URL
+verify.html?code=803578
+====================================== */
+
 const params = new URLSearchParams(window.location.search);
 const serial = params.get("code");
+
+/* ======================================
+STRAIN DATABASE
+====================================== */
 
 const strains = [
 
 {
 name:"Pink StarBurst Gelato",
 start:803541,
-end:803542,
+end:803546,
+winner:803542,
 genetics:"Pink Starburst × Gelato",
 thc:"20–26%",
 type:"50/50 Hybrid",
@@ -413,6 +477,7 @@ bg:"#14040c"
 name:"Legendary Blueberry",
 start:803547,
 end:803559,
+winner:803551,
 genetics:"Afghani × Thai × Purple Thai",
 thc:"20–24%",
 type:"80/20 Indica",
@@ -426,6 +491,7 @@ bg:"#080818"
 name:"Blue Bubblegum Gelato",
 start:803560,
 end:803568,
+winner:803564,
 genetics:"Gelato 45 × Indiana Bubblegum",
 thc:"24–32%",
 type:"60/40 Indica",
@@ -439,6 +505,7 @@ bg:"#07131a"
 name:"Mango Sapphire",
 start:803569,
 end:803584,
+winner:803578,
 genetics:"Bubba’s Gift × OG Kush × Afghan",
 thc:"21–23%",
 type:"85/15 Indica",
@@ -450,6 +517,10 @@ bg:"#120b00"
 
 ];
 
+/* ======================================
+MATCH SERIAL
+====================================== */
+
 let found = null;
 
 for(let strain of strains){
@@ -460,6 +531,10 @@ found = strain;
 
 }
 
+/* ======================================
+FAKE SERIAL
+====================================== */
+
 if(!found){
 
 document.querySelector('.loader').style.display='none';
@@ -469,6 +544,10 @@ document.querySelector('.strain-card').style.display='none';
 document.getElementById('fakeBox').style.display='block';
 
 }
+
+/* ======================================
+REAL SERIAL
+====================================== */
 
 else{
 
@@ -483,6 +562,16 @@ document.getElementById('genetics').innerText = found.genetics;
 document.getElementById('thc').innerText = found.thc;
 document.getElementById('type').innerText = found.type;
 document.getElementById('flavour').innerText = found.flavour;
+
+/* WINNER SYSTEM */
+
+if(Number(serial) === found.winner){
+
+document.getElementById('winnerBox').style.display='block';
+
+}
+
+/* SHOW CONTENT */
 
 setTimeout(()=>{
 
