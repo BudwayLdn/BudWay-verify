@@ -21,12 +21,11 @@ box-sizing:border-box;
 :root{
 --primary:#00ff88;
 --secondary:#ffd700;
---bg:#050505;
 }
 
 body{
 font-family:'Inter',sans-serif;
-background:var(--bg);
+background:#050505;
 color:white;
 overflow-x:hidden;
 min-height:100vh;
@@ -58,19 +57,12 @@ z-index:-1;
 
 /* PARTICLES */
 
-#particles{
+#fx{
 position:fixed;
 inset:0;
-pointer-events:none;
 overflow:hidden;
+pointer-events:none;
 z-index:0;
-}
-
-.particle{
-position:absolute;
-opacity:.15;
-animation:floatUp linear forwards;
-filter:drop-shadow(0 0 10px white);
 }
 
 @keyframes floatUp{
@@ -81,7 +73,7 @@ opacity:0;
 }
 
 10%{
-opacity:.15;
+opacity:.16;
 }
 
 100%{
@@ -139,7 +131,7 @@ font-size:2rem;
 font-weight:900;
 text-align:center;
 letter-spacing:2px;
-margin-bottom:6px;
+margin-bottom:8px;
 background:linear-gradient(90deg,var(--primary),white,var(--secondary));
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
@@ -147,7 +139,7 @@ background:linear-gradient(90deg,var(--primary),white,var(--secondary));
 
 .subtitle{
 text-align:center;
-font-size:.82rem;
+font-size:.8rem;
 color:#aaa;
 margin-bottom:28px;
 letter-spacing:1px;
@@ -179,7 +171,7 @@ to{transform:rotate(360deg);}
 }
 
 .loader-text{
-font-size:.78rem;
+font-size:.75rem;
 letter-spacing:2px;
 color:var(--primary);
 animation:flicker 1s infinite;
@@ -191,7 +183,7 @@ animation:flicker 1s infinite;
 100%{opacity:1;}
 }
 
-/* BOXES */
+/* CONTENT */
 
 .serial-box{
 background:#111;
@@ -243,8 +235,6 @@ animation:pulse 1.5s infinite;
 100%{transform:scale(1);}
 }
 
-/* STRAIN CARD */
-
 .strain-card{
 background:linear-gradient(180deg,#111,#090909);
 padding:22px;
@@ -268,9 +258,9 @@ color:var(--secondary);
 }
 
 .desc{
-font-size:.9rem;
-color:#c0c0c0;
+font-size:.92rem;
 line-height:1.6;
+color:#c0c0c0;
 }
 
 .meta-grid{
@@ -322,8 +312,6 @@ background:linear-gradient(90deg,var(--primary),var(--secondary));
 box-shadow:0 0 20px var(--primary);
 }
 
-/* VERIFIED */
-
 .cert{
 margin-top:22px;
 padding:16px;
@@ -339,8 +327,6 @@ letter-spacing:1px;
 margin-bottom:8px;
 color:var(--secondary);
 }
-
-/* WINNER */
 
 .winner{
 display:none;
@@ -379,8 +365,6 @@ font-size:1rem;
 letter-spacing:2px;
 }
 
-/* FAKE */
-
 .fake-warning{
 display:none;
 margin-top:20px;
@@ -392,8 +376,6 @@ text-align:center;
 color:#ff7b7b;
 box-shadow:0 0 25px rgba(255,0,0,.25);
 }
-
-/* FOOTER */
 
 .footer{
 margin-top:24px;
@@ -410,7 +392,7 @@ color:#777;
 
 <div class="grid"></div>
 
-<div id="particles"></div>
+<div id="fx"></div>
 
 <div class="container">
 
@@ -483,7 +465,7 @@ AUTHENTIC PRODUCT VERIFIED
 
 <div class="meta">
 <span>BATCH</span>
-<strong id="batch"></strong>
+<strong>DROP 01</strong>
 </div>
 
 </div>
@@ -546,17 +528,17 @@ Protected by BudWay Ldn Verification Technology
 
 <script>
 
-/* RESET OLD VERIFICATION HISTORY */
+/* RESET VERIFICATION HISTORY */
 
 localStorage.clear();
 
-/* GET SERIAL */
+/* SERIAL */
 
 const params = new URLSearchParams(window.location.search);
 
 const serial = params.get("code");
 
-/* STRAIN DATABASE */
+/* DATABASE */
 
 const strains = [
 
@@ -565,9 +547,8 @@ name:"Pink StarBurst Gelato",
 start:803541,
 end:803546,
 winner:803542,
-batch:"DROP 01",
 genetics:"Pink Starburst × Gelato",
-themeText:"Candy-coated cosmic energy with sweet strawberry cream terpenes.",
+themeText:"Candy-coated cosmic energy dripping with creamy strawberry terpenes.",
 effects:"Euphoric • Creative • Relaxed",
 vibe:"LIMITED CANDY EDITION",
 terpene:96,
@@ -577,7 +558,7 @@ flavour:"Candy Strawberry Citrus Cream",
 primary:"#FF4FA3",
 secondary:"#FF355E",
 bg:"#14040c",
-particle:"🍬"
+fx:["🍬","💖","✨"]
 },
 
 {
@@ -585,9 +566,8 @@ name:"Legendary Blueberry",
 start:803547,
 end:803559,
 winner:803551,
-batch:"DROP 01",
 genetics:"Afghani × Thai × Purple Thai",
-themeText:"Deep blueberry haze layered with rich nighttime relaxation.",
+themeText:"Dark blueberry haze layered with dreamy nighttime energy.",
 effects:"Sleepy • Calm • Heavy Body",
 vibe:"MIDNIGHT RESERVE",
 terpene:91,
@@ -597,7 +577,7 @@ flavour:"Blueberry Vanilla Earthy Spice",
 primary:"#2040FF",
 secondary:"#7A5CFF",
 bg:"#080818",
-particle:"🌌"
+fx:["🌌","⭐","💫"]
 },
 
 {
@@ -605,9 +585,8 @@ name:"Blue Bubblegum Gelato",
 start:803560,
 end:803568,
 winner:803564,
-batch:"DROP 01",
 genetics:"Gelato 45 × Indiana Bubblegum",
-themeText:"Futuristic bubblegum terpenes with icy candy gas.",
+themeText:"Cyber bubblegum terpenes with icy futuristic candy gas.",
 effects:"Relaxed • Happy • Floaty",
 vibe:"CYBER TERP SERIES",
 terpene:98,
@@ -617,7 +596,7 @@ flavour:"Sugary Bubblegum Citrus",
 primary:"#57D6FF",
 secondary:"#B57DFF",
 bg:"#07131a",
-particle:"⚡"
+fx:["⚡","🫧","💠"]
 },
 
 {
@@ -625,9 +604,8 @@ name:"Mango Sapphire",
 start:803569,
 end:803584,
 winner:803578,
-batch:"DROP 01",
 genetics:"Bubba’s Gift × OG Kush × Afghan",
-themeText:"Golden tropical terpene profile with sapphire kush undertones.",
+themeText:"Golden tropical terpenes infused with sapphire kush undertones.",
 effects:"Sedating • Euphoric • Warm",
 vibe:"TROPICAL LUXURY DROP",
 terpene:94,
@@ -637,7 +615,7 @@ flavour:"Tropical Mango Coconut Citrus",
 primary:"#FFB000",
 secondary:"#0057FF",
 bg:"#120b00",
-particle:"🥭"
+fx:["🥭","💎","✨"]
 }
 
 ];
@@ -710,22 +688,15 @@ document.getElementById('type').innerText = found.type;
 
 document.getElementById('flavour').innerText = found.flavour;
 
-document.getElementById('batch').innerText = found.batch;
-
 document.getElementById('terpFill').style.width =
 found.terpene + "%";
 
-/* ALWAYS RESET FIRST VERIFY */
+/* ALWAYS FIRST VERIFIED */
 
-const verifyKey = "budway_" + serial;
+const now =
+new Date().toLocaleString();
 
-const certBox = document.getElementById('certBox');
-
-const now = new Date().toLocaleString();
-
-localStorage.setItem(verifyKey,now);
-
-certBox.innerHTML = `
+document.getElementById('certBox').innerHTML = `
 
 <div class="cert-title">
 
@@ -751,7 +722,7 @@ document.getElementById('winnerBox').style.display='block';
 
 }
 
-/* LOADING TEXT */
+/* LOADER */
 
 const loadingTexts = [
 
@@ -782,8 +753,6 @@ clearInterval(loadingInterval);
 
 },500);
 
-/* SHOW CONTENT */
-
 setTimeout(()=>{
 
 document.querySelector('.loader').style.display='none';
@@ -792,44 +761,46 @@ document.getElementById('realContent').style.display='block';
 
 },2200);
 
-/* PARTICLES */
+/* STRAIN FX */
 
-const particles =
-document.getElementById('particles');
+const fxContainer =
+document.getElementById('fx');
 
-function createParticle(){
+setInterval(()=>{
 
-const p = document.createElement('div');
+const fx =
+document.createElement('div');
 
-p.classList.add('particle');
+fx.innerHTML =
+found.fx[Math.floor(Math.random()*found.fx.length)];
 
-p.innerText = found.particle;
+fx.style.position='absolute';
 
-p.style.left =
+fx.style.left =
 Math.random()*100 + "vw";
 
-p.style.top = "110vh";
+fx.style.top = "110vh";
 
-p.style.fontSize =
-(14 + Math.random()*22) + "px";
+fx.style.fontSize =
+(18 + Math.random()*24) + "px";
 
-p.style.animationDuration =
-(6 + Math.random()*5) + "s";
+fx.style.opacity = ".16";
 
-p.style.filter =
+fx.style.animation =
+`floatUp ${6 + Math.random()*5}s linear forwards`;
+
+fx.style.filter =
 `drop-shadow(0 0 12px ${found.primary})`;
 
-particles.appendChild(p);
+fxContainer.appendChild(fx);
 
 setTimeout(()=>{
 
-p.remove();
+fx.remove();
 
 },11000);
 
-}
-
-setInterval(createParticle,500);
+},350);
 
 }
 
