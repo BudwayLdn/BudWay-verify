@@ -55,7 +55,7 @@ background-size:40px 40px;
 z-index:-1;
 }
 
-/* PARTICLES */
+/* FX */
 
 #fx{
 position:fixed;
@@ -65,19 +65,23 @@ pointer-events:none;
 z-index:0;
 }
 
-@keyframes floatUp{
+@keyframes rainFall{
 
 0%{
-transform:translateY(0) rotate(0deg);
+transform:
+translateY(-10vh)
+rotate(0deg);
 opacity:0;
 }
 
 10%{
-opacity:.16;
+opacity:.18;
 }
 
 100%{
-transform:translateY(-130vh) rotate(360deg);
+transform:
+translateY(120vh)
+rotate(360deg);
 opacity:0;
 }
 
@@ -528,7 +532,7 @@ Protected by BudWay Ldn Verification Technology
 
 <script>
 
-/* RESET VERIFICATION HISTORY */
+/* RESET VERIFY HISTORY */
 
 localStorage.clear();
 
@@ -548,7 +552,6 @@ start:803541,
 end:803546,
 winner:803542,
 genetics:"Pink Starburst × Gelato",
-themeText:"Candy-coated cosmic energy dripping with creamy strawberry terpenes.",
 effects:"Euphoric • Creative • Relaxed",
 vibe:"LIMITED CANDY EDITION",
 terpene:96,
@@ -567,7 +570,6 @@ start:803547,
 end:803559,
 winner:803551,
 genetics:"Afghani × Thai × Purple Thai",
-themeText:"Dark blueberry haze layered with dreamy nighttime energy.",
 effects:"Sleepy • Calm • Heavy Body",
 vibe:"MIDNIGHT RESERVE",
 terpene:91,
@@ -586,7 +588,6 @@ start:803560,
 end:803568,
 winner:803564,
 genetics:"Gelato 45 × Indiana Bubblegum",
-themeText:"Cyber bubblegum terpenes with icy futuristic candy gas.",
 effects:"Relaxed • Happy • Floaty",
 vibe:"CYBER TERP SERIES",
 terpene:98,
@@ -605,7 +606,6 @@ start:803569,
 end:803584,
 winner:803578,
 genetics:"Bubba’s Gift × OG Kush × Afghan",
-themeText:"Golden tropical terpenes infused with sapphire kush undertones.",
 effects:"Sedating • Euphoric • Warm",
 vibe:"TROPICAL LUXURY DROP",
 terpene:94,
@@ -672,10 +672,6 @@ ${found.genetics}
 
 <br><br>
 
-${found.themeText}
-
-<br><br>
-
 <b>EFFECTS:</b>
 
 ${found.effects}
@@ -691,7 +687,7 @@ document.getElementById('flavour').innerText = found.flavour;
 document.getElementById('terpFill').style.width =
 found.terpene + "%";
 
-/* ALWAYS FIRST VERIFIED */
+/* VERIFIED */
 
 const now =
 new Date().toLocaleString();
@@ -722,7 +718,7 @@ document.getElementById('winnerBox').style.display='block';
 
 }
 
-/* LOADER */
+/* LOADING */
 
 const loadingTexts = [
 
@@ -761,36 +757,48 @@ document.getElementById('realContent').style.display='block';
 
 },2200);
 
-/* STRAIN FX */
+/* FX */
 
 const fxContainer =
 document.getElementById('fx');
 
-setInterval(()=>{
+function spawnFX(){
+
+for(let i=0;i<3;i++){
 
 const fx =
 document.createElement('div');
 
 fx.innerHTML =
-found.fx[Math.floor(Math.random()*found.fx.length)];
+found.fx[
+Math.floor(
+Math.random()*found.fx.length
+)
+];
 
 fx.style.position='absolute';
 
 fx.style.left =
 Math.random()*100 + "vw";
 
-fx.style.top = "110vh";
+fx.style.top = "-10vh";
 
 fx.style.fontSize =
-(18 + Math.random()*24) + "px";
+(18 + Math.random()*34) + "px";
 
-fx.style.opacity = ".16";
+fx.style.opacity =
+(.10 + Math.random()*.18);
 
 fx.style.animation =
-`floatUp ${6 + Math.random()*5}s linear forwards`;
+`rainFall ${
+4 + Math.random()*4
+}s linear forwards`;
 
 fx.style.filter =
 `drop-shadow(0 0 12px ${found.primary})`;
+
+fx.style.transform =
+`rotate(${Math.random()*360}deg)`;
 
 fxContainer.appendChild(fx);
 
@@ -798,9 +806,13 @@ setTimeout(()=>{
 
 fx.remove();
 
-},11000);
+},9000);
 
-},350);
+}
+
+}
+
+setInterval(spawnFX,250);
 
 }
 
