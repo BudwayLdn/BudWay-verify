@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -29,7 +30,10 @@ background:var(--bg);
 color:white;
 overflow-x:hidden;
 min-height:100vh;
+position:relative;
 }
+
+/* BACKGROUND */
 
 body::before{
 content:'';
@@ -52,6 +56,43 @@ background-size:40px 40px;
 z-index:-1;
 }
 
+/* PARTICLES */
+
+#particles{
+position:fixed;
+inset:0;
+pointer-events:none;
+overflow:hidden;
+z-index:0;
+}
+
+.particle{
+position:absolute;
+opacity:.15;
+animation:floatUp linear forwards;
+filter:drop-shadow(0 0 10px white);
+}
+
+@keyframes floatUp{
+
+0%{
+transform:translateY(0) rotate(0deg);
+opacity:0;
+}
+
+10%{
+opacity:.15;
+}
+
+100%{
+transform:translateY(-130vh) rotate(360deg);
+opacity:0;
+}
+
+}
+
+/* MAIN */
+
 .container{
 max-width:430px;
 margin:auto;
@@ -60,6 +101,8 @@ min-height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
+position:relative;
+z-index:2;
 }
 
 .card{
@@ -88,6 +131,8 @@ opacity:.25;
 filter:blur(25px);
 }
 
+/* LOGO */
+
 .logo{
 font-family:'Orbitron',sans-serif;
 font-size:2rem;
@@ -103,18 +148,20 @@ background:linear-gradient(90deg,var(--primary),white,var(--secondary));
 .subtitle{
 text-align:center;
 font-size:.82rem;
-color:#a0a0a0;
+color:#aaa;
 margin-bottom:28px;
 letter-spacing:1px;
 }
+
+/* LOADER */
 
 .loader{
 display:flex;
 justify-content:center;
 align-items:center;
-margin-bottom:24px;
 flex-direction:column;
 gap:18px;
+margin-bottom:24px;
 }
 
 .loader-ring{
@@ -124,7 +171,6 @@ border-radius:50%;
 border:3px solid rgba(255,255,255,.08);
 border-top:3px solid var(--primary);
 animation:spin 1s linear infinite;
-box-shadow:0 0 20px rgba(255,255,255,.08);
 }
 
 @keyframes spin{
@@ -133,9 +179,9 @@ to{transform:rotate(360deg);}
 }
 
 .loader-text{
-font-size:.8rem;
-color:var(--primary);
+font-size:.78rem;
 letter-spacing:2px;
+color:var(--primary);
 animation:flicker 1s infinite;
 }
 
@@ -144,6 +190,8 @@ animation:flicker 1s infinite;
 50%{opacity:.4;}
 100%{opacity:1;}
 }
+
+/* BOXES */
 
 .serial-box{
 background:#111;
@@ -195,6 +243,8 @@ animation:pulse 1.5s infinite;
 100%{transform:scale(1);}
 }
 
+/* STRAIN CARD */
+
 .strain-card{
 background:linear-gradient(180deg,#111,#090909);
 padding:22px;
@@ -207,6 +257,14 @@ font-family:'Orbitron',sans-serif;
 font-size:1.5rem;
 margin-bottom:8px;
 color:var(--primary);
+}
+
+.vibe{
+font-size:.72rem;
+letter-spacing:2px;
+margin-bottom:14px;
+font-weight:700;
+color:var(--secondary);
 }
 
 .desc{
@@ -259,11 +317,12 @@ overflow:hidden;
 
 .fill{
 height:100%;
-width:94%;
 border-radius:999px;
 background:linear-gradient(90deg,var(--primary),var(--secondary));
 box-shadow:0 0 20px var(--primary);
 }
+
+/* VERIFIED */
 
 .cert{
 margin-top:22px;
@@ -281,6 +340,8 @@ margin-bottom:8px;
 color:var(--secondary);
 }
 
+/* WINNER */
+
 .winner{
 display:none;
 margin-top:22px;
@@ -291,8 +352,7 @@ background:
 linear-gradient(135deg,#2b1b00,#120d00);
 border:1px solid rgba(255,215,0,.4);
 box-shadow:
-0 0 35px rgba(255,215,0,.18),
-inset 0 0 25px rgba(255,215,0,.05);
+0 0 35px rgba(255,215,0,.18);
 animation:goldPulse 2s infinite;
 }
 
@@ -319,12 +379,7 @@ font-size:1rem;
 letter-spacing:2px;
 }
 
-.footer{
-margin-top:24px;
-text-align:center;
-font-size:.75rem;
-color:#777;
-}
+/* FAKE */
 
 .fake-warning{
 display:none;
@@ -338,12 +393,24 @@ color:#ff7b7b;
 box-shadow:0 0 25px rgba(255,0,0,.25);
 }
 
+/* FOOTER */
+
+.footer{
+margin-top:24px;
+text-align:center;
+font-size:.75rem;
+color:#777;
+}
+
 </style>
+
 </head>
 
 <body>
 
 <div class="grid"></div>
+
+<div id="particles"></div>
 
 <div class="container">
 
@@ -351,7 +418,9 @@ box-shadow:0 0 25px rgba(255,0,0,.25);
 
 <div class="glow"></div>
 
-<div class="logo">BUDWAY LDN</div>
+<div class="logo">
+BUDWAY LDN
+</div>
 
 <div class="subtitle" id="loadingText">
 SCANNING ENCRYPTED DATABASE
@@ -370,18 +439,28 @@ VERIFYING AUTHENTICITY
 <div id="realContent" style="display:none;">
 
 <div class="serial-box">
-<div class="serial-label">VERIFIED SERIAL</div>
+
+<div class="serial-label">
+VERIFIED SERIAL
+</div>
+
 <div class="serial" id="serialNumber"></div>
+
 </div>
 
 <div class="status">
+
 <div class="dot"></div>
+
 AUTHENTIC PRODUCT VERIFIED
+
 </div>
 
 <div class="strain-card">
 
 <div class="strain-title" id="strainName"></div>
+
+<div class="vibe" id="vibe"></div>
 
 <div class="desc" id="genetics"></div>
 
@@ -416,7 +495,9 @@ TERPENE RICHNESS
 </div>
 
 <div class="bar">
-<div class="fill"></div>
+
+<div class="fill" id="terpFill"></div>
+
 </div>
 
 </div>
@@ -465,26 +546,38 @@ Protected by BudWay Ldn Verification Technology
 
 <script>
 
+/* RESET OLD VERIFICATION HISTORY */
+
+localStorage.clear();
+
+/* GET SERIAL */
+
 const params = new URLSearchParams(window.location.search);
 
 const serial = params.get("code");
+
+/* STRAIN DATABASE */
 
 const strains = [
 
 {
 name:"Pink StarBurst Gelato",
 start:803541,
-end:803542,
+end:803546,
 winner:803542,
 batch:"DROP 01",
 genetics:"Pink Starburst × Gelato",
+themeText:"Candy-coated cosmic energy with sweet strawberry cream terpenes.",
 effects:"Euphoric • Creative • Relaxed",
+vibe:"LIMITED CANDY EDITION",
+terpene:96,
 thc:"20–26%",
 type:"50/50 Hybrid",
 flavour:"Candy Strawberry Citrus Cream",
 primary:"#FF4FA3",
 secondary:"#FF355E",
-bg:"#14040c"
+bg:"#14040c",
+particle:"🍬"
 },
 
 {
@@ -494,13 +587,17 @@ end:803559,
 winner:803551,
 batch:"DROP 01",
 genetics:"Afghani × Thai × Purple Thai",
+themeText:"Deep blueberry haze layered with rich nighttime relaxation.",
 effects:"Sleepy • Calm • Heavy Body",
+vibe:"MIDNIGHT RESERVE",
+terpene:91,
 thc:"20–24%",
 type:"80/20 Indica",
 flavour:"Blueberry Vanilla Earthy Spice",
 primary:"#2040FF",
 secondary:"#7A5CFF",
-bg:"#080818"
+bg:"#080818",
+particle:"🌌"
 },
 
 {
@@ -510,13 +607,17 @@ end:803568,
 winner:803564,
 batch:"DROP 01",
 genetics:"Gelato 45 × Indiana Bubblegum",
+themeText:"Futuristic bubblegum terpenes with icy candy gas.",
 effects:"Relaxed • Happy • Floaty",
+vibe:"CYBER TERP SERIES",
+terpene:98,
 thc:"24–32%",
 type:"60/40 Indica",
 flavour:"Sugary Bubblegum Citrus",
 primary:"#57D6FF",
 secondary:"#B57DFF",
-bg:"#07131a"
+bg:"#07131a",
+particle:"⚡"
 },
 
 {
@@ -526,16 +627,22 @@ end:803584,
 winner:803578,
 batch:"DROP 01",
 genetics:"Bubba’s Gift × OG Kush × Afghan",
+themeText:"Golden tropical terpene profile with sapphire kush undertones.",
 effects:"Sedating • Euphoric • Warm",
+vibe:"TROPICAL LUXURY DROP",
+terpene:94,
 thc:"21–23%",
 type:"85/15 Indica",
 flavour:"Tropical Mango Coconut Citrus",
 primary:"#FFB000",
 secondary:"#0057FF",
-bg:"#120b00"
+bg:"#120b00",
+particle:"🥭"
 }
 
 ];
+
+/* FIND STRAIN */
 
 let found = null;
 
@@ -548,6 +655,8 @@ found = strain;
 }
 
 }
+
+/* FAKE SERIAL */
 
 if(!found){
 
@@ -563,6 +672,8 @@ document.getElementById('fakeBox').style.display='block';
 
 }
 
+/* REAL SERIAL */
+
 else{
 
 document.documentElement.style.setProperty('--primary',found.primary);
@@ -575,10 +686,22 @@ document.getElementById('serialNumber').innerText = serial;
 
 document.getElementById('strainName').innerText = found.name;
 
+document.getElementById('vibe').innerText = found.vibe;
+
 document.getElementById('genetics').innerHTML = `
+
 ${found.genetics}
+
 <br><br>
-<b>EFFECTS:</b> ${found.effects}
+
+${found.themeText}
+
+<br><br>
+
+<b>EFFECTS:</b>
+
+${found.effects}
+
 `;
 
 document.getElementById('thc').innerText = found.thc;
@@ -589,45 +712,38 @@ document.getElementById('flavour').innerText = found.flavour;
 
 document.getElementById('batch').innerText = found.batch;
 
+document.getElementById('terpFill').style.width =
+found.terpene + "%";
+
+/* ALWAYS RESET FIRST VERIFY */
+
 const verifyKey = "budway_" + serial;
 
 const certBox = document.getElementById('certBox');
-
-let existing = localStorage.getItem(verifyKey);
-
-if(!existing){
 
 const now = new Date().toLocaleString();
 
 localStorage.setItem(verifyKey,now);
 
 certBox.innerHTML = `
+
 <div class="cert-title">
+
 FIRST AUTHENTIC SCAN ✓
+
 </div>
 
 <strong>
-Factory-Sealed BudWay Product
-</strong>
-`;
 
-}
-
-else{
-
-certBox.innerHTML = `
-<div class="cert-title">
-PREVIOUSLY VERIFIED
-</div>
-
-<strong>
-First Verified:
+Verified:
 <br>
-${existing}
+${now}
+
 </strong>
+
 `;
 
-}
+/* WINNER */
 
 if(Number(serial) === found.winner){
 
@@ -635,11 +751,16 @@ document.getElementById('winnerBox').style.display='block';
 
 }
 
+/* LOADING TEXT */
+
 const loadingTexts = [
 
 "SCANNING ENCRYPTED DATABASE",
+
 "AUTHENTICATING PRODUCT",
+
 "MATCHING STRAIN PROFILE",
+
 "VERIFICATION COMPLETE"
 
 ];
@@ -661,6 +782,8 @@ clearInterval(loadingInterval);
 
 },500);
 
+/* SHOW CONTENT */
+
 setTimeout(()=>{
 
 document.querySelector('.loader').style.display='none';
@@ -668,6 +791,45 @@ document.querySelector('.loader').style.display='none';
 document.getElementById('realContent').style.display='block';
 
 },2200);
+
+/* PARTICLES */
+
+const particles =
+document.getElementById('particles');
+
+function createParticle(){
+
+const p = document.createElement('div');
+
+p.classList.add('particle');
+
+p.innerText = found.particle;
+
+p.style.left =
+Math.random()*100 + "vw";
+
+p.style.top = "110vh";
+
+p.style.fontSize =
+(14 + Math.random()*22) + "px";
+
+p.style.animationDuration =
+(6 + Math.random()*5) + "s";
+
+p.style.filter =
+`drop-shadow(0 0 12px ${found.primary})`;
+
+particles.appendChild(p);
+
+setTimeout(()=>{
+
+p.remove();
+
+},11000);
+
+}
+
+setInterval(createParticle,500);
 
 }
 
