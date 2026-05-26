@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -21,18 +19,16 @@ box-sizing:border-box;
 :root{
 --primary:#00ff88;
 --secondary:#ffd700;
+--bg:#050505;
 }
 
 body{
 font-family:'Inter',sans-serif;
-background:#050505;
+background:var(--bg);
 color:white;
 overflow-x:hidden;
 min-height:100vh;
-position:relative;
 }
-
-/* BACKGROUND */
 
 body::before{
 content:'';
@@ -55,40 +51,6 @@ background-size:40px 40px;
 z-index:-1;
 }
 
-/* FX */
-
-#fx{
-position:fixed;
-inset:0;
-overflow:hidden;
-pointer-events:none;
-z-index:0;
-}
-
-@keyframes rainFall{
-
-0%{
-transform:
-translateY(-10vh)
-rotate(0deg);
-opacity:0;
-}
-
-10%{
-opacity:.18;
-}
-
-100%{
-transform:
-translateY(120vh)
-rotate(360deg);
-opacity:0;
-}
-
-}
-
-/* MAIN */
-
 .container{
 max-width:430px;
 margin:auto;
@@ -97,8 +59,6 @@ min-height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
-position:relative;
-z-index:2;
 }
 
 .card{
@@ -127,15 +87,13 @@ opacity:.25;
 filter:blur(25px);
 }
 
-/* LOGO */
-
 .logo{
 font-family:'Orbitron',sans-serif;
 font-size:2rem;
 font-weight:900;
 text-align:center;
 letter-spacing:2px;
-margin-bottom:8px;
+margin-bottom:6px;
 background:linear-gradient(90deg,var(--primary),white,var(--secondary));
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
@@ -143,20 +101,59 @@ background:linear-gradient(90deg,var(--primary),white,var(--secondary));
 
 .subtitle{
 text-align:center;
-font-size:.8rem;
-color:#aaa;
-margin-bottom:28px;
-letter-spacing:1px;
+font-size:.82rem;
+color:#a0a0a0;
+margin-bottom:20px;
 }
 
-/* LOADER */
+.login-btn{
+width:100%;
+padding:14px;
+border:none;
+border-radius:16px;
+margin-bottom:22px;
+font-family:'Orbitron',sans-serif;
+font-weight:700;
+font-size:.9rem;
+cursor:pointer;
+background:linear-gradient(90deg,var(--primary),var(--secondary));
+color:black;
+transition:.3s;
+}
+
+.login-btn:hover{
+transform:scale(1.03);
+}
+
+.dashboard{
+display:none;
+margin-bottom:22px;
+padding:18px;
+border-radius:22px;
+background:linear-gradient(180deg,#111,#090909);
+border:1px solid rgba(255,255,255,.08);
+}
+
+.dash-title{
+font-family:'Orbitron',sans-serif;
+margin-bottom:16px;
+font-size:1rem;
+color:var(--primary);
+}
+
+.dash-stat{
+display:flex;
+justify-content:space-between;
+padding:12px;
+margin-bottom:10px;
+background:#101010;
+border-radius:14px;
+}
 
 .loader{
 display:flex;
 justify-content:center;
 align-items:center;
-flex-direction:column;
-gap:18px;
 margin-bottom:24px;
 }
 
@@ -173,21 +170,6 @@ animation:spin 1s linear infinite;
 from{transform:rotate(0deg);}
 to{transform:rotate(360deg);}
 }
-
-.loader-text{
-font-size:.75rem;
-letter-spacing:2px;
-color:var(--primary);
-animation:flicker 1s infinite;
-}
-
-@keyframes flicker{
-0%{opacity:1;}
-50%{opacity:.4;}
-100%{opacity:1;}
-}
-
-/* CONTENT */
 
 .serial-box{
 background:#111;
@@ -253,18 +235,10 @@ margin-bottom:8px;
 color:var(--primary);
 }
 
-.vibe{
-font-size:.72rem;
-letter-spacing:2px;
-margin-bottom:14px;
-font-weight:700;
-color:var(--secondary);
-}
-
 .desc{
-font-size:.92rem;
-line-height:1.6;
+font-size:.9rem;
 color:#c0c0c0;
+line-height:1.5;
 }
 
 .meta-grid{
@@ -278,18 +252,6 @@ margin-top:20px;
 background:#101010;
 padding:12px;
 border-radius:14px;
-border:1px solid rgba(255,255,255,.05);
-}
-
-.meta span{
-display:block;
-font-size:.7rem;
-color:#888;
-margin-bottom:5px;
-}
-
-.meta strong{
-font-size:.95rem;
 }
 
 .terpene{
@@ -311,9 +273,9 @@ overflow:hidden;
 
 .fill{
 height:100%;
+width:94%;
 border-radius:999px;
 background:linear-gradient(90deg,var(--primary),var(--secondary));
-box-shadow:0 0 20px var(--primary);
 }
 
 .cert{
@@ -322,14 +284,6 @@ padding:16px;
 border-radius:18px;
 text-align:center;
 background:linear-gradient(90deg,#151515,#0c0c0c);
-border:1px solid rgba(255,255,255,.08);
-}
-
-.cert-title{
-font-size:.75rem;
-letter-spacing:1px;
-margin-bottom:8px;
-color:var(--secondary);
 }
 
 .winner{
@@ -338,24 +292,8 @@ margin-top:22px;
 padding:22px;
 border-radius:22px;
 text-align:center;
-background:
-linear-gradient(135deg,#2b1b00,#120d00);
+background:linear-gradient(135deg,#2b1b00,#120d00);
 border:1px solid rgba(255,215,0,.4);
-box-shadow:
-0 0 35px rgba(255,215,0,.18);
-animation:goldPulse 2s infinite;
-}
-
-@keyframes goldPulse{
-0%{transform:scale(1);}
-50%{transform:scale(1.02);}
-100%{transform:scale(1);}
-}
-
-.winner h3{
-font-family:'Orbitron',sans-serif;
-color:#ffd700;
-margin-bottom:10px;
 }
 
 .code{
@@ -365,7 +303,6 @@ background:black;
 border-radius:12px;
 border:1px dashed #ffd700;
 font-family:'Orbitron',sans-serif;
-font-size:1rem;
 letter-spacing:2px;
 }
 
@@ -378,7 +315,6 @@ background:#220000;
 border:1px solid #ff3b3b;
 text-align:center;
 color:#ff7b7b;
-box-shadow:0 0 25px rgba(255,0,0,.25);
 }
 
 .footer{
@@ -389,14 +325,11 @@ color:#777;
 }
 
 </style>
-
 </head>
 
 <body>
 
 <div class="grid"></div>
-
-<div id="fx"></div>
 
 <div class="container">
 
@@ -404,49 +337,63 @@ color:#777;
 
 <div class="glow"></div>
 
-<div class="logo">
-BUDWAY LDN
+<div class="logo">BUDWAY LDN</div>
+
+<div class="subtitle">
+Premium Authenticity Verification System
 </div>
 
-<div class="subtitle" id="loadingText">
-SCANNING ENCRYPTED DATABASE
+<button id="loginBtn" class="login-btn">
+Login With Google
+</button>
+
+<div id="dashboard" class="dashboard">
+
+<div class="dash-title">
+Collector Profile
+</div>
+
+<div class="dash-stat">
+<span>Name</span>
+<strong id="dashName"></strong>
+</div>
+
+<div class="dash-stat">
+<span>Points</span>
+<strong id="dashPoints"></strong>
+</div>
+
+<div class="dash-stat">
+<span>Scans</span>
+<strong id="dashScans"></strong>
+</div>
+
+<div class="dash-stat">
+<span>Tier</span>
+<strong id="dashTier"></strong>
+</div>
+
 </div>
 
 <div class="loader">
-
 <div class="loader-ring"></div>
-
-<div class="loader-text">
-VERIFYING AUTHENTICITY
-</div>
-
 </div>
 
 <div id="realContent" style="display:none;">
 
 <div class="serial-box">
-
-<div class="serial-label">
-VERIFIED SERIAL
-</div>
-
+<div class="serial-label">VERIFIED SERIAL</div>
 <div class="serial" id="serialNumber"></div>
-
 </div>
 
 <div class="status">
-
 <div class="dot"></div>
-
 AUTHENTIC PRODUCT VERIFIED
-
 </div>
 
 <div class="strain-card">
 
 <div class="strain-title" id="strainName"></div>
-
-<div class="vibe" id="vibe"></div>
 
 <div class="desc" id="genetics"></div>
 
@@ -475,20 +422,18 @@ AUTHENTIC PRODUCT VERIFIED
 </div>
 
 <div class="terpene">
-
 <div class="terpene-title">
 TERPENE RICHNESS
 </div>
 
 <div class="bar">
-
-<div class="fill" id="terpFill"></div>
-
+<div class="fill"></div>
+</div>
 </div>
 
+<div class="cert">
+BudWay Certified Premium Flower
 </div>
-
-<div class="cert" id="certBox"></div>
 
 <div class="winner" id="winnerBox">
 
@@ -511,9 +456,7 @@ BW-10
 <h3>⚠ INVALID SERIAL</h3>
 
 <p>
-This serial does not exist in the BudWay database.
-<br><br>
-Possible counterfeit product detected.
+This BudWay product could not be verified.
 </p>
 
 </div>
@@ -530,19 +473,89 @@ Protected by BudWay Ldn Verification Technology
 
 </div>
 
-<script>
+<script type="module">
 
-/* RESET VERIFY HISTORY */
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
 
-localStorage.clear();
+import {
+getAuth,
+GoogleAuthProvider,
+signInWithPopup,
+onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
 
-/* SERIAL */
+import {
+getFirestore,
+doc,
+setDoc,
+getDoc,
+updateDoc,
+increment
+} from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
+
+const firebaseConfig = {
+apiKey: "AIzaSyB1Y6sxhKxlzHOWFGQ6ujcnKlyG2niIhLE",
+authDomain: "budway-club.firebaseapp.com",
+projectId: "budway-club",
+storageBucket: "budway-club.firebasestorage.app",
+messagingSenderId: "272500512203",
+appId: "1:272500512203:web:4e7c4d17f2103aa10e524e",
+measurementId: "G-XVYDCDB2MC"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+const loginBtn = document.getElementById("loginBtn");
+
+loginBtn.onclick = async()=>{
+
+const provider = new GoogleAuthProvider();
+
+const result = await signInWithPopup(auth,provider);
+
+const user = result.user;
+
+await setDoc(doc(db,"users",user.uid),{
+name:user.displayName,
+email:user.email,
+points:0,
+scans:0,
+tier:"Green"
+},{merge:true});
+
+alert("Welcome to BudWay Club");
+
+loadDashboard(user);
+
+};
+
+async function loadDashboard(user){
+
+document.getElementById("dashboard").style.display="block";
+
+const snap = await getDoc(doc(db,"users",user.uid));
+
+const data = snap.data();
+
+document.getElementById("dashName").innerText=data.name;
+document.getElementById("dashPoints").innerText=data.points;
+document.getElementById("dashScans").innerText=data.scans;
+document.getElementById("dashTier").innerText=data.tier;
+
+}
+
+onAuthStateChanged(auth,(user)=>{
+
+if(user){
+loadDashboard(user);
+}
+
+});
 
 const params = new URLSearchParams(window.location.search);
-
 const serial = params.get("code");
-
-/* DATABASE */
 
 const strains = [
 
@@ -552,16 +565,12 @@ start:803541,
 end:803546,
 winner:803542,
 genetics:"Pink Starburst × Gelato",
-effects:"Euphoric • Creative • Relaxed",
-vibe:"LIMITED CANDY EDITION",
-terpene:96,
 thc:"20–26%",
 type:"50/50 Hybrid",
 flavour:"Candy Strawberry Citrus Cream",
 primary:"#FF4FA3",
 secondary:"#FF355E",
-bg:"#14040c",
-fx:["🍬","💖","✨"]
+bg:"#14040c"
 },
 
 {
@@ -570,16 +579,12 @@ start:803547,
 end:803559,
 winner:803551,
 genetics:"Afghani × Thai × Purple Thai",
-effects:"Sleepy • Calm • Heavy Body",
-vibe:"MIDNIGHT RESERVE",
-terpene:91,
 thc:"20–24%",
 type:"80/20 Indica",
 flavour:"Blueberry Vanilla Earthy Spice",
 primary:"#2040FF",
 secondary:"#7A5CFF",
-bg:"#080818",
-fx:["🌌","⭐","💫"]
+bg:"#080818"
 },
 
 {
@@ -588,16 +593,12 @@ start:803560,
 end:803568,
 winner:803564,
 genetics:"Gelato 45 × Indiana Bubblegum",
-effects:"Relaxed • Happy • Floaty",
-vibe:"CYBER TERP SERIES",
-terpene:98,
 thc:"24–32%",
 type:"60/40 Indica",
 flavour:"Sugary Bubblegum Citrus",
 primary:"#57D6FF",
 secondary:"#B57DFF",
-bg:"#07131a",
-fx:["⚡","🫧","💠"]
+bg:"#07131a"
 },
 
 {
@@ -606,35 +607,25 @@ start:803569,
 end:803584,
 winner:803578,
 genetics:"Bubba’s Gift × OG Kush × Afghan",
-effects:"Sedating • Euphoric • Warm",
-vibe:"TROPICAL LUXURY DROP",
-terpene:94,
 thc:"21–23%",
 type:"85/15 Indica",
 flavour:"Tropical Mango Coconut Citrus",
 primary:"#FFB000",
 secondary:"#0057FF",
-bg:"#120b00",
-fx:["🥭","💎","✨"]
+bg:"#120b00"
 }
 
 ];
 
-/* FIND STRAIN */
-
-let found = null;
+let found=null;
 
 for(let strain of strains){
 
 if(serial >= strain.start && serial <= strain.end){
-
 found = strain;
-
 }
 
 }
-
-/* FAKE SERIAL */
 
 if(!found){
 
@@ -650,8 +641,6 @@ document.getElementById('fakeBox').style.display='block';
 
 }
 
-/* REAL SERIAL */
-
 else{
 
 document.documentElement.style.setProperty('--primary',found.primary);
@@ -664,19 +653,7 @@ document.getElementById('serialNumber').innerText = serial;
 
 document.getElementById('strainName').innerText = found.name;
 
-document.getElementById('vibe').innerText = found.vibe;
-
-document.getElementById('genetics').innerHTML = `
-
-${found.genetics}
-
-<br><br>
-
-<b>EFFECTS:</b>
-
-${found.effects}
-
-`;
+document.getElementById('genetics').innerText = found.genetics;
 
 document.getElementById('thc').innerText = found.thc;
 
@@ -684,135 +661,70 @@ document.getElementById('type').innerText = found.type;
 
 document.getElementById('flavour').innerText = found.flavour;
 
-document.getElementById('terpFill').style.width =
-found.terpene + "%";
-
-/* VERIFIED */
-
-const now =
-new Date().toLocaleString();
-
-document.getElementById('certBox').innerHTML = `
-
-<div class="cert-title">
-
-FIRST AUTHENTIC SCAN ✓
-
-</div>
-
-<strong>
-
-Verified:
-<br>
-${now}
-
-</strong>
-
-`;
-
-/* WINNER */
-
 if(Number(serial) === found.winner){
 
 document.getElementById('winnerBox').style.display='block';
 
 }
 
-/* LOADING */
+setTimeout(async()=>{
 
-const loadingTexts = [
+const user = auth.currentUser;
 
-"SCANNING ENCRYPTED DATABASE",
+if(user){
 
-"AUTHENTICATING PRODUCT",
+const packRef = doc(db,"packs",serial);
 
-"MATCHING STRAIN PROFILE",
+const packSnap = await getDoc(packRef);
 
-"VERIFICATION COMPLETE"
+if(!packSnap.exists()){
 
-];
+await setDoc(packRef,{
+serial,
+strain:found.name,
+owner:user.uid,
+ownerName:user.displayName,
+claimedAt:new Date()
+});
 
-let i = 0;
+await updateDoc(doc(db,"users",user.uid),{
+points:increment(100),
+scans:increment(1)
+});
 
-const loadingInterval = setInterval(()=>{
+const userSnap = await getDoc(doc(db,"users",user.uid));
 
-document.getElementById('loadingText').innerText =
-loadingTexts[i];
+const userData = userSnap.data();
 
-i++;
+let tier="Green";
 
-if(i >= loadingTexts.length){
+if(userData.scans >= 5){
+tier="Gold";
+}
 
-clearInterval(loadingInterval);
+if(userData.scans >= 10){
+tier="Sapphire";
+}
+
+if(userData.scans >= 20){
+tier="Black Label";
+}
+
+await updateDoc(doc(db,"users",user.uid),{
+tier
+});
+
+loadDashboard(user);
 
 }
 
-},500);
-
-setTimeout(()=>{
+}
 
 document.querySelector('.loader').style.display='none';
 
 document.getElementById('realContent').style.display='block';
 
-},2200);
-
-/* FX */
-
-const fxContainer =
-document.getElementById('fx');
-
-function spawnFX(){
-
-for(let i=0;i<3;i++){
-
-const fx =
-document.createElement('div');
-
-fx.innerHTML =
-found.fx[
-Math.floor(
-Math.random()*found.fx.length
-)
-];
-
-fx.style.position='absolute';
-
-fx.style.left =
-Math.random()*100 + "vw";
-
-fx.style.top = "-10vh";
-
-fx.style.fontSize =
-(18 + Math.random()*34) + "px";
-
-fx.style.opacity =
-(.10 + Math.random()*.18);
-
-fx.style.animation =
-`rainFall ${
-4 + Math.random()*4
-}s linear forwards`;
-
-fx.style.filter =
-`drop-shadow(0 0 12px ${found.primary})`;
-
-fx.style.transform =
-`rotate(${Math.random()*360}deg)`;
-
-fxContainer.appendChild(fx);
-
-setTimeout(()=>{
-
-fx.remove();
-
-},9000);
-
-}
-
-}
-
-setInterval(spawnFX,250);
+},1800);
 
 }
 
