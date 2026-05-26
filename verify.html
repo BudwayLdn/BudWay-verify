@@ -28,6 +28,7 @@ background:var(--bg);
 color:white;
 overflow-x:hidden;
 min-height:100vh;
+position:relative;
 }
 
 body::before{
@@ -326,6 +327,35 @@ text-align:center;
 color:#ff7b7b;
 }
 
+/* RAINING EMOJIS */
+
+.emoji{
+position:fixed;
+font-size:28px;
+pointer-events:none;
+animation:rain linear forwards;
+z-index:9999;
+opacity:.85;
+}
+
+@keyframes rain{
+
+0%{
+transform:translateY(-10vh) rotate(0deg) scale(.7);
+opacity:0;
+}
+
+10%{
+opacity:1;
+}
+
+100%{
+transform:translateY(120vh) rotate(360deg) scale(1.2);
+opacity:0;
+}
+
+}
+
 </style>
 </head>
 
@@ -392,6 +422,7 @@ AUTHENTIC PRODUCT VERIFIED
 </div>
 
 <div class="terpene">
+
 <div class="terpene-title">
 TERPENE RICHNESS
 </div>
@@ -399,6 +430,7 @@ TERPENE RICHNESS
 <div class="bar">
 <div class="fill"></div>
 </div>
+
 </div>
 
 <div class="cert">
@@ -475,6 +507,7 @@ name:"Pink StarBurst Gelato",
 start:803541,
 end:803546,
 winner:803542,
+emojis:["💖","🌠","🍨"],
 genetics:"Pink Starburst × Gelato",
 thc:"20–26%",
 type:"50/50 Hybrid",
@@ -489,6 +522,7 @@ name:"Legendary Blueberry",
 start:803547,
 end:803559,
 winner:803551,
+emojis:["🫐"],
 genetics:"Afghani × Thai × Purple Thai",
 thc:"20–24%",
 type:"80/20 Indica",
@@ -503,6 +537,7 @@ name:"Blue Bubblegum Gelato",
 start:803560,
 end:803568,
 winner:803564,
+emojis:["🍨","🍬"],
 genetics:"Gelato 45 × Indiana Bubblegum",
 thc:"24–32%",
 type:"60/40 Indica",
@@ -517,6 +552,7 @@ name:"Mango Sapphire",
 start:803569,
 end:803584,
 winner:803578,
+emojis:["🥭","💎"],
 genetics:"Bubba’s Gift × OG Kush × Afghan",
 thc:"21–23%",
 type:"85/15 Indica",
@@ -528,9 +564,7 @@ bg:"#120b00"
 
 ];
 
-/* ======================================
-MATCH SERIAL
-====================================== */
+/* MATCH SERIAL */
 
 let found = null;
 
@@ -544,9 +578,7 @@ found = strain;
 
 }
 
-/* ======================================
-FAKE SERIAL
-====================================== */
+/* INVALID */
 
 if(!found){
 
@@ -562,9 +594,7 @@ document.getElementById('fakeBox').style.display='block';
 
 }
 
-/* ======================================
-REAL SERIAL
-====================================== */
+/* VALID */
 
 else{
 
@@ -603,7 +633,37 @@ localStorage.setItem(storageKey, firstVerified);
 document.getElementById('firstVerified').innerText =
 "First Verified: " + firstVerified;
 
-/* WINNER SYSTEM */
+/* RAINING EMOJIS */
+
+function createEmoji(){
+
+const emoji = document.createElement("div");
+
+emoji.className = "emoji";
+
+emoji.innerText =
+found.emojis[
+Math.floor(Math.random() * found.emojis.length)
+];
+
+emoji.style.left = Math.random() * 100 + "vw";
+
+emoji.style.animationDuration =
+(4 + Math.random() * 4) + "s";
+
+document.body.appendChild(emoji);
+
+setTimeout(()=>{
+
+emoji.remove();
+
+},8000);
+
+}
+
+setInterval(createEmoji,300);
+
+/* WINNER */
 
 if(Number(serial) === found.winner){
 
