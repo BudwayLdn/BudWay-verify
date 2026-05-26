@@ -264,6 +264,12 @@ margin-bottom:8px;
 color:var(--secondary);
 }
 
+.first-verified{
+margin-top:10px;
+font-size:.75rem;
+color:#aaa;
+}
+
 .winner{
 display:none;
 margin-top:22px;
@@ -346,21 +352,13 @@ Premium Authenticity Verification System
 <div id="realContent" style="display:none;">
 
 <div class="serial-box">
-
-<div class="serial-label">
-VERIFIED SERIAL
-</div>
-
+<div class="serial-label">VERIFIED SERIAL</div>
 <div class="serial" id="serialNumber"></div>
-
 </div>
 
 <div class="status">
-
 <div class="dot"></div>
-
 AUTHENTIC PRODUCT VERIFIED
-
 </div>
 
 <div class="strain-card">
@@ -394,7 +392,6 @@ AUTHENTIC PRODUCT VERIFIED
 </div>
 
 <div class="terpene">
-
 <div class="terpene-title">
 TERPENE RICHNESS
 </div>
@@ -402,7 +399,6 @@ TERPENE RICHNESS
 <div class="bar">
 <div class="fill"></div>
 </div>
-
 </div>
 
 <div class="cert">
@@ -415,13 +411,7 @@ LAB VERIFIED AUTHENTIC
 BudWay Certified Premium Flower
 </strong>
 
-<div id="firstVerified"
-style="
-margin-top:10px;
-font-size:.75rem;
-color:#aaa;
-">
-</div>
+<div class="first-verified" id="firstVerified"></div>
 
 </div>
 
@@ -481,3 +471,159 @@ STRAIN DATABASE
 const strains = [
 
 {
+name:"Pink StarBurst Gelato",
+start:803541,
+end:803546,
+winner:803542,
+genetics:"Pink Starburst × Gelato",
+thc:"20–26%",
+type:"50/50 Hybrid",
+flavour:"Candy Strawberry Citrus Cream",
+primary:"#FF4FA3",
+secondary:"#FF355E",
+bg:"#14040c"
+},
+
+{
+name:"Legendary Blueberry",
+start:803547,
+end:803559,
+winner:803551,
+genetics:"Afghani × Thai × Purple Thai",
+thc:"20–24%",
+type:"80/20 Indica",
+flavour:"Blueberry Vanilla Earthy Spice",
+primary:"#2040FF",
+secondary:"#7A5CFF",
+bg:"#080818"
+},
+
+{
+name:"Blue Bubblegum Gelato",
+start:803560,
+end:803568,
+winner:803564,
+genetics:"Gelato 45 × Indiana Bubblegum",
+thc:"24–32%",
+type:"60/40 Indica",
+flavour:"Sugary Bubblegum Citrus",
+primary:"#57D6FF",
+secondary:"#B57DFF",
+bg:"#07131a"
+},
+
+{
+name:"Mango Sapphire",
+start:803569,
+end:803584,
+winner:803578,
+genetics:"Bubba’s Gift × OG Kush × Afghan",
+thc:"21–23%",
+type:"85/15 Indica",
+flavour:"Tropical Mango Coconut Citrus",
+primary:"#FFB000",
+secondary:"#0057FF",
+bg:"#120b00"
+}
+
+];
+
+/* ======================================
+MATCH SERIAL
+====================================== */
+
+let found = null;
+
+for(let strain of strains){
+
+if(serial >= strain.start && serial <= strain.end){
+
+found = strain;
+
+}
+
+}
+
+/* ======================================
+FAKE SERIAL
+====================================== */
+
+if(!found){
+
+document.querySelector('.loader').style.display='none';
+
+document.getElementById('realContent').style.display='block';
+
+document.querySelector('.status').style.display='none';
+
+document.querySelector('.strain-card').style.display='none';
+
+document.getElementById('fakeBox').style.display='block';
+
+}
+
+/* ======================================
+REAL SERIAL
+====================================== */
+
+else{
+
+document.documentElement.style.setProperty('--primary',found.primary);
+
+document.documentElement.style.setProperty('--secondary',found.secondary);
+
+document.body.style.background = found.bg;
+
+document.getElementById('serialNumber').innerText = serial;
+
+document.getElementById('strainName').innerText = found.name;
+
+document.getElementById('genetics').innerText = found.genetics;
+
+document.getElementById('thc').innerText = found.thc;
+
+document.getElementById('type').innerText = found.type;
+
+document.getElementById('flavour').innerText = found.flavour;
+
+/* FIRST VERIFIED */
+
+const storageKey = "budway_verified_" + serial;
+
+let firstVerified = localStorage.getItem(storageKey);
+
+if(!firstVerified){
+
+firstVerified = new Date().toLocaleString();
+
+localStorage.setItem(storageKey, firstVerified);
+
+}
+
+document.getElementById('firstVerified').innerText =
+"First Verified: " + firstVerified;
+
+/* WINNER SYSTEM */
+
+if(Number(serial) === found.winner){
+
+document.getElementById('winnerBox').style.display='block';
+
+}
+
+/* SHOW CONTENT */
+
+setTimeout(()=>{
+
+document.querySelector('.loader').style.display='none';
+
+document.getElementById('realContent').style.display='block';
+
+},1800);
+
+}
+
+</script>
+
+</body>
+</html>
