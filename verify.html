@@ -29,6 +29,7 @@ color:white;
 overflow-x:hidden;
 min-height:100vh;
 position:relative;
+transition:background .5s ease;
 }
 
 body::before{
@@ -71,6 +72,7 @@ border-radius:30px;
 padding:28px;
 position:relative;
 overflow:hidden;
+transition:.5s ease;
 box-shadow:
 0 0 40px rgba(0,0,0,.8),
 0 0 40px color-mix(in srgb,var(--primary) 30%, transparent);
@@ -271,6 +273,41 @@ font-size:.75rem;
 color:#aaa;
 }
 
+.exclusive-badge{
+display:none;
+margin-top:20px;
+padding:16px;
+border-radius:20px;
+background:
+linear-gradient(135deg,#2a1a00,#120d00,#3b2b00);
+border:1px solid rgba(255,215,0,.55);
+text-align:center;
+font-family:'Orbitron',sans-serif;
+font-size:.82rem;
+letter-spacing:1px;
+color:#ffd700;
+box-shadow:
+0 0 25px rgba(255,215,0,.25),
+inset 0 0 20px rgba(255,215,0,.08);
+animation:luxGlow 2s infinite;
+}
+
+@keyframes luxGlow{
+
+0%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.03);
+}
+
+100%{
+transform:scale(1);
+}
+
+}
+
 .winner{
 display:none;
 margin-top:22px;
@@ -359,6 +396,48 @@ transform:
 translateY(120vh)
 rotate(360deg)
 scale(1.4);
+opacity:0;
+}
+
+}
+
+.rocket{
+position:fixed;
+bottom:-120px;
+left:50%;
+transform:translateX(-50%);
+font-size:90px;
+z-index:99999;
+pointer-events:none;
+animation:rocketLaunch 4s ease-out forwards;
+filter:
+drop-shadow(0 0 20px #ffd700)
+drop-shadow(0 0 50px #ffae00);
+}
+
+@keyframes rocketLaunch{
+
+0%{
+transform:
+translateX(-50%)
+translateY(0)
+scale(1);
+opacity:1;
+}
+
+20%{
+transform:
+translateX(-50%)
+translateY(-120px)
+scale(1.15);
+}
+
+100%{
+transform:
+translateX(-50%)
+translateY(-140vh)
+scale(1.8)
+rotate(-8deg);
 opacity:0;
 }
 
@@ -453,6 +532,10 @@ BudWay Certified Premium Flower
 
 <div class="first-verified" id="firstVerified"></div>
 
+</div>
+
+<div class="exclusive-badge" id="exclusiveBadge">
+👑 ULTRA EXOTIC COLLECTION • BUDWAY RESERVE
 </div>
 
 <div class="winner" id="winnerBox">
@@ -567,14 +650,15 @@ name:"Giraffe Puzzy",
 start:803587,
 end:803590,
 winner:803589,
-emojis:["🦒"],
+emojis:["🦒","✨","💎","🚀"],
 genetics:"Zkittlez × Animal Mintz",
 thc:"25–30%",
-type:"Hybrid",
+type:"Exotic Hybrid",
 flavour:"Tropical Candy, Citrus/Lime, Earthy Undertones",
-primary:"#D89B32",
-secondary:"#FFE08A",
-bg:"#1a1205"
+primary:"#FFD700",
+secondary:"#FFB300",
+bg:"#0f0900",
+exclusive:true
 },
 
 {
@@ -582,14 +666,15 @@ name:"Cherry Popperz",
 start:803594,
 end:803597,
 winner:803596,
-emojis:["🍒"],
+emojis:["🍒","✨","💎","🚀"],
 genetics:"Zkittlez × Gelato 41",
 thc:"24%",
-type:"Indica Hybrid",
+type:"Exotic Indica Hybrid",
 flavour:"Cherry Candy, Cream, Tropical Candy",
-primary:"#FF1E56",
-secondary:"#FF6B81",
-bg:"#18040b"
+primary:"#FF1744",
+secondary:"#FFD700",
+bg:"#120006",
+exclusive:true
 }
 
 ];
@@ -640,6 +725,18 @@ document.getElementById('type').innerText = found.type;
 
 document.getElementById('flavour').innerText = found.flavour;
 
+if(found.exclusive){
+
+document.getElementById('exclusiveBadge').style.display='block';
+
+document.querySelector('.card').style.boxShadow = `
+0 0 50px rgba(255,215,0,.18),
+0 0 120px rgba(255,215,0,.12),
+0 0 180px rgba(255,215,0,.08)
+`;
+
+}
+
 const storageKey = "budway_verified_" + serial;
 
 let firstVerified = localStorage.getItem(storageKey);
@@ -649,6 +746,24 @@ if(!firstVerified){
 firstVerified = new Date().toLocaleString();
 
 localStorage.setItem(storageKey, firstVerified);
+
+if(found.exclusive){
+
+const rocket = document.createElement("div");
+
+rocket.className = "rocket";
+
+rocket.innerText = "🚀";
+
+document.body.appendChild(rocket);
+
+setTimeout(()=>{
+
+rocket.remove();
+
+},4000);
+
+}
 
 }
 
