@@ -327,21 +327,28 @@ text-align:center;
 color:#ff7b7b;
 }
 
-/* RAINING EMOJIS */
+/* HEAVY EMOJI RAIN */
 
 .emoji{
 position:fixed;
-font-size:28px;
+top:-120px;
+font-size:56px;
 pointer-events:none;
 animation:rain linear forwards;
 z-index:9999;
-opacity:.85;
+opacity:.95;
+filter:
+drop-shadow(0 0 12px rgba(255,255,255,.45))
+drop-shadow(0 0 25px var(--primary));
 }
 
 @keyframes rain{
 
 0%{
-transform:translateY(-10vh) rotate(0deg) scale(.7);
+transform:
+translateY(-120px)
+rotate(0deg)
+scale(.8);
 opacity:0;
 }
 
@@ -350,7 +357,10 @@ opacity:1;
 }
 
 100%{
-transform:translateY(120vh) rotate(360deg) scale(1.2);
+transform:
+translateY(120vh)
+rotate(360deg)
+scale(1.4);
 opacity:0;
 }
 
@@ -488,17 +498,13 @@ Protected by BudWay Ldn Verification Technology
 
 <script>
 
-/* ======================================
-GET SERIAL FROM URL
-====================================== */
+/* GET SERIAL */
 
 const params = new URLSearchParams(window.location.search);
 
 const serial = params.get("code");
 
-/* ======================================
-STRAIN DATABASE
-====================================== */
+/* STRAINS */
 
 const strains = [
 
@@ -564,7 +570,7 @@ bg:"#120b00"
 
 ];
 
-/* MATCH SERIAL */
+/* MATCH */
 
 let found = null;
 
@@ -633,7 +639,7 @@ localStorage.setItem(storageKey, firstVerified);
 document.getElementById('firstVerified').innerText =
 "First Verified: " + firstVerified;
 
-/* RAINING EMOJIS */
+/* MASSIVE EMOJI RAIN */
 
 function createEmoji(){
 
@@ -649,7 +655,7 @@ Math.floor(Math.random() * found.emojis.length)
 emoji.style.left = Math.random() * 100 + "vw";
 
 emoji.style.animationDuration =
-(4 + Math.random() * 4) + "s";
+(2 + Math.random() * 2) + "s";
 
 document.body.appendChild(emoji);
 
@@ -657,11 +663,21 @@ setTimeout(()=>{
 
 emoji.remove();
 
-},8000);
+},5000);
 
 }
 
-setInterval(createEmoji,300);
+/* CONTINUOUS RAIN */
+
+setInterval(createEmoji,70);
+
+/* INITIAL BURST */
+
+for(let i = 0; i < 40; i++){
+
+setTimeout(createEmoji,i * 40);
+
+}
 
 /* WINNER */
 
@@ -671,7 +687,7 @@ document.getElementById('winnerBox').style.display='block';
 
 }
 
-/* SHOW CONTENT */
+/* SHOW */
 
 setTimeout(()=>{
 
