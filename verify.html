@@ -53,6 +53,142 @@ background-size:40px 40px;
 z-index:-1;
 }
 
+/* EXOTIC INTRO */
+
+.exclusive-intro{
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at center,
+rgba(255,215,0,.12),
+rgba(0,0,0,.96));
+z-index:999999;
+display:none;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+backdrop-filter:blur(8px);
+}
+
+.exclusive-glow{
+position:absolute;
+width:500px;
+height:500px;
+border-radius:50%;
+background:
+radial-gradient(circle,
+rgba(255,215,0,.25),
+transparent 70%);
+filter:blur(30px);
+animation:pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow{
+
+0%{
+transform:scale(1);
+opacity:.6;
+}
+
+50%{
+transform:scale(1.2);
+opacity:1;
+}
+
+100%{
+transform:scale(1);
+opacity:.6;
+}
+
+}
+
+.rocket-launch{
+position:absolute;
+bottom:-180px;
+font-size:160px;
+animation:rocketTakeoff 4s ease-out forwards;
+filter:
+drop-shadow(0 0 20px #ffd700)
+drop-shadow(0 0 60px #ffae00);
+}
+
+@keyframes rocketTakeoff{
+
+0%{
+transform:
+translateY(0)
+scale(.7);
+opacity:0;
+}
+
+10%{
+opacity:1;
+}
+
+40%{
+transform:
+translateY(-260px)
+scale(1);
+}
+
+100%{
+transform:
+translateY(-150vh)
+scale(1.7)
+rotate(-8deg);
+opacity:0;
+}
+
+}
+
+.exclusive-text{
+position:relative;
+font-family:'Orbitron',sans-serif;
+font-size:2.7rem;
+font-weight:900;
+letter-spacing:4px;
+color:#ffd700;
+text-align:center;
+text-shadow:
+0 0 10px #ffd700,
+0 0 20px #ffae00,
+0 0 50px #ffae00;
+animation:goldFlash 1.4s infinite;
+z-index:2;
+}
+
+.exclusive-sub{
+margin-top:14px;
+font-family:'Orbitron',sans-serif;
+font-size:1rem;
+letter-spacing:4px;
+color:white;
+opacity:.9;
+z-index:2;
+}
+
+@keyframes goldFlash{
+
+0%{
+opacity:.8;
+transform:scale(1);
+}
+
+50%{
+opacity:1;
+transform:scale(1.08);
+}
+
+100%{
+opacity:.8;
+transform:scale(1);
+}
+
+}
+
+/* MAIN */
+
 .container{
 max-width:430px;
 margin:auto;
@@ -226,53 +362,6 @@ margin-bottom:5px;
 font-size:.95rem;
 }
 
-.terpene{
-margin-top:22px;
-}
-
-.terpene-title{
-font-size:.8rem;
-margin-bottom:8px;
-color:#aaa;
-}
-
-.bar{
-height:10px;
-background:#161616;
-border-radius:999px;
-overflow:hidden;
-}
-
-.fill{
-height:100%;
-width:94%;
-border-radius:999px;
-background:linear-gradient(90deg,var(--primary),var(--secondary));
-box-shadow:0 0 20px var(--primary);
-}
-
-.cert{
-margin-top:22px;
-padding:16px;
-border-radius:18px;
-text-align:center;
-background:linear-gradient(90deg,#151515,#0c0c0c);
-border:1px solid rgba(255,255,255,.08);
-}
-
-.cert-title{
-font-size:.75rem;
-letter-spacing:1px;
-margin-bottom:8px;
-color:var(--secondary);
-}
-
-.first-verified{
-margin-top:10px;
-font-size:.75rem;
-color:#aaa;
-}
-
 .exclusive-badge{
 display:none;
 margin-top:20px;
@@ -401,52 +490,28 @@ opacity:0;
 
 }
 
-.rocket{
-position:fixed;
-bottom:-120px;
-left:50%;
-transform:translateX(-50%);
-font-size:90px;
-z-index:99999;
-pointer-events:none;
-animation:rocketLaunch 4s ease-out forwards;
-filter:
-drop-shadow(0 0 20px #ffd700)
-drop-shadow(0 0 50px #ffae00);
-}
-
-@keyframes rocketLaunch{
-
-0%{
-transform:
-translateX(-50%)
-translateY(0)
-scale(1);
-opacity:1;
-}
-
-20%{
-transform:
-translateX(-50%)
-translateY(-120px)
-scale(1.15);
-}
-
-100%{
-transform:
-translateX(-50%)
-translateY(-140vh)
-scale(1.8)
-rotate(-8deg);
-opacity:0;
-}
-
-}
-
 </style>
 </head>
 
 <body>
+
+<div id="exclusiveIntro" class="exclusive-intro">
+
+<div class="exclusive-glow"></div>
+
+<div class="rocket-launch">
+🚀
+</div>
+
+<div class="exclusive-text">
+ULTRA EXOTIC DROP
+</div>
+
+<div class="exclusive-sub">
+BUDWAY RESERVE COLLECTION
+</div>
+
+</div>
 
 <div class="grid"></div>
 
@@ -508,32 +573,6 @@ AUTHENTIC PRODUCT VERIFIED
 
 </div>
 
-<div class="terpene">
-
-<div class="terpene-title">
-TERPENE RICHNESS
-</div>
-
-<div class="bar">
-<div class="fill"></div>
-</div>
-
-</div>
-
-<div class="cert">
-
-<div class="cert-title">
-LAB VERIFIED AUTHENTIC
-</div>
-
-<strong>
-BudWay Certified Premium Flower
-</strong>
-
-<div class="first-verified" id="firstVerified"></div>
-
-</div>
-
 <div class="exclusive-badge" id="exclusiveBadge">
 👑 ULTRA EXOTIC COLLECTION • BUDWAY RESERVE
 </div>
@@ -543,7 +582,7 @@ BudWay Certified Premium Flower
 <h3>🎉 WINNER PACK FOUND</h3>
 
 <p>
-You were our lucky winner for this strain! 🎉🎉🎉
+You were our lucky winner for this strain!
 <br><br>
 £10 OFF YOUR NEXT ORDER
 </p>
@@ -560,7 +599,6 @@ BW-10
 
 <p>
 This BudWay product could not be verified.
-Please contact BudWay Ldn support if you believe this is an error.
 </p>
 
 </div>
@@ -729,46 +767,21 @@ if(found.exclusive){
 
 document.getElementById('exclusiveBadge').style.display='block';
 
+document.getElementById('exclusiveIntro').style.display='flex';
+
 document.querySelector('.card').style.boxShadow = `
-0 0 50px rgba(255,215,0,.18),
-0 0 120px rgba(255,215,0,.12),
+0 0 60px rgba(255,215,0,.25),
+0 0 120px rgba(255,215,0,.15),
 0 0 180px rgba(255,215,0,.08)
 `;
 
-}
-
-const storageKey = "budway_verified_" + serial;
-
-let firstVerified = localStorage.getItem(storageKey);
-
-if(!firstVerified){
-
-firstVerified = new Date().toLocaleString();
-
-localStorage.setItem(storageKey, firstVerified);
-
-if(found.exclusive){
-
-const rocket = document.createElement("div");
-
-rocket.className = "rocket";
-
-rocket.innerText = "🚀";
-
-document.body.appendChild(rocket);
-
 setTimeout(()=>{
 
-rocket.remove();
+document.getElementById('exclusiveIntro').style.display='none';
 
-},4000);
-
-}
+},4200);
 
 }
-
-document.getElementById('firstVerified').innerText =
-"First Verified: " + firstVerified;
 
 function createEmoji(){
 
