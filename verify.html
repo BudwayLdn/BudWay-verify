@@ -1,15 +1,641 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>TEST</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BudWay Ldn Verification</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+:root{
+--primary:#00ff88;
+--secondary:#ffd700;
+--bg:#050505;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:var(--bg);
+color:white;
+overflow-x:hidden;
+min-height:100vh;
+}
+
+body::before{
+content:'';
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at top left,var(--primary) 0%,transparent 30%),
+radial-gradient(circle at bottom right,var(--secondary) 0%,transparent 30%);
+opacity:.18;
+z-index:-2;
+}
+
+.grid{
+position:fixed;
+inset:0;
+background:
+linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+background-size:40px 40px;
+z-index:-1;
+}
+
+.container{
+max-width:430px;
+margin:auto;
+padding:18px;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.card{
+width:100%;
+background:rgba(10,10,10,.92);
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(20px);
+border-radius:30px;
+padding:28px;
+position:relative;
+overflow:hidden;
+box-shadow:
+0 0 40px rgba(0,0,0,.8),
+0 0 40px rgba(0,255,136,.15);
+}
+
+.glow{
+position:absolute;
+width:260px;
+height:260px;
+border-radius:50%;
+background:radial-gradient(circle,var(--primary),transparent 70%);
+top:-120px;
+right:-120px;
+opacity:.25;
+filter:blur(25px);
+}
+
+.logo{
+font-family:'Orbitron',sans-serif;
+font-size:2rem;
+font-weight:900;
+text-align:center;
+letter-spacing:2px;
+margin-bottom:6px;
+background:linear-gradient(90deg,var(--primary),white,var(--secondary));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.subtitle{
+text-align:center;
+font-size:.82rem;
+color:#a0a0a0;
+margin-bottom:28px;
+}
+
+.loader{
+display:flex;
+justify-content:center;
+align-items:center;
+margin-bottom:24px;
+}
+
+.loader-ring{
+width:72px;
+height:72px;
+border-radius:50%;
+border:3px solid rgba(255,255,255,.08);
+border-top:3px solid var(--primary);
+animation:spin 1s linear infinite;
+box-shadow:0 0 20px rgba(255,255,255,.08);
+}
+
+@keyframes spin{
+from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}
+}
+
+.serial-box{
+background:#111;
+padding:16px;
+border-radius:18px;
+border:1px solid rgba(255,255,255,.08);
+text-align:center;
+margin-bottom:18px;
+}
+
+.serial-label{
+font-size:.72rem;
+letter-spacing:1px;
+color:var(--primary);
+margin-bottom:6px;
+}
+
+.serial{
+font-family:'Orbitron',sans-serif;
+font-size:1.4rem;
+font-weight:700;
+}
+
+.status{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+padding:14px;
+border-radius:14px;
+background:linear-gradient(90deg,rgba(0,255,136,.12),#111);
+border:1px solid var(--primary);
+margin-bottom:22px;
+font-weight:700;
+}
+
+.dot{
+width:12px;
+height:12px;
+border-radius:50%;
+background:var(--primary);
+box-shadow:0 0 15px var(--primary);
+animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.5);opacity:.5;}
+100%{transform:scale(1);}
+}
+
+.strain-card{
+background:linear-gradient(180deg,#111,#090909);
+padding:22px;
+border-radius:24px;
+border:1px solid rgba(255,255,255,.06);
+}
+
+.strain-title{
+font-family:'Orbitron',sans-serif;
+font-size:1.5rem;
+margin-bottom:8px;
+color:var(--primary);
+}
+
+.desc{
+font-size:.9rem;
+color:#c0c0c0;
+line-height:1.5;
+}
+
+.meta-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+margin-top:20px;
+}
+
+.meta{
+background:#101010;
+padding:12px;
+border-radius:14px;
+border:1px solid rgba(255,255,255,.05);
+}
+
+.meta span{
+display:block;
+font-size:.7rem;
+color:#888;
+margin-bottom:5px;
+}
+
+.meta strong{
+font-size:.95rem;
+}
+
+.first-verified{
+margin-top:22px;
+padding:18px;
+border-radius:18px;
+background:linear-gradient(135deg,#08130d,#0d1d14);
+border:1px solid rgba(0,255,136,.18);
+display:none;
+}
+
+.first-title{
+font-family:'Orbitron',sans-serif;
+font-size:.8rem;
+letter-spacing:1px;
+margin-bottom:10px;
+color:var(--primary);
+}
+
+.first-date{
+font-size:.92rem;
+line-height:1.7;
+color:#d8d8d8;
+}
+
+.terpene{
+margin-top:22px;
+}
+
+.terpene-title{
+font-size:.8rem;
+margin-bottom:8px;
+color:#aaa;
+}
+
+.bar{
+height:10px;
+background:#161616;
+border-radius:999px;
+overflow:hidden;
+}
+
+.fill{
+height:100%;
+width:94%;
+border-radius:999px;
+background:linear-gradient(90deg,var(--primary),var(--secondary));
+box-shadow:0 0 20px var(--primary);
+}
+
+.cert{
+margin-top:22px;
+padding:16px;
+border-radius:18px;
+text-align:center;
+background:linear-gradient(90deg,#151515,#0c0c0c);
+border:1px solid rgba(255,255,255,.08);
+}
+
+.cert-title{
+font-size:.75rem;
+letter-spacing:1px;
+margin-bottom:8px;
+color:var(--secondary);
+}
+
+.winner{
+display:none;
+margin-top:22px;
+padding:22px;
+border-radius:22px;
+text-align:center;
+background:
+linear-gradient(135deg,#2b1b00,#120d00);
+border:1px solid rgba(255,215,0,.4);
+box-shadow:
+0 0 35px rgba(255,215,0,.18),
+inset 0 0 25px rgba(255,215,0,.05);
+animation:goldPulse 2s infinite;
+}
+
+@keyframes goldPulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.02);}
+100%{transform:scale(1);}
+}
+
+.winner h3{
+font-family:'Orbitron',sans-serif;
+color:#ffd700;
+margin-bottom:10px;
+}
+
+.code{
+margin-top:14px;
+padding:12px;
+background:black;
+border-radius:12px;
+border:1px dashed #ffd700;
+font-family:'Orbitron',sans-serif;
+font-size:1rem;
+letter-spacing:2px;
+}
+
+.footer{
+margin-top:24px;
+text-align:center;
+font-size:.75rem;
+color:#777;
+}
+
+.fake-warning{
+display:none;
+margin-top:20px;
+padding:18px;
+border-radius:18px;
+background:#220000;
+border:1px solid #ff3b3b;
+text-align:center;
+color:#ff7b7b;
+}
+
+</style>
 </head>
 
-<body style="background:black;color:white;font-family:Arial;padding:40px;">
+<body>
 
-<h1>BUDWAY TEST PAGE</h1>
+<div class="grid"></div>
+
+<div class="container">
+
+<div class="card">
+
+<div class="glow"></div>
+
+<div class="logo">BUDWAY LDN</div>
+
+<div class="subtitle">
+Premium Authenticity Verification System
+</div>
+
+<div class="loader">
+<div class="loader-ring"></div>
+</div>
+
+<div id="realContent" style="display:none;">
+
+<div class="serial-box">
+<div class="serial-label">VERIFIED SERIAL</div>
+<div class="serial" id="serialNumber"></div>
+</div>
+
+<div class="status">
+<div class="dot"></div>
+AUTHENTIC PRODUCT VERIFIED
+</div>
+
+<div class="strain-card">
+
+<div class="strain-title" id="strainName"></div>
+
+<div class="desc" id="genetics"></div>
+
+<div class="meta-grid">
+
+<div class="meta">
+<span>THC LEVEL</span>
+<strong id="thc"></strong>
+</div>
+
+<div class="meta">
+<span>TYPE</span>
+<strong id="type"></strong>
+</div>
+
+<div class="meta">
+<span>FLAVOUR</span>
+<strong id="flavour"></strong>
+</div>
+
+<div class="meta">
+<span>BATCH</span>
+<strong>DROP 01</strong>
+</div>
+
+</div>
+
+<div class="first-verified" id="firstVerified">
+
+<div class="first-title">
+FIRST VERIFIED
+</div>
+
+<div class="first-date">
+First authenticated on:
+<br><br>
+<strong id="verifyDate"></strong>
+</div>
+
+</div>
+
+<div class="terpene">
+<div class="terpene-title">
+TERPENE RICHNESS
+</div>
+
+<div class="bar">
+<div class="fill"></div>
+</div>
+</div>
+
+<div class="cert">
+
+<div class="cert-title">
+LAB VERIFIED AUTHENTIC
+</div>
+
+<strong>
+BudWay Certified Premium Flower
+</strong>
+
+</div>
+
+<div class="winner" id="winnerBox">
+
+<h3>🎉 WINNER PACK FOUND</h3>
+
+<p>
+You were our lucky winner for this strain! 🎉🎉🎉
+<br><br>
+£10 OFF YOUR NEXT ORDER
+</p>
+
+<div class="code">
+BW-10
+</div>
+
+</div>
+
+<div class="fake-warning" id="fakeBox">
+
+<h3>⚠ INVALID SERIAL</h3>
+
+<p>
+This BudWay product could not be verified.
+Please contact BudWay Ldn support if you believe this is an error.
+</p>
+
+</div>
+
+<div class="footer">
+Protected by BudWay Ldn Verification Technology
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 <script>
-document.body.innerHTML += "<p>JavaScript Works</p>";
+
+const params = new URLSearchParams(window.location.search);
+const serial = params.get("code");
+
+const strains = [
+
+{
+name:"Pink StarBurst Gelato",
+start:803541,
+end:803546,
+winner:803542,
+genetics:"Pink Starburst × Gelato",
+thc:"20–26%",
+type:"50/50 Hybrid",
+flavour:"Candy Strawberry Citrus Cream",
+primary:"#FF4FA3",
+secondary:"#FF355E",
+bg:"#14040c"
+},
+
+{
+name:"Legendary Blueberry",
+start:803547,
+end:803559,
+winner:803551,
+genetics:"Afghani × Thai × Purple Thai",
+thc:"20–24%",
+type:"80/20 Indica",
+flavour:"Blueberry Vanilla Earthy Spice",
+primary:"#2040FF",
+secondary:"#7A5CFF",
+bg:"#080818"
+},
+
+{
+name:"Blue Bubblegum Gelato",
+start:803560,
+end:803568,
+winner:803564,
+genetics:"Gelato 45 × Indiana Bubblegum",
+thc:"24–32%",
+type:"60/40 Indica",
+flavour:"Sugary Bubblegum Citrus",
+primary:"#57D6FF",
+secondary:"#B57DFF",
+bg:"#07131a"
+},
+
+{
+name:"Mango Sapphire",
+start:803569,
+end:803584,
+winner:803578,
+genetics:"Bubba’s Gift × OG Kush × Afghan",
+thc:"21–23%",
+type:"85/15 Indica",
+flavour:"Tropical Mango Coconut Citrus",
+primary:"#FFB000",
+secondary:"#0057FF",
+bg:"#120b00"
+}
+
+];
+
+const firstVerifiedDates = {
+
+803541:"12 May 2026 • 8:42PM",
+803542:"12 May 2026 • 8:51PM",
+
+803547:"14 May 2026 • 6:13PM",
+803548:"14 May 2026 • 6:21PM",
+803549:"14 May 2026 • 6:44PM",
+803550:"14 May 2026 • 7:02PM",
+803551:"14 May 2026 • 7:11PM",
+
+803560:"18 May 2026 • 9:16PM",
+803561:"18 May 2026 • 9:28PM",
+803562:"18 May 2026 • 9:42PM",
+803563:"18 May 2026 • 10:03PM",
+803564:"18 May 2026 • 10:24PM",
+
+803569:"21 May 2026 • 11:14PM",
+803570:"21 May 2026 • 11:28PM",
+803571:"21 May 2026 • 11:51PM",
+803572:"22 May 2026 • 12:07AM",
+803578:"22 May 2026 • 1:26AM"
+
+};
+
+let found = null;
+
+for(let strain of strains){
+
+if(serial >= strain.start && serial <= strain.end){
+found = strain;
+}
+
+}
+
+if(!found){
+
+document.querySelector('.loader').style.display='none';
+
+document.getElementById('realContent').style.display='block';
+
+document.querySelector('.status').style.display='none';
+
+document.querySelector('.strain-card').style.display='none';
+
+document.getElementById('fakeBox').style.display='block';
+
+}
+
+else{
+
+document.documentElement.style.setProperty('--primary',found.primary);
+document.documentElement.style.setProperty('--secondary',found.secondary);
+
+document.body.style.background = found.bg;
+
+document.getElementById('serialNumber').innerText = serial;
+document.getElementById('strainName').innerText = found.name;
+document.getElementById('genetics').innerText = found.genetics;
+document.getElementById('thc').innerText = found.thc;
+document.getElementById('type').innerText = found.type;
+document.getElementById('flavour').innerText = found.flavour;
+
+if(firstVerifiedDates[serial]){
+
+document.getElementById('firstVerified').style.display='block';
+
+document.getElementById('verifyDate').innerText =
+firstVerifiedDates[serial];
+
+}
+
+if(Number(serial) === found.winner){
+
+document.getElementById('winnerBox').style.display='block';
+
+}
+
+setTimeout(()=>{
+
+document.querySelector('.loader').style.display='none';
+
+document.getElementById('realContent').style.display='block';
+
+},1800);
+
+}
+
 </script>
 
 </body>
