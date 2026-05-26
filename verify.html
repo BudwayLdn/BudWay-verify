@@ -327,7 +327,7 @@ text-align:center;
 color:#ff7b7b;
 }
 
-/* HEAVY EMOJI RAIN */
+/* EMOJI RAIN */
 
 .emoji{
 position:fixed;
@@ -639,7 +639,7 @@ localStorage.setItem(storageKey, firstVerified);
 document.getElementById('firstVerified').innerText =
 "First Verified: " + firstVerified;
 
-/* MASSIVE EMOJI RAIN */
+/* EMOJI RAIN */
 
 function createEmoji(){
 
@@ -667,13 +667,13 @@ emoji.remove();
 
 }
 
-/* CONTINUOUS RAIN */
+/* LIGHTER RAIN */
 
-setInterval(createEmoji,70);
+setInterval(createEmoji,180);
 
 /* INITIAL BURST */
 
-for(let i = 0; i < 40; i++){
+for(let i = 0; i < 18; i++){
 
 setTimeout(createEmoji,i * 40);
 
