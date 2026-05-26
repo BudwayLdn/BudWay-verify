@@ -327,8 +327,6 @@ text-align:center;
 color:#ff7b7b;
 }
 
-/* EMOJI RAIN */
-
 .emoji{
 position:fixed;
 top:-120px;
@@ -498,13 +496,9 @@ Protected by BudWay Ldn Verification Technology
 
 <script>
 
-/* GET SERIAL */
-
 const params = new URLSearchParams(window.location.search);
 
 const serial = params.get("code");
-
-/* STRAINS */
 
 const strains = [
 
@@ -566,11 +560,39 @@ flavour:"Tropical Mango Coconut Citrus",
 primary:"#FFB000",
 secondary:"#0057FF",
 bg:"#120b00"
+},
+
+{
+name:"Giraffe Puzzy",
+start:803587,
+end:803590,
+winner:803589,
+emojis:["🦒"],
+genetics:"Zkittlez × Animal Mintz",
+thc:"25–30%",
+type:"Hybrid",
+flavour:"Tropical Candy, Citrus/Lime, Earthy Undertones",
+primary:"#D89B32",
+secondary:"#FFE08A",
+bg:"#1a1205"
+},
+
+{
+name:"Cherry Popperz",
+start:803594,
+end:803597,
+winner:803596,
+emojis:["🍒"],
+genetics:"Zkittlez × Gelato 41",
+thc:"24%",
+type:"Indica Hybrid",
+flavour:"Cherry Candy, Cream, Tropical Candy",
+primary:"#FF1E56",
+secondary:"#FF6B81",
+bg:"#18040b"
 }
 
 ];
-
-/* MATCH */
 
 let found = null;
 
@@ -583,8 +605,6 @@ found = strain;
 }
 
 }
-
-/* INVALID */
 
 if(!found){
 
@@ -599,8 +619,6 @@ document.querySelector('.strain-card').style.display='none';
 document.getElementById('fakeBox').style.display='block';
 
 }
-
-/* VALID */
 
 else{
 
@@ -622,8 +640,6 @@ document.getElementById('type').innerText = found.type;
 
 document.getElementById('flavour').innerText = found.flavour;
 
-/* FIRST VERIFIED */
-
 const storageKey = "budway_verified_" + serial;
 
 let firstVerified = localStorage.getItem(storageKey);
@@ -638,8 +654,6 @@ localStorage.setItem(storageKey, firstVerified);
 
 document.getElementById('firstVerified').innerText =
 "First Verified: " + firstVerified;
-
-/* EMOJI RAIN */
 
 function createEmoji(){
 
@@ -667,11 +681,7 @@ emoji.remove();
 
 }
 
-/* LIGHTER RAIN */
-
 setInterval(createEmoji,180);
-
-/* INITIAL BURST */
 
 for(let i = 0; i < 18; i++){
 
@@ -679,15 +689,11 @@ setTimeout(createEmoji,i * 40);
 
 }
 
-/* WINNER */
-
 if(Number(serial) === found.winner){
 
 document.getElementById('winnerBox').style.display='block';
 
 }
-
-/* SHOW */
 
 setTimeout(()=>{
 
