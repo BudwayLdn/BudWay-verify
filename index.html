@@ -1,203 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BudWay Ldn | Premium Cannabis Verification</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>BudWay Ldn</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
-
-<style>
-
-/* RESET */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-/* BODY */
-
-body{
-    font-family:'Space Grotesk',sans-serif;
-    background:#050505;
-    color:white;
-    height:100vh;
-    overflow:hidden;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-/* BACKGROUND GLOW */
-
-.bg-glow{
-    position:absolute;
-    width:700px;
-    height:700px;
-    background:radial-gradient(circle,#00ff8840 0%,transparent 70%);
-    filter:blur(60px);
-    animation:pulse 4s infinite;
-}
-
-@keyframes pulse{
-
-    0%{
-        transform:scale(1);
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
     }
 
-    50%{
-        transform:scale(1.08);
+    body{
+      background:#050505;
+      color:white;
+      overflow-x:hidden;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
     }
 
-    100%{
-        transform:scale(1);
+    body::before{
+      content:'';
+      position:absolute;
+      width:600px;
+      height:600px;
+      background:radial-gradient(circle,#00ff88 0%, transparent 70%);
+      opacity:0.12;
+      filter:blur(90px);
+      top:-200px;
+      right:-150px;
     }
 
-}
+    body::after{
+      content:'';
+      position:absolute;
+      width:500px;
+      height:500px;
+      background:radial-gradient(circle,#ffd700 0%, transparent 70%);
+      opacity:0.08;
+      filter:blur(90px);
+      bottom:-200px;
+      left:-100px;
+    }
 
-/* CARD */
+    .container{
+      width:90%;
+      max-width:500px;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+      backdrop-filter:blur(20px);
+      border-radius:30px;
+      padding:50px 35px;
+      text-align:center;
+      position:relative;
+      z-index:2;
+      box-shadow:0 0 50px rgba(0,255,136,0.08);
+    }
 
-.card{
-    position:relative;
-    width:420px;
-    padding:55px 40px;
-    border-radius:30px;
-    background:rgba(255,255,255,0.03);
-    border:1px solid rgba(255,255,255,0.08);
-    backdrop-filter:blur(20px);
-    text-align:center;
-    box-shadow:0 0 40px rgba(0,255,136,0.08);
-}
+    .logo{
+      font-size:48px;
+      font-weight:900;
+      letter-spacing:2px;
+      margin-bottom:10px;
+    }
 
-/* LOGO */
+    .logo span{
+      color:#00ff88;
+    }
 
-.logo{
-    font-size:46px;
-    font-weight:700;
-    letter-spacing:3px;
-    margin-bottom:12px;
-}
+    .tagline{
+      color:#bbb;
+      font-size:15px;
+      margin-bottom:40px;
+      line-height:1.6;
+    }
 
-.logo span{
-    color:#00ff88;
-}
+    .verify-title{
+      font-size:26px;
+      font-weight:700;
+      margin-bottom:25px;
+    }
 
-/* TEXT */
+    .input-box{
+      width:100%;
+      padding:18px;
+      border:none;
+      outline:none;
+      border-radius:15px;
+      background:#101010;
+      color:white;
+      font-size:17px;
+      text-align:center;
+      margin-bottom:20px;
+      border:1px solid rgba(255,255,255,0.06);
+      transition:0.3s;
+    }
 
-.subtitle{
-    color:#888;
-    font-size:14px;
-    margin-bottom:45px;
-    letter-spacing:1px;
-    line-height:1.6;
-}
+    .input-box:focus{
+      border-color:#00ff88;
+      box-shadow:0 0 20px rgba(0,255,136,0.25);
+    }
 
-/* INPUT */
+    .verify-btn{
+      width:100%;
+      padding:18px;
+      border:none;
+      border-radius:15px;
+      background:linear-gradient(135deg,#00ff88,#00c76b);
+      color:black;
+      font-size:18px;
+      font-weight:700;
+      cursor:pointer;
+      transition:0.3s;
+    }
 
-input{
-    width:100%;
-    padding:18px;
-    border:none;
-    outline:none;
-    border-radius:16px;
-    background:#111;
-    color:white;
-    font-size:17px;
-    text-align:center;
-    border:1px solid rgba(255,255,255,0.08);
-    transition:0.3s;
-}
+    .verify-btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 0 25px rgba(0,255,136,0.35);
+    }
 
-input:focus{
-    border-color:#00ff88;
-    box-shadow:0 0 20px rgba(0,255,136,0.25);
-}
+    .features{
+      margin-top:35px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:15px;
+    }
 
-/* BUTTON */
+    .feature{
+      background:rgba(255,255,255,0.03);
+      border-radius:15px;
+      padding:15px;
+      font-size:14px;
+      color:#ccc;
+      border:1px solid rgba(255,255,255,0.04);
+    }
 
-button{
-    width:100%;
-    margin-top:20px;
-    padding:18px;
-    border:none;
-    border-radius:16px;
-    background:#00ff88;
-    color:black;
-    font-size:16px;
-    font-weight:700;
-    cursor:pointer;
-    transition:0.3s;
-}
+    .footer{
+      margin-top:35px;
+      font-size:13px;
+      color:#666;
+    }
 
-button:hover{
-    transform:translateY(-2px);
-    box-shadow:0 0 25px rgba(0,255,136,0.4);
-}
+    @media(max-width:600px){
+      .container{
+        padding:40px 25px;
+      }
 
-/* FOOTER */
+      .logo{
+        font-size:38px;
+      }
 
-.footer{
-    margin-top:30px;
-    color:#555;
-    font-size:11px;
-    letter-spacing:1px;
-}
-
-</style>
-
+      .verify-title{
+        font-size:22px;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="bg-glow"></div>
+  <div class="container">
 
-<div class="card">
+    <div class="logo">BUD<span>WAY</span></div>
 
-    <div class="logo">
-        BUD<span>WAY</span>
+    <div class="tagline">
+      Premium Lab-Tested Cannabis Flower<br>
+      Authenticity Verification System
     </div>
 
-    <div class="subtitle">
-        Premium Product Verification Portal
+    <div class="verify-title">
+      Verify Your Product
     </div>
 
-    <input
-        type="number"
-        id="serialInput"
-        placeholder="ENTER SERIAL NUMBER"
+    <input 
+      type="number" 
+      id="serialInput"
+      class="input-box"
+      placeholder="Enter Serial Number"
     >
 
-    <button onclick="goVerify()">
-        VERIFY PRODUCT
+    <button class="verify-btn" onclick="verifyProduct()">
+      VERIFY AUTHENTICITY
     </button>
 
-    <div class="footer">
-        OFFICIAL BUDWAY AUTHENTICATION SYSTEM
+    <div class="features">
+      <div class="feature">✓ Authentic Product Check</div>
+      <div class="feature">✓ Premium Strain Validation</div>
+      <div class="feature">✓ Lab Tested Flower</div>
+      <div class="feature">✓ Reward Winner Detection</div>
     </div>
 
-</div>
+    <div class="footer">
+      © 2026 BudWay Ldn — All Rights Reserved
+    </div>
 
-<script>
+  </div>
 
-function goVerify(){
+  <script>
+    function verifyProduct(){
+      const code = document.getElementById('serialInput').value.trim();
 
-    let serial =
-    document.getElementById("serialInput").value;
+      if(code === ''){
+        alert('Please enter a serial number.');
+        return;
+      }
 
-    if(serial.trim() !== ""){
-
-        window.location.href =
-        "verify.html?code=" + serial;
-
+      window.location.href = `verify.html?code=${code}`;
     }
 
-}
-
-</script>
+    document
+      .getElementById('serialInput')
+      .addEventListener('keypress', function(e){
+        if(e.key === 'Enter'){
+          verifyProduct();
+        }
+      });
+  </script>
 
 </body>
 </html>
