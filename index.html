@@ -1,421 +1,364 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
 <title>BudWay Ldn | Premium Verification</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
-  min-height:100vh;
-  background:
-  radial-gradient(circle at top right,#00ff8840 0%,transparent 35%),
-  radial-gradient(circle at bottom left,#ffd70020 0%,transparent 35%),
-  #030303;
-
-  overflow:hidden;
-  font-family:'Inter',sans-serif;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  color:white;
-  position:relative;
+background:#030303;
+font-family:'Poppins',sans-serif;
+color:white;
+overflow-x:hidden;
+min-height:100vh;
+position:relative;
 }
 
-/* animated grid */
+/* BACKGROUND */
 
-.grid{
-  position:absolute;
-  width:100%;
-  height:100%;
-  background-image:
-  linear-gradient(rgba(0,255,136,0.05) 1px, transparent 1px),
-  linear-gradient(90deg, rgba(0,255,136,0.05) 1px, transparent 1px);
-  background-size:40px 40px;
-  transform:perspective(800px) rotateX(60deg);
-  animation:gridMove 18s linear infinite;
-  opacity:0.25;
+body::before{
+content:'';
+position:absolute;
+width:800px;
+height:800px;
+background:radial-gradient(circle,#00ff88 0%,transparent 70%);
+top:-300px;
+right:-300px;
+opacity:0.18;
+filter:blur(120px);
+animation:pulse 6s infinite alternate;
 }
 
-@keyframes gridMove{
-  0%{
-    transform:perspective(800px) rotateX(60deg) translateY(0);
-  }
-
-  100%{
-    transform:perspective(800px) rotateX(60deg) translateY(40px);
-  }
+body::after{
+content:'';
+position:absolute;
+width:700px;
+height:700px;
+background:radial-gradient(circle,#ffd700 0%,transparent 70%);
+bottom:-300px;
+left:-250px;
+opacity:0.12;
+filter:blur(120px);
+animation:pulse2 7s infinite alternate;
 }
 
-/* glowing orbs */
-
-.orb1,.orb2{
-  position:absolute;
-  border-radius:50%;
-  filter:blur(100px);
+@keyframes pulse{
+from{transform:scale(1);}
+to{transform:scale(1.2);}
 }
 
-.orb1{
-  width:300px;
-  height:300px;
-  background:#00ff88;
-  top:-100px;
-  right:-100px;
-  opacity:0.15;
+@keyframes pulse2{
+from{transform:scale(1);}
+to{transform:scale(1.15);}
 }
 
-.orb2{
-  width:250px;
-  height:250px;
-  background:#ffd700;
-  bottom:-100px;
-  left:-100px;
-  opacity:0.08;
-}
+/* MAIN */
 
-/* main card */
+.wrapper{
+width:100%;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:40px 20px;
+position:relative;
+z-index:2;
+}
 
 .container{
-  width:92%;
-  max-width:480px;
-
-  background:rgba(255,255,255,0.04);
-
-  border:1px solid rgba(255,255,255,0.08);
-
-  backdrop-filter:blur(30px);
-
-  border-radius:35px;
-
-  padding:45px 30px;
-
-  position:relative;
-
-  z-index:5;
-
-  overflow:hidden;
-
-  box-shadow:
-  0 0 60px rgba(0,255,136,0.12),
-  inset 0 0 30px rgba(255,255,255,0.03);
+width:100%;
+max-width:1400px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
 }
 
-.container::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  border-radius:35px;
-  padding:1px;
-  background:linear-gradient(135deg,#00ff88,#ffffff10,#ffd70040);
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite:xor;
-  mask-composite:exclude;
-}
+/* LEFT */
 
-/* B logo */
+.left{
+padding:20px;
+}
 
 .logo-wrap{
-  display:flex;
-  justify-content:center;
-  margin-bottom:20px;
+display:flex;
+align-items:center;
+gap:20px;
+margin-bottom:35px;
 }
 
-.logo-circle{
-  width:95px;
-  height:95px;
-  border-radius:28px;
-
-  background:
-  linear-gradient(145deg,#00ff88,#00b35f);
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  box-shadow:
-  0 0 35px rgba(0,255,136,0.5),
-  inset 0 0 20px rgba(255,255,255,0.25);
-
-  position:relative;
+.logo-icon{
+width:90px;
+height:90px;
+border-radius:50%;
+background:linear-gradient(145deg,#ffd700,#8f6b00);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:58px;
+font-family:'Orbitron',sans-serif;
+font-weight:900;
+color:black;
+box-shadow:
+0 0 40px rgba(255,215,0,0.4),
+0 0 80px rgba(0,255,136,0.15);
+border:2px solid rgba(255,255,255,0.1);
+position:relative;
 }
 
-.logo-circle::before{
-  content:'';
-  position:absolute;
-  inset:2px;
-  border-radius:26px;
-  background:#050505;
+.logo-icon::before{
+content:'👑';
+position:absolute;
+top:-18px;
+font-size:28px;
 }
 
-.logo-b{
-  position:relative;
-  z-index:2;
-  font-size:54px;
-  font-weight:900;
-  font-family:'Orbitron',sans-serif;
-  color:#00ff88;
-  text-shadow:0 0 20px #00ff88;
+.logo-text{
+font-family:'Orbitron',sans-serif;
+font-size:56px;
+font-weight:900;
+letter-spacing:4px;
 }
 
-.brand{
-  text-align:center;
-  margin-bottom:15px;
+.logo-text span{
+color:#00ff88;
+text-shadow:0 0 20px #00ff88;
 }
 
-.brand h1{
-  font-size:52px;
-  font-family:'Orbitron',sans-serif;
-  font-weight:900;
-  letter-spacing:3px;
+.badge{
+display:inline-block;
+padding:10px 18px;
+border:1px solid rgba(0,255,136,0.4);
+border-radius:40px;
+font-size:12px;
+letter-spacing:3px;
+color:#00ff88;
+margin-bottom:25px;
+backdrop-filter:blur(10px);
+background:rgba(0,255,136,0.05);
 }
 
-.brand h1 span{
-  color:#00ff88;
-  text-shadow:0 0 15px #00ff88;
+.hero-title{
+font-size:92px;
+font-weight:900;
+line-height:0.9;
+font-family:'Orbitron',sans-serif;
+margin-bottom:30px;
 }
 
-.subtitle{
-  text-align:center;
-  color:#a7a7a7;
-  font-size:15px;
-  line-height:1.7;
-  margin-bottom:40px;
+.hero-title .white{
+color:white;
 }
 
-.verify-title{
-  text-align:center;
-  font-size:28px;
-  font-weight:700;
-  margin-bottom:25px;
+.hero-title .green{
+color:#00ff88;
+text-shadow:0 0 30px #00ff88;
 }
 
-.input-box{
-  width:100%;
-  height:72px;
-
-  border:none;
-  outline:none;
-
-  border-radius:22px;
-
-  background:rgba(255,255,255,0.04);
-
-  border:1px solid rgba(255,255,255,0.08);
-
-  color:white;
-
-  text-align:center;
-
-  font-size:22px;
-
-  margin-bottom:22px;
-
-  transition:0.35s;
+.hero-title .gold{
+color:#ffd700;
+text-shadow:0 0 25px #ffd700;
 }
 
-.input-box:focus{
-  border-color:#00ff88;
-
-  box-shadow:
-  0 0 25px rgba(0,255,136,0.3),
-  inset 0 0 10px rgba(0,255,136,0.15);
+.hero-text{
+font-size:20px;
+line-height:1.8;
+color:#bdbdbd;
+max-width:620px;
+margin-bottom:45px;
 }
 
-.verify-btn{
-  width:100%;
-  height:72px;
-
-  border:none;
-  border-radius:22px;
-
-  background:
-  linear-gradient(135deg,#00ff88,#00c96d);
-
-  color:black;
-
-  font-size:21px;
-  font-weight:800;
-
-  cursor:pointer;
-
-  transition:0.35s;
-
-  letter-spacing:1px;
-
-  box-shadow:0 0 30px rgba(0,255,136,0.35);
-}
-
-.verify-btn:hover{
-  transform:translateY(-3px) scale(1.01);
-
-  box-shadow:
-  0 0 40px rgba(0,255,136,0.5);
-}
+/* FEATURES */
 
 .features{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px;
-  margin-top:35px;
+display:flex;
+gap:25px;
+flex-wrap:wrap;
 }
 
 .feature{
-  background:rgba(255,255,255,0.03);
+display:flex;
+align-items:center;
+gap:14px;
+padding:18px 22px;
+background:rgba(255,255,255,0.03);
+border:1px solid rgba(255,255,255,0.06);
+border-radius:18px;
+backdrop-filter:blur(15px);
+transition:0.4s;
+}
 
-  border:1px solid rgba(255,255,255,0.05);
+.feature:hover{
+transform:translateY(-5px);
+border-color:#00ff88;
+box-shadow:0 0 25px rgba(0,255,136,0.2);
+}
 
-  border-radius:22px;
+.feature-icon{
+font-size:24px;
+}
 
-  padding:22px 15px;
+.feature-text{
+font-size:14px;
+color:#d8d8d8;
+}
 
-  text-align:center;
+/* RIGHT */
 
-  font-size:15px;
+.right{
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
+}
 
-  color:#d0d0d0;
+.verify-box{
+width:100%;
+max-width:550px;
+background:rgba(10,10,10,0.78);
+border:1px solid rgba(0,255,136,0.15);
+border-radius:35px;
+padding:45px;
+backdrop-filter:blur(25px);
+position:relative;
+overflow:hidden;
+box-shadow:
+0 0 60px rgba(0,255,136,0.08),
+0 0 120px rgba(255,215,0,0.05);
+}
 
-  line-height:1.5;
+.verify-box::before{
+content:'';
+position:absolute;
+width:350px;
+height:350px;
+background:radial-gradient(circle,#00ff88 0%,transparent 70%);
+top:-120px;
+right:-120px;
+opacity:0.18;
+filter:blur(60px);
+}
 
-  backdrop-filter:blur(20px);
+.verify-title{
+font-family:'Orbitron',sans-serif;
+font-size:34px;
+font-weight:700;
+margin-bottom:35px;
+letter-spacing:3px;
+text-align:center;
+}
+
+.input-wrap{
+position:relative;
+margin-bottom:25px;
+}
+
+.input{
+width:100%;
+padding:24px;
+background:#060606;
+border:1px solid rgba(255,255,255,0.08);
+border-radius:20px;
+font-size:20px;
+color:white;
+outline:none;
+transition:0.3s;
+}
+
+.input:focus{
+border-color:#00ff88;
+box-shadow:0 0 30px rgba(0,255,136,0.25);
+}
+
+.verify-btn{
+width:100%;
+padding:24px;
+border:none;
+border-radius:20px;
+background:linear-gradient(135deg,#00ff88,#00b861);
+font-size:22px;
+font-weight:800;
+cursor:pointer;
+transition:0.35s;
+font-family:'Orbitron',sans-serif;
+letter-spacing:2px;
+}
+
+.verify-btn:hover{
+transform:translateY(-3px);
+box-shadow:
+0 0 30px rgba(0,255,136,0.4),
+0 0 80px rgba(0,255,136,0.18);
+}
+
+/* LOWER CARDS */
+
+.cards{
+margin-top:30px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+.card{
+padding:25px;
+border-radius:22px;
+background:rgba(255,255,255,0.03);
+border:1px solid rgba(255,255,255,0.05);
+transition:0.4s;
+}
+
+.card:hover{
+transform:translateY(-4px);
+border-color:#00ff88;
+}
+
+.card-icon{
+font-size:34px;
+margin-bottom:14px;
+}
+
+.card-title{
+font-size:17px;
+font-weight:600;
+margin-bottom:8px;
+}
+
+.card-text{
+font-size:14px;
+color:#a8a8a8;
+line-height:1.6;
 }
 
 .footer{
-  margin-top:35px;
-  text-align:center;
-  color:#666;
-  font-size:13px;
+margin-top:30px;
+text-align:center;
+font-size:14px;
+color:#777;
 }
 
-@media(max-width:600px){
+/* MOBILE */
 
-  .brand h1{
-    font-size:42px;
-  }
+@media(max-width:1100px){
 
-  .verify-title{
-    font-size:24px;
-  }
-
-  .input-box{
-    height:65px;
-    font-size:20px;
-  }
-
-  .verify-btn{
-    height:65px;
-    font-size:18px;
-  }
-
+.container{
+grid-template-columns:1fr;
+gap:50px;
 }
 
-</style>
-</head>
-
-<body>
-
-<div class="grid"></div>
-
-<div class="orb1"></div>
-<div class="orb2"></div>
-
-<div class="container">
-
-<div class="logo-wrap">
-  <div class="logo-circle">
-    <div class="logo-b">B</div>
-  </div>
-</div>
-
-<div class="brand">
-  <h1>BUD<span>WAY</span></h1>
-</div>
-
-<div class="subtitle">
-  Luxury Cannabis Authentication Platform<br>
-  Secure Premium Product Verification
-</div>
-
-<div class="verify-title">
-  Verify Your Product
-</div>
-
-<input
-type="number"
-id="serialInput"
-class="input-box"
-placeholder="ENTER SERIAL NUMBER"
-/>
-
-<button class="verify-btn" onclick="verifyProduct()">
-VERIFY AUTHENTICITY
-</button>
-
-<div class="features">
-
-<div class="feature">
-✓ NFC Style Validation
-</div>
-
-<div class="feature">
-✓ Secure Product Tracking
-</div>
-
-<div class="feature">
-✓ Premium Strain Registry
-</div>
-
-<div class="feature">
-✓ Reward Winner Detection
-</div>
-
-</div>
-
-<div class="footer">
-© 2026 BudWay Ldn
-</div>
-
-</div>
-
-<script>
-
-function verifyProduct(){
-
-  const code =
-  document.getElementById('serialInput').value.trim();
-
-  if(code === ''){
-    alert('Please enter a serial number');
-    return;
-  }
-
-  window.location.href =
-  `verify.html?code=${code}`;
+.hero-title{
+font-size:62px;
 }
 
-document
-.getElementById('serialInput')
-.addEventListener('keypress',function(e){
-
-  if(e.key === 'Enter'){
-    verifyProduct();
-  }
-
-});
-
-</script>
-
-</body>
-</html>
+.logo-text{
+font-size:
