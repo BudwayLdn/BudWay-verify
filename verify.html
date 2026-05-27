@@ -409,6 +409,28 @@ margin-bottom:5px;
 font-size:.95rem;
 }
 
+.cert{
+margin-top:22px;
+padding:16px;
+border-radius:18px;
+text-align:center;
+background:linear-gradient(90deg,#151515,#0c0c0c);
+border:1px solid rgba(255,255,255,.08);
+}
+
+.cert-title{
+font-size:.75rem;
+letter-spacing:1px;
+margin-bottom:8px;
+color:var(--secondary);
+}
+
+.first-verified{
+margin-top:10px;
+font-size:.75rem;
+color:#aaa;
+}
+
 .exclusive-badge{
 display:none;
 margin-top:20px;
@@ -551,7 +573,7 @@ opacity:0;
 </div>
 
 <img 
-src="budway-b.jpeg.PNG"
+src="budway-b.png"
 class="intro-logo"
 alt="BudWay Exclusive"
 >
@@ -577,7 +599,7 @@ BUDWAY RESERVE COLLECTION
 <div class="logo-wrap">
 
 <img 
-src="budway-b.jpeg.PNG"
+src="budway-b.png"
 class="main-logo"
 alt="BudWay Ldn Logo"
 >
@@ -636,6 +658,20 @@ AUTHENTIC PRODUCT VERIFIED
 
 <div class="exclusive-badge" id="exclusiveBadge">
 👑 ULTRA EXOTIC COLLECTION • BUDWAY RESERVE
+</div>
+
+<div class="cert">
+
+<div class="cert-title">
+LAB VERIFIED AUTHENTIC
+</div>
+
+<strong>
+BudWay Certified Premium Flower
+</strong>
+
+<div class="first-verified" id="firstVerified"></div>
+
 </div>
 
 <div class="winner" id="winnerBox">
@@ -823,6 +859,23 @@ document.getElementById('thc').innerText = found.thc;
 document.getElementById('type').innerText = found.type;
 
 document.getElementById('flavour').innerText = found.flavour;
+
+/* FIRST VERIFIED */
+
+const storageKey = "budway_verified_" + serial;
+
+let firstVerified = localStorage.getItem(storageKey);
+
+if(!firstVerified){
+
+firstVerified = new Date().toLocaleString();
+
+localStorage.setItem(storageKey, firstVerified);
+
+}
+
+document.getElementById('firstVerified').innerText =
+"First Verified: " + firstVerified;
 
 if(found.exclusive){
 
