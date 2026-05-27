@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BudWay Ldn</title>
+
+<title>BudWay Ldn | Luxury Verification</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
@@ -17,102 +19,107 @@ font-family:'Montserrat',sans-serif;
 }
 
 body{
-height:100vh;
-overflow:hidden;
-background:#040404;
+background:#030303;
 color:white;
+overflow-x:hidden;
 position:relative;
+min-height:100vh;
 }
 
 /* BACKGROUND */
 
 body::before{
 content:'';
-position:absolute;
-width:700px;
-height:700px;
-background:radial-gradient(circle,#d4a63d33 0%,transparent 70%);
-top:-250px;
-right:-180px;
+position:fixed;
+width:900px;
+height:900px;
+background:radial-gradient(circle,#d4a63d20 0%,transparent 70%);
+top:-300px;
+right:-250px;
 filter:blur(120px);
+z-index:-2;
 }
 
 body::after{
 content:'';
-position:absolute;
+position:fixed;
 width:700px;
 height:700px;
-background:radial-gradient(circle,#00ff8820 0%,transparent 70%);
-bottom:-300px;
-left:-250px;
+background:radial-gradient(circle,#00ff8810 0%,transparent 70%);
+bottom:-250px;
+left:-200px;
 filter:blur(120px);
+z-index:-2;
 }
 
+/* GRID */
+
 .grid{
-position:absolute;
+position:fixed;
 width:100%;
 height:100%;
 background-image:
 linear-gradient(rgba(212,166,61,0.03) 1px, transparent 1px),
 linear-gradient(90deg, rgba(212,166,61,0.03) 1px, transparent 1px);
-background-size:55px 55px;
-opacity:0.3;
+background-size:60px 60px;
+opacity:0.25;
+z-index:-1;
 }
 
-/* MAIN CARD */
+/* NAVBAR */
 
-.main{
-position:relative;
-z-index:5;
-width:94%;
-height:92vh;
-margin:4vh auto;
-border-radius:38px;
-border:1px solid rgba(212,166,61,0.18);
-background:rgba(0,0,0,0.82);
-backdrop-filter:blur(30px);
-display:grid;
-grid-template-columns:1fr 1fr;
-overflow:hidden;
-box-shadow:
-0 0 80px rgba(212,166,61,0.08);
-}
-
-/* LEFT */
-
-.left{
-padding:45px 55px;
+nav{
+width:100%;
+padding:28px 6%;
 display:flex;
-flex-direction:column;
-justify-content:center;
+justify-content:space-between;
+align-items:center;
+position:relative;
+z-index:100;
 }
 
 .logo{
 display:flex;
 align-items:center;
-gap:16px;
-margin-bottom:35px;
+gap:18px;
 }
 
-.logo-box{
-width:72px;
-height:72px;
-border-radius:22px;
-background:linear-gradient(145deg,#ffe79c,#b77d0f);
+.logo-icon{
+width:82px;
+height:82px;
+border-radius:24px;
+background:
+linear-gradient(145deg,#fff0a8,#b67c11);
 display:flex;
 justify-content:center;
 align-items:center;
-font-size:42px;
+font-size:48px;
 font-weight:900;
 color:black;
+position:relative;
+overflow:hidden;
 box-shadow:
-0 0 35px rgba(212,166,61,0.45);
+0 0 40px rgba(212,166,61,0.45),
+0 0 80px rgba(212,166,61,0.15);
+}
+
+.logo-icon::before{
+content:'';
+position:absolute;
+width:180%;
+height:180%;
+background:
+linear-gradient(120deg,
+transparent,
+rgba(255,255,255,0.35),
+transparent);
+animation:shine 5s linear infinite;
 }
 
 .logo-text h1{
 font-size:38px;
 font-weight:900;
-letter-spacing:3px;
+letter-spacing:4px;
 }
 
 .logo-text span{
@@ -126,153 +133,253 @@ color:#888;
 margin-top:4px;
 }
 
-.tag{
-display:inline-block;
-padding:10px 16px;
-border-radius:12px;
-border:1px solid rgba(212,166,61,0.25);
-color:#f0c96a;
-font-size:11px;
-letter-spacing:1px;
-margin-bottom:25px;
-width:fit-content;
-background:rgba(212,166,61,0.05);
-}
-
-h2{
-font-size:72px;
-line-height:0.92;
-font-weight:900;
-margin-bottom:25px;
-}
-
-h2 span{
-color:#d4a63d;
-}
-
-.desc{
-font-size:17px;
-line-height:1.7;
-color:#b8b8b8;
-max-width:560px;
-margin-bottom:30px;
-}
-
-/* VERIFY */
-
-.verify{
+.nav-links{
 display:flex;
-gap:16px;
-margin-bottom:22px;
+gap:40px;
 }
 
-.input-box{
-flex:1;
-height:74px;
-background:rgba(255,255,255,0.03);
-border:1px solid rgba(212,166,61,0.14);
-border-radius:20px;
-display:flex;
-align-items:center;
-padding:0 22px;
-}
-
-.input-box span{
-font-size:24px;
-color:#d4a63d;
-margin-right:16px;
-}
-
-.input-box input{
-width:100%;
-background:none;
-border:none;
-outline:none;
-color:white;
-font-size:18px;
-font-weight:700;
-letter-spacing:2px;
-}
-
-.verify-btn{
-width:300px;
-border:none;
-border-radius:20px;
-background:linear-gradient(145deg,#ffe08b,#bc8315);
-font-size:17px;
-font-weight:800;
-cursor:pointer;
-color:black;
-box-shadow:
-0 0 30px rgba(212,166,61,0.3);
+.nav-links a{
+text-decoration:none;
+color:#ddd;
+font-size:14px;
+font-weight:600;
+position:relative;
 transition:0.3s;
 }
 
-.verify-btn:hover{
-transform:scale(1.03);
+.nav-links a:hover{
+color:#d4a63d;
+}
+
+.nav-links a::after{
+content:'';
+position:absolute;
+left:0;
+bottom:-8px;
+width:0%;
+height:2px;
+background:#d4a63d;
+transition:0.3s;
+}
+
+.nav-links a:hover::after{
+width:100%;
+}
+
+.about-btn{
+padding:15px 28px;
+border-radius:16px;
+background:rgba(255,255,255,0.03);
+border:1px solid rgba(212,166,61,0.35);
+color:#f2c96c;
+font-weight:700;
+cursor:pointer;
+transition:0.3s;
+}
+
+.about-btn:hover{
+transform:translateY(-2px);
+box-shadow:0 0 25px rgba(212,166,61,0.2);
+}
+
+/* HERO */
+
+.hero{
+padding:30px 6% 80px;
+display:grid;
+grid-template-columns:1fr 1fr;
+align-items:center;
+gap:60px;
+min-height:88vh;
+}
+
+/* LEFT */
+
+.hero-left .tag{
+display:inline-block;
+padding:12px 18px;
+border-radius:14px;
+border:1px solid rgba(212,166,61,0.3);
+background:rgba(212,166,61,0.05);
+color:#f1c96c;
+font-size:12px;
+font-weight:700;
+letter-spacing:1px;
+margin-bottom:35px;
+}
+
+.hero-left h2{
+font-size:96px;
+line-height:0.92;
+font-weight:900;
+margin-bottom:30px;
+}
+
+.hero-left h2 span{
+color:#d4a63d;
+}
+
+.hero-left p{
+font-size:20px;
+line-height:1.9;
+color:#b7b7b7;
+max-width:640px;
+margin-bottom:40px;
 }
 
 /* STATS */
 
 .stats{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:14px;
-max-width:650px;
+display:flex;
+gap:18px;
+flex-wrap:wrap;
+margin-bottom:40px;
 }
 
 .stat{
-padding:14px 18px;
-border-radius:16px;
-background:rgba(255,255,255,0.025);
-border:1px solid rgba(212,166,61,0.12);
-font-size:13px;
-color:#ccc;
+padding:18px 22px;
+border-radius:18px;
+background:rgba(255,255,255,0.03);
+border:1px solid rgba(212,166,61,0.14);
+backdrop-filter:blur(20px);
+font-size:14px;
+color:#ddd;
+transition:0.3s;
+}
+
+.stat:hover{
+transform:translateY(-4px);
+border-color:#d4a63d55;
+}
+
+/* VERIFY */
+
+.verify-box{
+padding:30px;
+border-radius:30px;
+background:
+linear-gradient(145deg,
+rgba(255,255,255,0.03),
+rgba(255,255,255,0.015));
+border:1px solid rgba(212,166,61,0.18);
+backdrop-filter:blur(30px);
+box-shadow:
+0 0 50px rgba(212,166,61,0.06);
+}
+
+.verify-title{
+text-align:center;
+font-size:24px;
+letter-spacing:4px;
+font-weight:800;
+color:#f2ca6d;
+margin-bottom:28px;
+}
+
+.verify-row{
+display:flex;
+gap:20px;
+}
+
+.input-wrap{
+flex:1;
+height:88px;
+background:black;
+border-radius:22px;
+display:flex;
+align-items:center;
+padding:0 24px;
+border:1px solid rgba(212,166,61,0.18);
+}
+
+.input-wrap span{
+font-size:26px;
+margin-right:18px;
+color:#d4a63d;
+}
+
+.input-wrap input{
+width:100%;
+background:none;
+border:none;
+outline:none;
+color:white;
+font-size:20px;
+font-weight:700;
+letter-spacing:2px;
+}
+
+.verify-btn{
+width:360px;
+border:none;
+border-radius:22px;
+background:
+linear-gradient(145deg,#ffe28f,#b67b10);
+font-size:18px;
+font-weight:900;
+cursor:pointer;
+color:black;
+transition:0.3s;
+box-shadow:
+0 0 40px rgba(212,166,61,0.28);
+}
+
+.verify-btn:hover{
+transform:translateY(-3px) scale(1.02);
+}
+
+.secure{
+margin-top:22px;
+display:flex;
+justify-content:center;
+gap:45px;
+color:#aaa;
+font-size:14px;
 }
 
 /* RIGHT */
 
-.right{
+.hero-right{
 position:relative;
 display:flex;
 justify-content:center;
 align-items:center;
-overflow:hidden;
 }
 
 /* GOLD COIN */
 
-.coin-bg{
+.ring{
 position:absolute;
 width:650px;
 height:650px;
 border-radius:50%;
-border:1px solid rgba(212,166,61,0.08);
-animation:spin 24s linear infinite;
+border:1px solid rgba(212,166,61,0.15);
+animation:spin 26s linear infinite;
 }
 
 .coin{
-width:400px;
-height:400px;
+width:470px;
+height:470px;
 border-radius:50%;
 background:
-radial-gradient(circle at top,#ffe58e,#af7410);
+radial-gradient(circle at top,#fff0a6,#b77d11);
 display:flex;
 justify-content:center;
 align-items:center;
-font-size:220px;
+font-size:250px;
 font-weight:900;
 color:black;
 position:relative;
+overflow:hidden;
 box-shadow:
-0 0 80px rgba(212,166,61,0.45),
-0 0 140px rgba(212,166,61,0.16);
+0 0 90px rgba(212,166,61,0.45),
+0 0 180px rgba(212,166,61,0.18);
 }
 
 .coin::before{
 content:'';
 position:absolute;
-inset:20px;
+inset:24px;
 border-radius:50%;
 border:3px solid rgba(0,0,0,0.35);
 }
@@ -280,28 +387,74 @@ border:3px solid rgba(0,0,0,0.35);
 .coin::after{
 content:'';
 position:absolute;
-width:130%;
-height:130%;
-background:linear-gradient(120deg,transparent,rgba(255,255,255,0.25),transparent);
-animation:shine 4s linear infinite;
+width:150%;
+height:150%;
+background:
+linear-gradient(120deg,
+transparent,
+rgba(255,255,255,0.3),
+transparent);
+animation:shine 5s linear infinite;
 }
 
 .platform{
 position:absolute;
-bottom:140px;
-width:420px;
-height:70px;
+bottom:-40px;
+width:520px;
+height:100px;
 border-radius:50%;
-background:radial-gradient(circle,#d4a63d55 0%,transparent 70%);
-filter:blur(24px);
+background:
+radial-gradient(circle,
+rgba(212,166,61,0.55) 0%,
+transparent 70%);
+filter:blur(25px);
+}
+
+/* FEATURES */
+
+.features{
+padding:0 6% 90px;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:24px;
+}
+
+.feature{
+padding:42px 28px;
+border-radius:28px;
+background:
+linear-gradient(145deg,
+rgba(255,255,255,0.03),
+rgba(255,255,255,0.015));
+border:1px solid rgba(212,166,61,0.14);
+transition:0.35s;
+}
+
+.feature:hover{
+transform:translateY(-8px);
+border-color:#d4a63d55;
+box-shadow:0 0 35px rgba(212,166,61,0.08);
+}
+
+.feature-icon{
+font-size:58px;
+margin-bottom:28px;
+color:#d4a63d;
+}
+
+.feature h3{
+font-size:24px;
+margin-bottom:18px;
+color:#f0c86b;
+}
+
+.feature p{
+color:#aaa;
+line-height:1.8;
+font-size:15px;
 }
 
 /* ANIMATION */
-
-@keyframes spin{
-from{transform:rotate(0deg);}
-to{transform:rotate(360deg);}
-}
 
 @keyframes shine{
 0%{
@@ -312,87 +465,138 @@ transform:translateX(200%) rotate(25deg);
 }
 }
 
+@keyframes spin{
+from{
+transform:rotate(0deg);
+}
+to{
+transform:rotate(360deg);
+}
+}
+
 /* MOBILE */
 
-@media(max-width:1100px){
+@media(max-width:1200px){
 
-body{
-overflow:auto;
-height:auto;
-}
-
-.main{
-height:auto;
+.hero{
 grid-template-columns:1fr;
-}
-
-.left{
-padding:40px 28px;
 text-align:center;
-align-items:center;
 }
 
-.verify{
+.hero-left p{
+margin:auto auto 40px;
+}
+
+.stats{
+justify-content:center;
+}
+
+.verify-row{
 flex-direction:column;
-width:100%;
 }
 
 .verify-btn{
 width:100%;
-height:74px;
+height:88px;
 }
 
-.stats{
-grid-template-columns:1fr;
-width:100%;
+.features{
+grid-template-columns:1fr 1fr;
 }
 
-.right{
-padding:50px 0 70px;
+.hero-right{
+margin-top:60px;
 }
 
 .coin{
-width:280px;
-height:280px;
-font-size:150px;
+width:340px;
+height:340px;
+font-size:180px;
 }
 
-.coin-bg{
-width:420px;
-height:420px;
+.ring{
+width:450px;
+height:450px;
+}
+
+.hero-left h2{
+font-size:68px;
+}
+
+}
+
+@media(max-width:700px){
+
+.nav-links{
+display:none;
+}
+
+.about-btn{
+display:none;
+}
+
+.hero{
+padding-top:0;
+}
+
+.hero-left h2{
+font-size:50px;
+}
+
+.features{
+grid-template-columns:1fr;
+}
+
+.logo-icon{
+width:65px;
+height:65px;
+font-size:38px;
+}
+
+.logo-text h1{
+font-size:28px;
+}
+
+.coin{
+width:260px;
+height:260px;
+font-size:130px;
+}
+
+.ring{
+width:340px;
+height:340px;
 }
 
 .platform{
-bottom:40px;
-width:300px;
+width:320px;
 }
 
-h2{
-font-size:52px;
+.verify-box{
+padding:22px;
 }
 
-.desc{
-font-size:15px;
+.input-wrap{
+height:74px;
 }
 
 }
 
 </style>
+
 </head>
 
 <body>
 
 <div class="grid"></div>
 
-<div class="main">
+<!-- NAV -->
 
-<!-- LEFT -->
-
-<div class="left">
+<nav>
 
 <div class="logo">
 
-<div class="logo-box">
+<div class="logo-icon">
 B
 </div>
 
@@ -402,6 +606,26 @@ B
 </div>
 
 </div>
+
+<div class="nav-links">
+<a href="#">HOME</a>
+<a href="#">AUTHENTICITY</a>
+<a href="#">PREMIUM QUALITY</a>
+<a href="#">LAB TESTED</a>
+<a href="#">OUR STORY</a>
+</div>
+
+<button class="about-btn">
+ABOUT US
+</button>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-left">
 
 <div class="tag">
 PREMIUM CANNABIS VERIFICATION
@@ -413,13 +637,41 @@ VERIFY.<br>
 <span>EXCLUSIVE.</span>
 </h2>
 
-<div class="desc">
-BudWay Ldn guarantees luxury lab-tested cannabis flower with secure premium authentication technology.
+<p>
+BudWay Ldn guarantees premium, lab-tested cannabis flower.
+Enter your serial number to verify authenticity
+and discover if you’re holding a winner.
+</p>
+
+<div class="stats">
+
+<div class="stat">
+🛡️ 100% Authentic Products
 </div>
 
-<div class="verify">
+<div class="stat">
+🧪 Lab Tested
+</div>
 
-<div class="input-box">
+<div class="stat">
+🏆 Winner Detection
+</div>
+
+<div class="stat">
+🔒 Encrypted & Protected
+</div>
+
+</div>
+
+<div class="verify-box">
+
+<div class="verify-title">
+VERIFY YOUR PRODUCT
+</div>
+
+<div class="verify-row">
+
+<div class="input-wrap">
 
 <span>⬢</span>
 
@@ -437,22 +689,9 @@ VERIFY AUTHENTICITY →
 
 </div>
 
-<div class="stats">
-
-<div class="stat">
-🛡️ 100% Authentic Products
-</div>
-
-<div class="stat">
-🧪 Lab Certified Verification
-</div>
-
-<div class="stat">
-🏆 Exclusive Winner Detection
-</div>
-
-<div class="stat">
-🔒 Encrypted & Protected
+<div class="secure">
+<div>🔒 Secure Verification</div>
+<div>🛡️ Protected System</div>
 </div>
 
 </div>
@@ -461,9 +700,9 @@ VERIFY AUTHENTICITY →
 
 <!-- RIGHT -->
 
-<div class="right">
+<div class="hero-right">
 
-<div class="coin-bg"></div>
+<div class="ring"></div>
 
 <div class="coin">
 B
@@ -473,7 +712,45 @@ B
 
 </div>
 
+</section>
+
+<!-- FEATURES -->
+
+<section class="features">
+
+<div class="feature">
+<div class="feature-icon">🌿</div>
+<h3>Premium Flower</h3>
+<p>
+Top-shelf strains selected for luxury quality and potency.
+</p>
 </div>
+
+<div class="feature">
+<div class="feature-icon">✔️</div>
+<h3>Lab Certified</h3>
+<p>
+Every BudWay batch is lab tested for purity and safety.
+</p>
+</div>
+
+<div class="feature">
+<div class="feature-icon">🏆</div>
+<h3>Winner Detection</h3>
+<p>
+Certain serials unlock exclusive rewards and prizes.
+</p>
+</div>
+
+<div class="feature">
+<div class="feature-icon">💎</div>
+<h3>Exclusive Experience</h3>
+<p>
+BudWay Ldn is more than a brand — it’s a luxury experience.
+</p>
+</div>
+
+</section>
 
 <script>
 
