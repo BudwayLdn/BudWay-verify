@@ -1,225 +1,421 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BudWay Ldn | Premium Cannabis Verification</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Arial, Helvetica, sans-serif;
-    }
+<title>BudWay Ldn | Premium Verification</title>
 
-    body{
-      background:#050505;
-      color:white;
-      overflow-x:hidden;
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      position:relative;
-    }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    body::before{
-      content:'';
-      position:absolute;
-      width:600px;
-      height:600px;
-      background:radial-gradient(circle,#00ff88 0%, transparent 70%);
-      opacity:0.12;
-      filter:blur(90px);
-      top:-200px;
-      right:-150px;
-    }
+<style>
 
-    body::after{
-      content:'';
-      position:absolute;
-      width:500px;
-      height:500px;
-      background:radial-gradient(circle,#ffd700 0%, transparent 70%);
-      opacity:0.08;
-      filter:blur(90px);
-      bottom:-200px;
-      left:-100px;
-    }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-    .container{
-      width:90%;
-      max-width:500px;
-      background:rgba(255,255,255,0.04);
-      border:1px solid rgba(255,255,255,0.08);
-      backdrop-filter:blur(20px);
-      border-radius:30px;
-      padding:50px 35px;
-      text-align:center;
-      position:relative;
-      z-index:2;
-      box-shadow:0 0 50px rgba(0,255,136,0.08);
-    }
+body{
+  min-height:100vh;
+  background:
+  radial-gradient(circle at top right,#00ff8840 0%,transparent 35%),
+  radial-gradient(circle at bottom left,#ffd70020 0%,transparent 35%),
+  #030303;
 
-    .logo{
-      font-size:48px;
-      font-weight:900;
-      letter-spacing:2px;
-      margin-bottom:10px;
-    }
+  overflow:hidden;
+  font-family:'Inter',sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  position:relative;
+}
 
-    .logo span{
-      color:#00ff88;
-    }
+/* animated grid */
 
-    .tagline{
-      color:#bbb;
-      font-size:15px;
-      margin-bottom:40px;
-      line-height:1.6;
-    }
+.grid{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background-image:
+  linear-gradient(rgba(0,255,136,0.05) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(0,255,136,0.05) 1px, transparent 1px);
+  background-size:40px 40px;
+  transform:perspective(800px) rotateX(60deg);
+  animation:gridMove 18s linear infinite;
+  opacity:0.25;
+}
 
-    .verify-title{
-      font-size:26px;
-      font-weight:700;
-      margin-bottom:25px;
-    }
+@keyframes gridMove{
+  0%{
+    transform:perspective(800px) rotateX(60deg) translateY(0);
+  }
 
-    .input-box{
-      width:100%;
-      padding:18px;
-      border:none;
-      outline:none;
-      border-radius:15px;
-      background:#101010;
-      color:white;
-      font-size:17px;
-      text-align:center;
-      margin-bottom:20px;
-      border:1px solid rgba(255,255,255,0.06);
-      transition:0.3s;
-    }
+  100%{
+    transform:perspective(800px) rotateX(60deg) translateY(40px);
+  }
+}
 
-    .input-box:focus{
-      border-color:#00ff88;
-      box-shadow:0 0 20px rgba(0,255,136,0.25);
-    }
+/* glowing orbs */
 
-    .verify-btn{
-      width:100%;
-      padding:18px;
-      border:none;
-      border-radius:15px;
-      background:linear-gradient(135deg,#00ff88,#00c76b);
-      color:black;
-      font-size:18px;
-      font-weight:700;
-      cursor:pointer;
-      transition:0.3s;
-    }
+.orb1,.orb2{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(100px);
+}
 
-    .verify-btn:hover{
-      transform:translateY(-2px);
-      box-shadow:0 0 25px rgba(0,255,136,0.35);
-    }
+.orb1{
+  width:300px;
+  height:300px;
+  background:#00ff88;
+  top:-100px;
+  right:-100px;
+  opacity:0.15;
+}
 
-    .features{
-      margin-top:35px;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:15px;
-    }
+.orb2{
+  width:250px;
+  height:250px;
+  background:#ffd700;
+  bottom:-100px;
+  left:-100px;
+  opacity:0.08;
+}
 
-    .feature{
-      background:rgba(255,255,255,0.03);
-      border-radius:15px;
-      padding:15px;
-      font-size:14px;
-      color:#ccc;
-      border:1px solid rgba(255,255,255,0.04);
-    }
+/* main card */
 
-    .footer{
-      margin-top:35px;
-      font-size:13px;
-      color:#666;
-    }
+.container{
+  width:92%;
+  max-width:480px;
 
-    @media(max-width:600px){
-      .container{
-        padding:40px 25px;
-      }
+  background:rgba(255,255,255,0.04);
 
-      .logo{
-        font-size:38px;
-      }
+  border:1px solid rgba(255,255,255,0.08);
 
-      .verify-title{
-        font-size:22px;
-      }
-    }
-  </style>
+  backdrop-filter:blur(30px);
+
+  border-radius:35px;
+
+  padding:45px 30px;
+
+  position:relative;
+
+  z-index:5;
+
+  overflow:hidden;
+
+  box-shadow:
+  0 0 60px rgba(0,255,136,0.12),
+  inset 0 0 30px rgba(255,255,255,0.03);
+}
+
+.container::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:35px;
+  padding:1px;
+  background:linear-gradient(135deg,#00ff88,#ffffff10,#ffd70040);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+}
+
+/* B logo */
+
+.logo-wrap{
+  display:flex;
+  justify-content:center;
+  margin-bottom:20px;
+}
+
+.logo-circle{
+  width:95px;
+  height:95px;
+  border-radius:28px;
+
+  background:
+  linear-gradient(145deg,#00ff88,#00b35f);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  box-shadow:
+  0 0 35px rgba(0,255,136,0.5),
+  inset 0 0 20px rgba(255,255,255,0.25);
+
+  position:relative;
+}
+
+.logo-circle::before{
+  content:'';
+  position:absolute;
+  inset:2px;
+  border-radius:26px;
+  background:#050505;
+}
+
+.logo-b{
+  position:relative;
+  z-index:2;
+  font-size:54px;
+  font-weight:900;
+  font-family:'Orbitron',sans-serif;
+  color:#00ff88;
+  text-shadow:0 0 20px #00ff88;
+}
+
+.brand{
+  text-align:center;
+  margin-bottom:15px;
+}
+
+.brand h1{
+  font-size:52px;
+  font-family:'Orbitron',sans-serif;
+  font-weight:900;
+  letter-spacing:3px;
+}
+
+.brand h1 span{
+  color:#00ff88;
+  text-shadow:0 0 15px #00ff88;
+}
+
+.subtitle{
+  text-align:center;
+  color:#a7a7a7;
+  font-size:15px;
+  line-height:1.7;
+  margin-bottom:40px;
+}
+
+.verify-title{
+  text-align:center;
+  font-size:28px;
+  font-weight:700;
+  margin-bottom:25px;
+}
+
+.input-box{
+  width:100%;
+  height:72px;
+
+  border:none;
+  outline:none;
+
+  border-radius:22px;
+
+  background:rgba(255,255,255,0.04);
+
+  border:1px solid rgba(255,255,255,0.08);
+
+  color:white;
+
+  text-align:center;
+
+  font-size:22px;
+
+  margin-bottom:22px;
+
+  transition:0.35s;
+}
+
+.input-box:focus{
+  border-color:#00ff88;
+
+  box-shadow:
+  0 0 25px rgba(0,255,136,0.3),
+  inset 0 0 10px rgba(0,255,136,0.15);
+}
+
+.verify-btn{
+  width:100%;
+  height:72px;
+
+  border:none;
+  border-radius:22px;
+
+  background:
+  linear-gradient(135deg,#00ff88,#00c96d);
+
+  color:black;
+
+  font-size:21px;
+  font-weight:800;
+
+  cursor:pointer;
+
+  transition:0.35s;
+
+  letter-spacing:1px;
+
+  box-shadow:0 0 30px rgba(0,255,136,0.35);
+}
+
+.verify-btn:hover{
+  transform:translateY(-3px) scale(1.01);
+
+  box-shadow:
+  0 0 40px rgba(0,255,136,0.5);
+}
+
+.features{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  margin-top:35px;
+}
+
+.feature{
+  background:rgba(255,255,255,0.03);
+
+  border:1px solid rgba(255,255,255,0.05);
+
+  border-radius:22px;
+
+  padding:22px 15px;
+
+  text-align:center;
+
+  font-size:15px;
+
+  color:#d0d0d0;
+
+  line-height:1.5;
+
+  backdrop-filter:blur(20px);
+}
+
+.footer{
+  margin-top:35px;
+  text-align:center;
+  color:#666;
+  font-size:13px;
+}
+
+@media(max-width:600px){
+
+  .brand h1{
+    font-size:42px;
+  }
+
+  .verify-title{
+    font-size:24px;
+  }
+
+  .input-box{
+    height:65px;
+    font-size:20px;
+  }
+
+  .verify-btn{
+    height:65px;
+    font-size:18px;
+  }
+
+}
+
+</style>
 </head>
+
 <body>
 
-  <div class="container">
+<div class="grid"></div>
 
-    <div class="logo">BUD<span>WAY</span></div>
+<div class="orb1"></div>
+<div class="orb2"></div>
 
-    <div class="tagline">
-      Premium Lab-Tested Cannabis Flower<br>
-      Authenticity Verification System
-    </div>
+<div class="container">
 
-    <div class="verify-title">
-      Verify Your Product
-    </div>
-
-    <input 
-      type="number" 
-      id="serialInput"
-      class="input-box"
-      placeholder="Enter Serial Number"
-    >
-
-    <button class="verify-btn" onclick="verifyProduct()">
-      VERIFY AUTHENTICITY
-    </button>
-
-    <div class="features">
-      <div class="feature">✓ Authentic Product Check</div>
-      <div class="feature">✓ Premium Strain Validation</div>
-      <div class="feature">✓ Lab Tested Flower</div>
-      <div class="feature">✓ Reward Winner Detection</div>
-    </div>
-
-    <div class="footer">
-      © 2026 BudWay Ldn — All Rights Reserved
-    </div>
-
+<div class="logo-wrap">
+  <div class="logo-circle">
+    <div class="logo-b">B</div>
   </div>
+</div>
 
-  <script>
-    function verifyProduct(){
-      const code = document.getElementById('serialInput').value.trim();
+<div class="brand">
+  <h1>BUD<span>WAY</span></h1>
+</div>
 
-      if(code === ''){
-        alert('Please enter a serial number.');
-        return;
-      }
+<div class="subtitle">
+  Luxury Cannabis Authentication Platform<br>
+  Secure Premium Product Verification
+</div>
 
-      window.location.href = `verify.html?code=${code}`;
-    }
+<div class="verify-title">
+  Verify Your Product
+</div>
 
-    document
-      .getElementById('serialInput')
-      .addEventListener('keypress', function(e){
-        if(e.key === 'Enter'){
-          verifyProduct();
-        }
-      });
-  </script>
+<input
+type="number"
+id="serialInput"
+class="input-box"
+placeholder="ENTER SERIAL NUMBER"
+/>
+
+<button class="verify-btn" onclick="verifyProduct()">
+VERIFY AUTHENTICITY
+</button>
+
+<div class="features">
+
+<div class="feature">
+✓ NFC Style Validation
+</div>
+
+<div class="feature">
+✓ Secure Product Tracking
+</div>
+
+<div class="feature">
+✓ Premium Strain Registry
+</div>
+
+<div class="feature">
+✓ Reward Winner Detection
+</div>
+
+</div>
+
+<div class="footer">
+© 2026 BudWay Ldn
+</div>
+
+</div>
+
+<script>
+
+function verifyProduct(){
+
+  const code =
+  document.getElementById('serialInput').value.trim();
+
+  if(code === ''){
+    alert('Please enter a serial number');
+    return;
+  }
+
+  window.location.href =
+  `verify.html?code=${code}`;
+}
+
+document
+.getElementById('serialInput')
+.addEventListener('keypress',function(e){
+
+  if(e.key === 'Enter'){
+    verifyProduct();
+  }
+
+});
+
+</script>
 
 </body>
 </html>
