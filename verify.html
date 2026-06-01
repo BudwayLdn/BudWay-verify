@@ -276,12 +276,11 @@ opacity:0;
 
 position:fixed;
 
-top:50%;
+top:42%;
 left:50%;
 
 transform:
-translate(-50%,-50%)
-scale(.5);
+translate(-50%,-50%);
 
 width:280px;
 
@@ -291,7 +290,7 @@ opacity:0;
 
 pointer-events:none;
 
-animation:logoFlash 2.5s ease forwards;
+animation:logoFlash 2.4s ease forwards;
 
 filter:
 drop-shadow(0 0 25px gold)
@@ -305,7 +304,7 @@ drop-shadow(0 0 60px #FFD700);
 opacity:0;
 transform:
 translate(-50%,-50%)
-scale(.4);
+scale(.6);
 }
 
 20%{
@@ -315,18 +314,18 @@ translate(-50%,-50%)
 scale(1);
 }
 
-60%{
+70%{
 opacity:1;
 transform:
 translate(-50%,-50%)
-scale(1.08);
+scale(1.04);
 }
 
 100%{
 opacity:0;
 transform:
 translate(-50%,-50%)
-scale(1.3);
+scale(1.1);
 }
 
 }
@@ -335,7 +334,7 @@ scale(1.3);
 
 position:fixed;
 
-top:62%;
+top:56%;
 left:50%;
 
 transform:translateX(-50%);
@@ -344,15 +343,19 @@ z-index:99998;
 
 font-family:'Orbitron',sans-serif;
 
-font-size:1.1rem;
+font-size:.95rem;
 
-letter-spacing:6px;
+letter-spacing:4px;
+
+line-height:1.8;
+
+text-align:center;
 
 color:#FFD700;
 
 opacity:0;
 
-animation:fadeExotic 2.5s ease forwards;
+animation:fadeExotic 2.4s ease forwards;
 
 text-shadow:
 0 0 12px #FFD700,
@@ -366,7 +369,7 @@ text-shadow:
 opacity:0;
 transform:
 translateX(-50%)
-translateY(10px);
+translateY(8px);
 }
 
 20%{
@@ -384,61 +387,77 @@ opacity:1;
 opacity:0;
 transform:
 translateX(-50%)
-translateY(-8px);
+translateY(-4px);
 }
 
 }
+
+/* SMOOTH ROCKET */
 
 .rocket-launch{
+
 position:fixed;
-bottom:-180px;
+
+bottom:-140px;
+
 left:50%;
+
 transform:translateX(-50%);
-font-size:90px;
+
+font-size:85px;
+
 z-index:99999;
+
 pointer-events:none;
 
-animation:rocketLaunch 2.8s ease-in forwards;
+opacity:0;
+
+animation:
+smoothRocket 2.6s cubic-bezier(.15,.72,.3,1) forwards;
 
 filter:
-drop-shadow(0 0 15px #FFD700)
+drop-shadow(0 0 18px gold)
 drop-shadow(0 0 35px #ffae00);
+
+will-change:transform;
+
 }
 
-@keyframes rocketLaunch{
+@keyframes smoothRocket{
 
 0%{
 transform:
 translateX(-50%)
-translateY(0)
-scale(.7);
+translateY(0px)
+scale(.9);
+
 opacity:0;
 }
 
-10%{
+8%{
 opacity:1;
 }
 
-40%{
+30%{
 transform:
 translateX(-50%)
 translateY(-35vh)
 scale(1);
 }
 
-70%{
+60%{
 transform:
 translateX(-50%)
-translateY(-80vh)
-scale(1.15);
-opacity:1;
+translateY(-75vh)
+scale(1.05);
 }
 
 100%{
 transform:
 translateX(-50%)
-translateY(-140vh)
-scale(1.4);
+translateY(-155vh)
+scale(1.12);
+
 opacity:0;
 }
 
@@ -461,7 +480,11 @@ style="display:none;"
 <div id="exoticText"
 class="exotic-text"
 style="display:none;">
+
 EXOTIC DROP
+<br>
+BUDWAY RESERVE COLLECTION
+
 </div>
 
 <div 
