@@ -90,6 +90,66 @@ z-index:-1;
 
 }
 
+/* GOLD SPARKLES */
+
+.sparkle{
+
+position:fixed;
+
+width:4px;
+height:4px;
+
+border-radius:50%;
+
+background:#FFD700;
+
+pointer-events:none;
+
+z-index:0;
+
+opacity:0;
+
+box-shadow:
+0 0 6px #FFD700,
+0 0 14px gold;
+
+animation:
+sparkleFloat linear forwards;
+
+}
+
+@keyframes sparkleFloat{
+
+0%{
+
+transform:
+translateY(0px)
+scale(.6);
+
+opacity:0;
+
+}
+
+20%{
+opacity:1;
+}
+
+80%{
+opacity:.8;
+}
+
+100%{
+
+transform:
+translateY(-80px)
+scale(1.2);
+
+opacity:0;
+
+}
+
+}
+
 /* MAIN */
 
 .container{
@@ -897,7 +957,7 @@ translateY(-6px);
 
 }
 
-/* SMOOTH FAST ROCKET */
+/* ROCKET */
 
 .rocket-launch{
 
@@ -1062,7 +1122,11 @@ AUTHENTIC PRODUCT VERIFIED
 
 </div>
 
-<div class="ultra-box">
+<div 
+class="ultra-box"
+id="ultraBox"
+style="display:none;"
+>
 
 <div class="ultra-title">
 ULTRA EXOTIC DROP 👑
@@ -1188,6 +1252,16 @@ document.getElementById('type').innerText = found.type;
 
 document.getElementById('flavour').innerText = found.flavour;
 
+/* ONLY SHOW EXOTIC BOX FOR LEMON CHERRY */
+
+if(found.name === "Lemon Cherry Gelato"){
+
+document.getElementById("ultraBox").style.display = "block";
+
+}
+
+/* FLOATING EMOJIS */
+
 function createEmoji(){
 
 const emoji = document.createElement("div");
@@ -1199,7 +1273,8 @@ found.emojis[
 Math.floor(Math.random() * found.emojis.length)
 ];
 
-emoji.style.left = Math.random() * 100 + "vw";
+emoji.style.left =
+Math.random() * 100 + "vw";
 
 emoji.style.animationDuration =
 (2 + Math.random() * 2) + "s";
@@ -1216,6 +1291,36 @@ emoji.remove();
 
 setInterval(createEmoji,220);
 
+/* FLOATING GOLD SPARKLES */
+
+function createSparkle(){
+
+const sparkle =
+document.createElement("div");
+
+sparkle.className = "sparkle";
+
+sparkle.style.left =
+Math.random() * 100 + "vw";
+
+sparkle.style.top =
+(40 + Math.random() * 60) + "vh";
+
+sparkle.style.animationDuration =
+(3 + Math.random() * 3) + "s";
+
+document.body.appendChild(sparkle);
+
+setTimeout(()=>{
+
+sparkle.remove();
+
+},6000);
+
+}
+
+setInterval(createSparkle,220);
+
 /* EXOTIC INTRO */
 
 if(found.name === "Lemon Cherry Gelato"){
@@ -1230,6 +1335,7 @@ const exoticText =
 document.getElementById("exoticText");
 
 document.querySelector('.card').style.filter = "blur(8px)";
+
 document.querySelector('.loader').style.opacity = "0";
 
 rocket.style.display = "block";
