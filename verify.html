@@ -272,6 +272,123 @@ opacity:0;
 
 /* EXOTIC INTRO */
 
+.logo-flash{
+
+position:fixed;
+
+top:50%;
+left:50%;
+
+transform:
+translate(-50%,-50%)
+scale(.5);
+
+width:280px;
+
+z-index:99998;
+
+opacity:0;
+
+pointer-events:none;
+
+animation:logoFlash 2.5s ease forwards;
+
+filter:
+drop-shadow(0 0 25px gold)
+drop-shadow(0 0 60px #FFD700);
+
+}
+
+@keyframes logoFlash{
+
+0%{
+opacity:0;
+transform:
+translate(-50%,-50%)
+scale(.4);
+}
+
+20%{
+opacity:1;
+transform:
+translate(-50%,-50%)
+scale(1);
+}
+
+60%{
+opacity:1;
+transform:
+translate(-50%,-50%)
+scale(1.08);
+}
+
+100%{
+opacity:0;
+transform:
+translate(-50%,-50%)
+scale(1.3);
+}
+
+}
+
+.exotic-text{
+
+position:fixed;
+
+top:62%;
+left:50%;
+
+transform:translateX(-50%);
+
+z-index:99998;
+
+font-family:'Orbitron',sans-serif;
+
+font-size:1.1rem;
+
+letter-spacing:6px;
+
+color:#FFD700;
+
+opacity:0;
+
+animation:fadeExotic 2.5s ease forwards;
+
+text-shadow:
+0 0 12px #FFD700,
+0 0 25px gold;
+
+}
+
+@keyframes fadeExotic{
+
+0%{
+opacity:0;
+transform:
+translateX(-50%)
+translateY(10px);
+}
+
+20%{
+opacity:1;
+transform:
+translateX(-50%)
+translateY(0px);
+}
+
+80%{
+opacity:1;
+}
+
+100%{
+opacity:0;
+transform:
+translateX(-50%)
+translateY(-8px);
+}
+
+}
+
 .rocket-launch{
 position:fixed;
 bottom:-180px;
@@ -327,65 +444,6 @@ opacity:0;
 
 }
 
-.logo-flash{
-
-position:fixed;
-
-top:50%;
-left:50%;
-
-transform:
-translate(-50%,-50%)
-scale(.5);
-
-width:260px;
-
-z-index:99998;
-
-opacity:0;
-
-pointer-events:none;
-
-animation:logoFlash 2.2s ease forwards;
-
-filter:
-drop-shadow(0 0 25px gold)
-drop-shadow(0 0 60px #FFD700);
-
-}
-
-@keyframes logoFlash{
-
-0%{
-opacity:0;
-transform:
-translate(-50%,-50%)
-scale(.4);
-}
-
-20%{
-opacity:1;
-transform:
-translate(-50%,-50%)
-scale(1);
-}
-
-60%{
-opacity:1;
-transform:
-translate(-50%,-50%)
-scale(1.08);
-}
-
-100%{
-opacity:0;
-transform:
-translate(-50%,-50%)
-scale(1.3);
-}
-
-}
-
 </style>
 </head>
 
@@ -399,6 +457,12 @@ id="logoFlash"
 class="logo-flash"
 style="display:none;"
 >
+
+<div id="exoticText"
+class="exotic-text"
+style="display:none;">
+EXOTIC DROP
+</div>
 
 <div 
 id="rocketLaunch"
@@ -626,6 +690,9 @@ document.getElementById("rocketLaunch");
 const logo =
 document.getElementById("logoFlash");
 
+const exoticText =
+document.getElementById("exoticText");
+
 document.querySelector('.card').style.filter = "blur(8px)";
 document.querySelector('.loader').style.opacity = "0";
 
@@ -633,11 +700,15 @@ rocket.style.display = "block";
 
 logo.style.display = "block";
 
+exoticText.style.display = "block";
+
 setTimeout(()=>{
 
 rocket.style.display = "none";
 
 logo.style.display = "none";
+
+exoticText.style.display = "none";
 
 document.querySelector('.card').style.filter = "blur(0px)";
 
