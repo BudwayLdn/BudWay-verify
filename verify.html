@@ -17,9 +17,9 @@ box-sizing:border-box;
 }
 
 :root{
---primary:#00ff88;
---secondary:#ffd700;
---bg:#050505;
+--primary:#FFD700;
+--secondary:#ff5e57;
+--bg:#120909;
 }
 
 body{
@@ -238,11 +238,15 @@ color:#ff7b7b;
 .emoji{
 position:fixed;
 top:-120px;
-font-size:56px;
+font-size:62px;
 pointer-events:none;
 animation:rain linear forwards;
 z-index:9999;
-opacity:.95;
+opacity:1;
+
+filter:
+drop-shadow(0 0 12px gold)
+drop-shadow(0 0 22px #FFD700);
 }
 
 @keyframes rain{
@@ -293,7 +297,7 @@ alt="BudWay Ldn Logo"
 </div>
 
 <div class="subtitle">
-Premium Authenticity Verification System
+Sunset Royale Verification System
 </div>
 
 <div class="loader">
@@ -337,7 +341,7 @@ AUTHENTIC PRODUCT VERIFIED
 
 <div class="meta">
 <span>BATCH</span>
-<strong>DROP 01</strong>
+<strong>SUNSET ROYALE</strong>
 </div>
 
 </div>
@@ -349,7 +353,7 @@ LAB VERIFIED AUTHENTIC
 </div>
 
 <strong>
-BudWay Certified Premium Flower
+BudWay Certified Exotic Flower
 </strong>
 
 </div>
@@ -381,107 +385,34 @@ const serial = params.get("code");
 const strains = [
 
 {
-name:"Pink StarBurst Gelato",
-start:803541,
-end:803546,
-winner:803542,
-emojis:["💖","🌠","🍨"],
-genetics:"Pink Starburst × Gelato",
-thc:"20–26%",
-type:"50/50 Hybrid",
-flavour:"Candy Strawberry Citrus Cream",
-primary:"#FF4FA3",
-secondary:"#FF355E",
-bg:"#14040c"
-},
+name:"Lemon Cherry Gelato",
 
-{
-name:"Legendary Blueberry",
-start:803547,
-end:803559,
-winner:803551,
-emojis:["🫐"],
-genetics:"Afghani × Thai × Purple Thai",
-thc:"20–24%",
-type:"80/20 Indica",
-flavour:"Blueberry Vanilla Earthy Spice",
-primary:"#2040FF",
-secondary:"#7A5CFF",
-bg:"#080818"
-},
+start:803633,
 
-{
-name:"Blue Bubblegum Gelato",
-start:803560,
-end:803568,
-winner:803564,
-emojis:["🍨","🍬"],
-genetics:"Gelato 45 × Indiana Bubblegum",
-thc:"24–32%",
-type:"60/40 Indica",
-flavour:"Sugary Bubblegum Citrus",
-primary:"#57D6FF",
-secondary:"#B57DFF",
-bg:"#07131a"
-},
+end:803648,
 
-{
-name:"Mango Sapphire",
-start:803569,
-end:803584,
-winner:803578,
-emojis:["🥭","💎"],
-genetics:"Bubba’s Gift × OG Kush × Afghan",
-thc:"21–23%",
-type:"85/15 Indica",
-flavour:"Tropical Mango Coconut Citrus",
-primary:"#FFB000",
-secondary:"#0057FF",
-bg:"#120b00"
-},
+emojis:[
+"🚀",
+"✨",
+"💎",
+"🍒",
+"🍋"
+],
 
-{
-name:"Giraffe Puzzy",
-start:803587,
-end:803590,
-winner:803589,
-emojis:["🦒","✨","💎","🚀"],
-genetics:"Zkittlez × Animal Mintz",
-thc:"25–30%",
-type:"Exotic Hybrid",
-flavour:"Tropical Candy, Citrus/Lime, Earthy Undertones",
+genetics:"Sunset Sherbet × Girl Scout Cookies",
+
+thc:"24–30%",
+
+type:"Exotic Luxury Hybrid",
+
+flavour:"Cherry Candy • Citrus • Creamy Gas",
+
 primary:"#FFD700",
-secondary:"#FFB300",
-bg:"#0f0900"
-},
 
-{
-name:"Cherry Popperz",
-start:803594,
-end:803597,
-winner:803596,
-emojis:["🍒","✨","💎","🚀"],
-genetics:"Zkittlez × Gelato 41",
-thc:"24%",
-type:"Exotic Indica Hybrid",
-flavour:"Cherry Candy, Cream, Tropical Candy",
-primary:"#FF1744",
-secondary:"#FFD700",
-bg:"#120006"
-},
+secondary:"#ff5e57",
 
-{
-name:"Guava Cake",
-start:803601,
-end:803632,
-emojis:["🥭","🍈","🍍","🍓","🥝","🍑"],
-genetics:"Guava x Wedding Cake/Cake genetics",
-thc:"22–30%",
-type:"Indica-Leaning Hybrid",
-flavour:"Tropical Guava Vanilla Cake Creamy Citrus Candy Light Gas",
-primary:"#FF9F5A",
-secondary:"#7CFFB2",
-bg:"#140d08"
+bg:"#120909"
+
 }
 
 ];
@@ -546,7 +477,7 @@ Math.floor(Math.random() * found.emojis.length)
 emoji.style.left = Math.random() * 100 + "vw";
 
 emoji.style.animationDuration =
-(2 + Math.random() * 2) + "s";
+(3 + Math.random() * 2) + "s";
 
 document.body.appendChild(emoji);
 
