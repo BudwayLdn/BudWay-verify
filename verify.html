@@ -115,6 +115,7 @@ display:flex;
 justify-content:center;
 align-items:center;
 margin-bottom:24px;
+transition:.4s ease;
 }
 
 .loader-ring{
@@ -269,7 +270,7 @@ opacity:0;
 
 }
 
-/* EXOTIC ROCKET */
+/* EXOTIC INTRO */
 
 .rocket-launch{
 position:fixed;
@@ -587,27 +588,6 @@ document.getElementById('type').innerText = found.type;
 
 document.getElementById('flavour').innerText = found.flavour;
 
-if(found.name === "Lemon Cherry Gelato"){
-
-const rocket =
-document.getElementById("rocketLaunch");
-
-const logo =
-document.getElementById("logoFlash");
-
-rocket.style.display = "block";
-
-logo.style.display = "block";
-
-setTimeout(()=>{
-
-rocket.style.display = "none";
-logo.style.display = "none";
-
-},3000);
-
-}
-
 function createEmoji(){
 
 const emoji = document.createElement("div");
@@ -636,6 +616,33 @@ emoji.remove();
 
 setInterval(createEmoji,180);
 
+/* EXOTIC INTRO FIRST */
+
+if(found.name === "Lemon Cherry Gelato"){
+
+const rocket =
+document.getElementById("rocketLaunch");
+
+const logo =
+document.getElementById("logoFlash");
+
+document.querySelector('.card').style.filter = "blur(8px)";
+document.querySelector('.loader').style.opacity = "0";
+
+rocket.style.display = "block";
+
+logo.style.display = "block";
+
+setTimeout(()=>{
+
+rocket.style.display = "none";
+
+logo.style.display = "none";
+
+document.querySelector('.card').style.filter = "blur(0px)";
+
+document.querySelector('.loader').style.opacity = "1";
+
 setTimeout(()=>{
 
 document.querySelector('.loader').style.display='none';
@@ -643,6 +650,24 @@ document.querySelector('.loader').style.display='none';
 document.getElementById('realContent').style.display='block';
 
 },1800);
+
+},2600);
+
+}
+
+/* NORMAL STRAINS */
+
+else{
+
+setTimeout(()=>{
+
+document.querySelector('.loader').style.display='none';
+
+document.getElementById('realContent').style.display='block';
+
+},1800);
+
+}
 
 }
 
