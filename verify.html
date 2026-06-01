@@ -270,19 +270,19 @@ opacity:0;
 
 }
 
-/* EXOTIC INTRO */
+/* LUXURY EXOTIC INTRO */
 
 .logo-flash{
 
 position:fixed;
 
-top:42%;
+top:38%;
 left:50%;
 
 transform:
 translate(-50%,-50%);
 
-width:280px;
+width:300px;
 
 z-index:99998;
 
@@ -290,11 +290,11 @@ opacity:0;
 
 pointer-events:none;
 
-animation:logoFlash 2.4s ease forwards;
+animation:logoFlash 4.8s ease forwards;
 
 filter:
 drop-shadow(0 0 25px gold)
-drop-shadow(0 0 60px #FFD700);
+drop-shadow(0 0 80px #FFD700);
 
 }
 
@@ -304,28 +304,28 @@ drop-shadow(0 0 60px #FFD700);
 opacity:0;
 transform:
 translate(-50%,-50%)
-scale(.6);
+scale(.72);
 }
 
-20%{
+18%{
 opacity:1;
 transform:
 translate(-50%,-50%)
 scale(1);
 }
 
-70%{
+75%{
 opacity:1;
 transform:
 translate(-50%,-50%)
-scale(1.04);
+scale(1.03);
 }
 
 100%{
 opacity:0;
 transform:
 translate(-50%,-50%)
-scale(1.1);
+scale(1.08);
 }
 
 }
@@ -334,20 +334,21 @@ scale(1.1);
 
 position:fixed;
 
-top:56%;
+top:62%;
 left:50%;
 
-transform:translateX(-50%);
+transform:
+translateX(-50%);
 
 z-index:99998;
 
 font-family:'Orbitron',sans-serif;
 
-font-size:.95rem;
+font-size:1rem;
 
-letter-spacing:4px;
+letter-spacing:5px;
 
-line-height:1.8;
+line-height:1.9;
 
 text-align:center;
 
@@ -355,11 +356,11 @@ color:#FFD700;
 
 opacity:0;
 
-animation:fadeExotic 2.4s ease forwards;
+animation:fadeExotic 4.8s ease forwards;
 
 text-shadow:
 0 0 12px #FFD700,
-0 0 25px gold;
+0 0 30px gold;
 
 }
 
@@ -369,7 +370,7 @@ text-shadow:
 opacity:0;
 transform:
 translateX(-50%)
-translateY(8px);
+translateY(16px);
 }
 
 20%{
@@ -379,7 +380,7 @@ translateX(-50%)
 translateY(0px);
 }
 
-80%{
+82%{
 opacity:1;
 }
 
@@ -387,24 +388,25 @@ opacity:1;
 opacity:0;
 transform:
 translateX(-50%)
-translateY(-4px);
+translateY(-6px);
 }
 
 }
 
-/* SMOOTH ROCKET */
+/* ULTRA SMOOTH ROCKET */
 
 .rocket-launch{
 
 position:fixed;
 
-bottom:-140px;
+bottom:-220px;
 
 left:50%;
 
-transform:translateX(-50%);
+transform:
+translateX(-50%);
 
-font-size:85px;
+font-size:92px;
 
 z-index:99999;
 
@@ -413,11 +415,11 @@ pointer-events:none;
 opacity:0;
 
 animation:
-smoothRocket 2.6s cubic-bezier(.15,.72,.3,1) forwards;
+smoothRocket 4.6s cubic-bezier(.12,.7,.22,1) forwards;
 
 filter:
-drop-shadow(0 0 18px gold)
-drop-shadow(0 0 35px #ffae00);
+drop-shadow(0 0 22px gold)
+drop-shadow(0 0 40px #ffae00);
 
 will-change:transform;
 
@@ -426,39 +428,58 @@ will-change:transform;
 @keyframes smoothRocket{
 
 0%{
+
 transform:
 translateX(-50%)
 translateY(0px)
-scale(.9);
+scale(.82);
 
 opacity:0;
+
 }
 
-8%{
+6%{
 opacity:1;
 }
 
-30%{
+20%{
+
 transform:
 translateX(-50%)
-translateY(-35vh)
-scale(1);
+translateY(-18vh)
+scale(.92);
+
 }
 
-60%{
+45%{
+
 transform:
 translateX(-50%)
-translateY(-75vh)
-scale(1.05);
+translateY(-55vh)
+scale(1);
+
+}
+
+75%{
+
+transform:
+translateX(-50%)
+translateY(-105vh)
+scale(1.08);
+
+opacity:1;
+
 }
 
 100%{
+
 transform:
 translateX(-50%)
-translateY(-155vh)
-scale(1.12);
+translateY(-165vh)
+scale(1.15);
 
 opacity:0;
+
 }
 
 }
@@ -481,9 +502,9 @@ style="display:none;"
 class="exotic-text"
 style="display:none;">
 
-EXOTIC DROP
-<br>
 BUDWAY RESERVE COLLECTION
+<br>
+EXOTIC DROP
 
 </div>
 
@@ -745,7 +766,7 @@ document.getElementById('realContent').style.display='block';
 
 },1800);
 
-},2600);
+},5000);
 
 }
 
