@@ -20,10 +20,7 @@ box-sizing:border-box;
 
 --primary:#FFD700;
 --secondary:#ffae00;
---accent:#ff5e57;
-
 --bg:#050505;
---card:#0c0c0c;
 
 }
 
@@ -75,9 +72,9 @@ position:fixed;
 inset:0;
 
 background:
-radial-gradient(circle at center,rgba(255,215,0,.06),transparent 60%);
+radial-gradient(circle at center,rgba(255,215,0,.05),transparent 60%);
 
-animation:bgPulse 5s ease-in-out infinite;
+animation:bgPulse 4s ease-in-out infinite;
 
 pointer-events:none;
 
@@ -93,7 +90,7 @@ z-index:-1;
 
 }
 
-/* MAIN CONTAINER */
+/* MAIN */
 
 .container{
 
@@ -112,8 +109,6 @@ align-items:center;
 justify-content:center;
 
 }
-
-/* MAIN CARD */
 
 .card{
 
@@ -182,7 +177,7 @@ opacity:.75;
 
 }
 
-/* GOLD LIGHT SWEEP */
+/* GOLD SWEEP */
 
 .card::after{
 
@@ -203,7 +198,7 @@ transparent
 );
 
 animation:
-goldSweep 5s linear infinite;
+goldSweep 4s linear infinite;
 
 pointer-events:none;
 
@@ -221,7 +216,7 @@ transform:translateX(100%);
 
 }
 
-/* GLOW ORB */
+/* GLOW */
 
 .glow{
 
@@ -313,7 +308,7 @@ border-top:
 box-shadow:
 0 0 20px rgba(255,215,0,.25);
 
-animation:spin 1s linear infinite;
+animation:spin .9s linear infinite;
 
 }
 
@@ -329,7 +324,7 @@ transform:rotate(360deg);
 
 }
 
-/* SERIAL BOX */
+/* SERIAL */
 
 .serial-box{
 
@@ -383,7 +378,7 @@ text-shadow:
 
 }
 
-/* VERIFIED STATUS */
+/* VERIFIED */
 
 .status{
 
@@ -434,7 +429,7 @@ box-shadow:
 
 }
 
-/* STRAIN CARD */
+/* STRAIN */
 
 .strain-card{
 
@@ -454,8 +449,6 @@ border:
 
 }
 
-/* STRAIN TITLE */
-
 .strain-title{
 
 font-family:'Orbitron',sans-serif;
@@ -473,8 +466,6 @@ text-shadow:
 
 }
 
-/* DESCRIPTION */
-
 .desc{
 
 font-size:.96rem;
@@ -485,7 +476,7 @@ line-height:1.6;
 
 }
 
-/* META GRID */
+/* META */
 
 .meta-grid{
 
@@ -498,8 +489,6 @@ gap:14px;
 margin-top:24px;
 
 }
-
-/* META BOX */
 
 .meta{
 
@@ -521,12 +510,7 @@ position:relative;
 
 overflow:hidden;
 
-box-shadow:
-inset 0 0 18px rgba(255,215,0,.03);
-
 }
-
-/* META SWEEP */
 
 .meta::before{
 
@@ -575,11 +559,100 @@ line-height:1.4;
 
 }
 
-/* CERTIFICATION */
+/* ULTRA BOX */
+
+.ultra-box{
+
+margin-top:26px;
+
+padding:22px;
+
+border-radius:26px;
+
+position:relative;
+
+overflow:hidden;
+
+background:
+linear-gradient(
+145deg,
+rgba(20,20,20,.96),
+rgba(5,5,5,.98)
+);
+
+border:
+2px solid rgba(255,215,0,.55);
+
+box-shadow:
+0 0 20px rgba(255,215,0,.12),
+inset 0 0 20px rgba(255,215,0,.05);
+
+text-align:center;
+
+}
+
+.ultra-box::before{
+
+content:'';
+
+position:absolute;
+
+inset:0;
+
+background:
+linear-gradient(
+90deg,
+transparent,
+rgba(255,215,0,.10),
+transparent
+);
+
+animation:
+goldSweep 3s linear infinite;
+
+}
+
+.ultra-title{
+
+position:relative;
+
+font-family:'Orbitron',sans-serif;
+
+font-size:1.3rem;
+
+letter-spacing:3px;
+
+color:#FFD700;
+
+margin-bottom:10px;
+
+text-shadow:
+0 0 8px #FFD700,
+0 0 18px gold;
+
+}
+
+.ultra-sub{
+
+position:relative;
+
+font-family:'Orbitron',sans-serif;
+
+font-size:.78rem;
+
+letter-spacing:4px;
+
+color:#ffdf70;
+
+opacity:.92;
+
+}
+
+/* CERT */
 
 .cert{
 
-margin-top:26px;
+margin-top:24px;
 
 padding:22px;
 
@@ -656,7 +729,7 @@ position:fixed;
 
 top:-120px;
 
-font-size:56px;
+font-size:52px;
 
 pointer-events:none;
 
@@ -664,7 +737,7 @@ animation:rain linear forwards;
 
 z-index:9999;
 
-opacity:.95;
+opacity:.9;
 
 filter:
 drop-shadow(0 0 12px rgba(255,215,0,.4));
@@ -701,19 +774,19 @@ opacity:0;
 
 }
 
-/* LUXURY EXOTIC INTRO */
+/* FAST LUXURY INTRO */
 
 .logo-flash{
 
 position:fixed;
 
-top:38%;
+top:31%;
 left:50%;
 
 transform:
 translate(-50%,-50%);
 
-width:300px;
+width:260px;
 
 z-index:99998;
 
@@ -721,7 +794,7 @@ opacity:0;
 
 pointer-events:none;
 
-animation:logoFlash 5.2s ease forwards;
+animation:logoFlash 3.2s ease forwards;
 
 filter:
 drop-shadow(0 0 25px gold)
@@ -749,14 +822,14 @@ scale(1);
 opacity:1;
 transform:
 translate(-50%,-50%)
-scale(1.03);
+scale(1.02);
 }
 
 100%{
 opacity:0;
 transform:
 translate(-50%,-50%)
-scale(1.08);
+scale(1.05);
 }
 
 }
@@ -765,7 +838,7 @@ scale(1.08);
 
 position:fixed;
 
-top:57%;
+top:60%;
 left:50%;
 
 transform:
@@ -775,7 +848,7 @@ z-index:99998;
 
 font-family:'Orbitron',sans-serif;
 
-font-size:1rem;
+font-size:.95rem;
 
 letter-spacing:5px;
 
@@ -787,7 +860,7 @@ color:#FFD700;
 
 opacity:0;
 
-animation:fadeExotic 5.2s ease forwards;
+animation:fadeExotic 3.2s ease forwards;
 
 text-shadow:
 0 0 12px #FFD700,
@@ -824,7 +897,7 @@ translateY(-6px);
 
 }
 
-/* ONE CONTINUOUS SMOOTH ROCKET FLIGHT */
+/* SMOOTH FAST ROCKET */
 
 .rocket-launch{
 
@@ -842,18 +915,12 @@ pointer-events:none;
 
 opacity:0;
 
-transform:
-translateX(-50%)
-translateY(0);
-
 animation:
-smoothRocketFlight 5.2s linear forwards;
+smoothRocketFlight 3.2s linear forwards;
 
 filter:
 drop-shadow(0 0 22px gold)
 drop-shadow(0 0 40px #ffae00);
-
-will-change:transform, opacity;
 
 }
 
@@ -872,9 +939,7 @@ opacity:0;
 }
 
 5%{
-
 opacity:1;
-
 }
 
 100%{
@@ -882,7 +947,7 @@ opacity:1;
 transform:
 translateX(-50%)
 translateY(-170vh)
-scale(1.08)
+scale(1.05)
 rotate(2deg);
 
 opacity:1;
@@ -993,6 +1058,18 @@ AUTHENTIC PRODUCT VERIFIED
 <div class="meta">
 <span>BATCH</span>
 <strong>DROP 01</strong>
+</div>
+
+</div>
+
+<div class="ultra-box">
+
+<div class="ultra-title">
+ULTRA EXOTIC DROP 👑
+</div>
+
+<div class="ultra-sub">
+— BUDWAY RESERVE COLLECTION —
 </div>
 
 </div>
@@ -1137,9 +1214,9 @@ emoji.remove();
 
 }
 
-setInterval(createEmoji,180);
+setInterval(createEmoji,220);
 
-/* EXOTIC INTRO FIRST */
+/* EXOTIC INTRO */
 
 if(found.name === "Lemon Cherry Gelato"){
 
@@ -1179,13 +1256,11 @@ document.querySelector('.loader').style.display='none';
 
 document.getElementById('realContent').style.display='block';
 
-},1800);
+},1200);
 
-},5200);
+},3200);
 
 }
-
-/* NORMAL STRAINS */
 
 else{
 
@@ -1195,7 +1270,7 @@ document.querySelector('.loader').style.display='none';
 
 document.getElementById('realContent').style.display='block';
 
-},1800);
+},1500);
 
 }
 
