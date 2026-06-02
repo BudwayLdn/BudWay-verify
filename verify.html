@@ -17,11 +17,9 @@ box-sizing:border-box;
 }
 
 :root{
-
 --primary:#FFD700;
 --secondary:#ffae00;
 --bg:#050505;
-
 }
 
 body{
@@ -34,11 +32,8 @@ radial-gradient(circle at bottom right,rgba(255,170,0,.06),transparent 30%),
 #050505;
 
 color:white;
-
 overflow-x:hidden;
-
 min-height:100vh;
-
 position:relative;
 
 }
@@ -48,7 +43,6 @@ position:relative;
 .grid{
 
 position:fixed;
-
 inset:0;
 
 background:
@@ -56,7 +50,6 @@ linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
 linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
 
 background-size:42px 42px;
-
 z-index:-2;
 
 }
@@ -66,9 +59,7 @@ z-index:-2;
 body::before{
 
 content:'';
-
 position:fixed;
-
 inset:0;
 
 background:
@@ -77,7 +68,6 @@ radial-gradient(circle at center,rgba(255,215,0,.05),transparent 60%);
 animation:bgPulse 4s ease-in-out infinite;
 
 pointer-events:none;
-
 z-index:-1;
 
 }
@@ -100,11 +90,9 @@ width:4px;
 height:4px;
 
 border-radius:50%;
-
 background:#FFD700;
 
 pointer-events:none;
-
 z-index:0;
 
 opacity:0;
@@ -113,39 +101,24 @@ box-shadow:
 0 0 6px #FFD700,
 0 0 14px gold;
 
-animation:
-sparkleFloat linear forwards;
+animation:sparkleFloat linear forwards;
 
 }
 
 @keyframes sparkleFloat{
 
 0%{
-
-transform:
-translateY(0px)
-scale(.6);
-
+transform:translateY(0px) scale(.6);
 opacity:0;
-
 }
 
-20%{
-opacity:1;
-}
+20%{opacity:1;}
 
-80%{
-opacity:.8;
-}
+80%{opacity:.8;}
 
 100%{
-
-transform:
-translateY(-80px)
-scale(1.2);
-
+transform:translateY(-80px) scale(1.2);
 opacity:0;
-
 }
 
 }
@@ -155,17 +128,13 @@ opacity:0;
 .container{
 
 max-width:440px;
-
 margin:auto;
-
 padding:20px;
 
 min-height:100vh;
 
 display:flex;
-
 align-items:center;
-
 justify-content:center;
 
 }
@@ -186,7 +155,6 @@ border-radius:34px;
 padding:30px;
 
 position:relative;
-
 overflow:hidden;
 
 backdrop-filter:blur(24px);
@@ -208,7 +176,6 @@ inset 0 0 25px rgba(255,215,0,.04);
 content:'';
 
 position:absolute;
-
 inset:0;
 
 border-radius:34px;
@@ -244,7 +211,6 @@ opacity:.75;
 content:'';
 
 position:absolute;
-
 inset:-1px;
 
 border-radius:34px;
@@ -257,8 +223,7 @@ rgba(255,215,0,.08),
 transparent
 );
 
-animation:
-goldSweep 4s linear infinite;
+animation:goldSweep 4s linear infinite;
 
 pointer-events:none;
 
@@ -343,7 +308,6 @@ margin-bottom:32px;
 display:flex;
 
 justify-content:center;
-
 align-items:center;
 
 margin-bottom:28px;
@@ -374,13 +338,8 @@ animation:spin .9s linear infinite;
 
 @keyframes spin{
 
-from{
-transform:rotate(0deg);
-}
-
-to{
-transform:rotate(360deg);
-}
+from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}
 
 }
 
@@ -445,7 +404,6 @@ text-shadow:
 display:flex;
 
 align-items:center;
-
 justify-content:center;
 
 gap:12px;
@@ -467,7 +425,6 @@ border:
 margin-bottom:24px;
 
 font-weight:700;
-
 font-size:1rem;
 
 box-shadow:
@@ -572,27 +529,6 @@ overflow:hidden;
 
 }
 
-.meta::before{
-
-content:'';
-
-position:absolute;
-
-inset:0;
-
-background:
-linear-gradient(
-90deg,
-transparent,
-rgba(255,215,0,.05),
-transparent
-);
-
-animation:
-goldSweep 4s linear infinite;
-
-}
-
 .meta span{
 
 display:block;
@@ -605,13 +541,9 @@ color:#8d8d8d;
 
 margin-bottom:8px;
 
-position:relative;
-
 }
 
 .meta strong{
-
-position:relative;
 
 font-size:1rem;
 
@@ -651,30 +583,7 @@ text-align:center;
 
 }
 
-.ultra-box::before{
-
-content:'';
-
-position:absolute;
-
-inset:0;
-
-background:
-linear-gradient(
-90deg,
-transparent,
-rgba(255,215,0,.10),
-transparent
-);
-
-animation:
-goldSweep 3s linear infinite;
-
-}
-
 .ultra-title{
-
-position:relative;
 
 font-family:'Orbitron',sans-serif;
 
@@ -694,8 +603,6 @@ text-shadow:
 
 .ultra-sub{
 
-position:relative;
-
 font-family:'Orbitron',sans-serif;
 
 font-size:.78rem;
@@ -705,57 +612,6 @@ letter-spacing:4px;
 color:#ffdf70;
 
 opacity:.92;
-
-}
-
-/* CERT */
-
-.cert{
-
-margin-top:24px;
-
-padding:22px;
-
-border-radius:24px;
-
-text-align:center;
-
-background:
-linear-gradient(
-145deg,
-rgba(18,18,18,.96),
-rgba(6,6,6,.98)
-);
-
-border:
-1px solid rgba(255,215,0,.15);
-
-box-shadow:
-0 0 28px rgba(255,215,0,.06),
-inset 0 0 18px rgba(255,215,0,.03);
-
-}
-
-.cert div{
-
-margin-bottom:10px;
-
-color:var(--primary);
-
-font-size:1rem;
-
-letter-spacing:2px;
-
-text-shadow:
-0 0 10px rgba(255,215,0,.3);
-
-}
-
-.cert strong{
-
-font-size:1.1rem;
-
-line-height:1.5;
 
 }
 
@@ -799,42 +655,25 @@ z-index:9999;
 
 opacity:.9;
 
-filter:
-drop-shadow(0 0 12px rgba(255,215,0,.4));
-
 }
 
 @keyframes rain{
 
 0%{
-
-transform:
-translateY(-120px)
-rotate(0deg)
-scale(.8);
-
+transform:translateY(-120px) rotate(0deg) scale(.8);
 opacity:0;
-
 }
 
-10%{
-opacity:1;
-}
+10%{opacity:1;}
 
 100%{
-
-transform:
-translateY(120vh)
-rotate(360deg)
-scale(1.4);
-
+transform:translateY(120vh) rotate(360deg) scale(1.4);
 opacity:0;
-
 }
 
 }
 
-/* FAST LUXURY INTRO */
+/* INTRO */
 
 .logo-flash{
 
@@ -843,8 +682,7 @@ position:fixed;
 top:31%;
 left:50%;
 
-transform:
-translate(-50%,-50%);
+transform:translate(-50%,-50%);
 
 width:260px;
 
@@ -856,40 +694,27 @@ pointer-events:none;
 
 animation:logoFlash 3.2s ease forwards;
 
-filter:
-drop-shadow(0 0 25px gold)
-drop-shadow(0 0 80px #FFD700);
-
 }
 
 @keyframes logoFlash{
 
 0%{
 opacity:0;
-transform:
-translate(-50%,-50%)
-scale(.72);
+transform:translate(-50%,-50%) scale(.72);
 }
 
 18%{
 opacity:1;
-transform:
-translate(-50%,-50%)
-scale(1);
+transform:translate(-50%,-50%) scale(1);
 }
 
 75%{
 opacity:1;
-transform:
-translate(-50%,-50%)
-scale(1.02);
 }
 
 100%{
 opacity:0;
-transform:
-translate(-50%,-50%)
-scale(1.05);
+transform:translate(-50%,-50%) scale(1.05);
 }
 
 }
@@ -901,8 +726,7 @@ position:fixed;
 top:60%;
 left:50%;
 
-transform:
-translateX(-50%);
+transform:translateX(-50%);
 
 z-index:99998;
 
@@ -922,26 +746,18 @@ opacity:0;
 
 animation:fadeExotic 3.2s ease forwards;
 
-text-shadow:
-0 0 12px #FFD700,
-0 0 30px gold;
-
 }
 
 @keyframes fadeExotic{
 
 0%{
 opacity:0;
-transform:
-translateX(-50%)
-translateY(16px);
+transform:translateX(-50%) translateY(16px);
 }
 
 20%{
 opacity:1;
-transform:
-translateX(-50%)
-translateY(0px);
+transform:translateX(-50%) translateY(0px);
 }
 
 82%{
@@ -950,14 +766,10 @@ opacity:1;
 
 100%{
 opacity:0;
-transform:
-translateX(-50%)
-translateY(-6px);
+transform:translateX(-50%) translateY(-6px);
 }
 
 }
-
-/* ROCKET */
 
 .rocket-launch{
 
@@ -975,43 +787,22 @@ pointer-events:none;
 
 opacity:0;
 
-animation:
-smoothRocketFlight 3.2s linear forwards;
-
-filter:
-drop-shadow(0 0 22px gold)
-drop-shadow(0 0 40px #ffae00);
+animation:smoothRocketFlight 3.2s linear forwards;
 
 }
 
 @keyframes smoothRocketFlight{
 
 0%{
-
-transform:
-translateX(-50%)
-translateY(0vh)
-scale(.88)
-rotate(-2deg);
-
+transform:translateX(-50%) translateY(0vh) scale(.88);
 opacity:0;
-
 }
 
-5%{
-opacity:1;
-}
+5%{opacity:1;}
 
 100%{
-
-transform:
-translateX(-50%)
-translateY(-170vh)
-scale(1.05)
-rotate(2deg);
-
+transform:translateX(-50%) translateY(-170vh) scale(1.05);
 opacity:1;
-
 }
 
 }
@@ -1030,9 +821,11 @@ class="logo-flash"
 style="display:none;"
 >
 
-<div id="exoticText"
+<div 
+id="exoticText"
 class="exotic-text"
-style="display:none;">
+style="display:none;"
+>
 
 BUDWAY RESERVE COLLECTION
 <br>
@@ -1138,18 +931,6 @@ ULTRA EXOTIC DROP 👑
 
 </div>
 
-<div class="cert">
-
-<div>
-LAB VERIFIED AUTHENTIC
-</div>
-
-<strong>
-BudWay Certified Premium Flower
-</strong>
-
-</div>
-
 <div class="fake-warning" id="fakeBox">
 
 <h3>⚠ INVALID SERIAL</h3>
@@ -1172,7 +953,7 @@ This BudWay product could not be verified.
 
 const params = new URLSearchParams(window.location.search);
 
-const serial = params.get("code");
+const serial = Number(params.get("code"));
 
 const strains = [
 
@@ -1193,7 +974,7 @@ bg:"#140d08"
 {
 name:"Lemon Cherry Gelato",
 start:803633,
-end:803648,
+end:803640,
 emojis:["🚀","✨","💎","🔥","👑"],
 genetics:"Sunset Sherbet × Girl Scout Cookies",
 thc:"24–30%",
@@ -1202,8 +983,27 @@ flavour:"Cherry Candy • Citrus • Creamy Gas",
 primary:"#FFD700",
 secondary:"#ff5e57",
 bg:"#120909"
+},
+
+{
+name:"Exotic Zkittlez",
+start:803641,
+end:803649,
+emojis:["🌈","🍭","💎","🔥","🚀","✨"],
+genetics:"Grapefruit × Grape Ape",
+thc:"23%",
+type:"Indica Dominant",
+flavour:"Sweet Candy • Tropical Fruit • Berry • Grape • Grapefruit • Citrus",
+primary:"#d400ff",
+secondary:"#00ffee",
+bg:"#090012"
 }
 
+];
+
+const exoticDrops = [
+"Lemon Cherry Gelato",
+"Exotic Zkittlez"
 ];
 
 let found = null;
@@ -1252,15 +1052,11 @@ document.getElementById('type').innerText = found.type;
 
 document.getElementById('flavour').innerText = found.flavour;
 
-/* ONLY SHOW EXOTIC BOX FOR LEMON CHERRY */
-
-if(found.name === "Lemon Cherry Gelato"){
+if(exoticDrops.includes(found.name)){
 
 document.getElementById("ultraBox").style.display = "block";
 
 }
-
-/* FLOATING EMOJIS */
 
 function createEmoji(){
 
@@ -1291,8 +1087,6 @@ emoji.remove();
 
 setInterval(createEmoji,220);
 
-/* FLOATING GOLD SPARKLES */
-
 function createSparkle(){
 
 const sparkle =
@@ -1321,9 +1115,7 @@ sparkle.remove();
 
 setInterval(createSparkle,220);
 
-/* EXOTIC INTRO */
-
-if(found.name === "Lemon Cherry Gelato"){
+if(exoticDrops.includes(found.name)){
 
 const rocket =
 document.getElementById("rocketLaunch");
