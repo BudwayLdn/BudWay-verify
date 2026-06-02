@@ -19,7 +19,6 @@ box-sizing:border-box;
 :root{
 --primary:#FFD700;
 --secondary:#ffae00;
---bg:#050505;
 }
 
 body{
@@ -50,15 +49,17 @@ linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
 linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
 
 background-size:42px 42px;
+
 z-index:-2;
 
 }
 
-/* BACKGROUND GLOW */
+/* BG GLOW */
 
 body::before{
 
 content:'';
+
 position:fixed;
 inset:0;
 
@@ -80,7 +81,7 @@ z-index:-1;
 
 }
 
-/* GOLD SPARKLES */
+/* SPARKLES */
 
 .sparkle{
 
@@ -90,10 +91,10 @@ width:4px;
 height:4px;
 
 border-radius:50%;
+
 background:#FFD700;
 
 pointer-events:none;
-z-index:0;
 
 opacity:0;
 
@@ -112,9 +113,9 @@ transform:translateY(0px) scale(.6);
 opacity:0;
 }
 
-20%{opacity:1;}
-
-80%{opacity:.8;}
+20%{
+opacity:1;
+}
 
 100%{
 transform:translateY(-80px) scale(1.2);
@@ -306,7 +307,6 @@ margin-bottom:32px;
 .loader{
 
 display:flex;
-
 justify-content:center;
 align-items:center;
 
@@ -338,8 +338,13 @@ animation:spin .9s linear infinite;
 
 @keyframes spin{
 
-from{transform:rotate(0deg);}
-to{transform:rotate(360deg);}
+from{
+transform:rotate(0deg);
+}
+
+to{
+transform:rotate(360deg);
+}
 
 }
 
@@ -365,9 +370,6 @@ text-align:center;
 
 margin-bottom:22px;
 
-box-shadow:
-inset 0 0 20px rgba(255,215,0,.03);
-
 }
 
 .serial-label{
@@ -391,9 +393,6 @@ font-size:1.65rem;
 font-weight:700;
 
 letter-spacing:2px;
-
-text-shadow:
-0 0 10px rgba(255,215,0,.25);
 
 }
 
@@ -426,9 +425,6 @@ margin-bottom:24px;
 
 font-weight:700;
 font-size:1rem;
-
-box-shadow:
-0 0 25px rgba(255,215,0,.08);
 
 }
 
@@ -523,10 +519,6 @@ border-radius:18px;
 border:
 1px solid rgba(255,215,0,.08);
 
-position:relative;
-
-overflow:hidden;
-
 }
 
 .meta span{
@@ -561,10 +553,6 @@ padding:22px;
 
 border-radius:26px;
 
-position:relative;
-
-overflow:hidden;
-
 background:
 linear-gradient(
 145deg,
@@ -576,8 +564,7 @@ border:
 2px solid rgba(255,215,0,.55);
 
 box-shadow:
-0 0 20px rgba(255,215,0,.12),
-inset 0 0 20px rgba(255,215,0,.05);
+0 0 20px rgba(255,215,0,.12);
 
 text-align:center;
 
@@ -594,10 +581,6 @@ letter-spacing:3px;
 color:#FFD700;
 
 margin-bottom:10px;
-
-text-shadow:
-0 0 8px #FFD700,
-0 0 18px gold;
 
 }
 
@@ -645,7 +628,7 @@ position:fixed;
 
 top:-120px;
 
-font-size:52px;
+font-size:42px;
 
 pointer-events:none;
 
@@ -653,7 +636,7 @@ animation:rain linear forwards;
 
 z-index:9999;
 
-opacity:.9;
+opacity:.78;
 
 }
 
@@ -664,10 +647,12 @@ transform:translateY(-120px) rotate(0deg) scale(.8);
 opacity:0;
 }
 
-10%{opacity:1;}
+10%{
+opacity:1;
+}
 
 100%{
-transform:translateY(120vh) rotate(360deg) scale(1.4);
+transform:translateY(120vh) rotate(360deg) scale(1.1);
 opacity:0;
 }
 
@@ -798,7 +783,9 @@ transform:translateX(-50%) translateY(0vh) scale(.88);
 opacity:0;
 }
 
-5%{opacity:1;}
+5%{
+opacity:1;
+}
 
 100%{
 transform:translateX(-50%) translateY(-170vh) scale(1.05);
@@ -961,11 +948,21 @@ const strains = [
 name:"Guava Cake",
 start:803601,
 end:803632,
-emojis:["🥭","🍈","🍍","🍓","🥝","🍑"],
+
+emojis:[
+"🥭",
+"🍈",
+"🍍"
+],
+
 genetics:"Guava x Wedding Cake/Cake genetics",
+
 thc:"22–30%",
+
 type:"Indica-Leaning Hybrid",
+
 flavour:"Tropical Guava Vanilla Cake Creamy Citrus Candy Light Gas",
+
 primary:"#FF9F5A",
 secondary:"#7CFFB2",
 bg:"#140d08"
@@ -975,25 +972,49 @@ bg:"#140d08"
 name:"Lemon Cherry Gelato",
 start:803633,
 end:803640,
-emojis:["🚀","✨","💎","🔥","👑"],
+
+emojis:[
+"🍋",
+"🍒",
+"✨",
+"💎"
+],
+
 genetics:"Sunset Sherbet × Girl Scout Cookies",
+
 thc:"24–30%",
-type:"Exotic Luxury Hybrid",
+
+type:"Indica Dominant",
+
 flavour:"Cherry Candy • Citrus • Creamy Gas",
+
 primary:"#FFD700",
 secondary:"#ff5e57",
 bg:"#120909"
 },
 
 {
-name:"Exotic Zkittlez",
+name:"Original Zkittlez",
 start:803641,
 end:803649,
-emojis:["🌈","🍭","💎","🔥","🚀","✨"],
+
+emojis:[
+"🌈",
+"🍭",
+"🍇",
+"🍬",
+"💎",
+"✨"
+],
+
 genetics:"Grapefruit × Grape Ape",
+
 thc:"23%",
+
 type:"Indica Dominant",
+
 flavour:"Sweet Candy • Tropical Fruit • Berry • Grape • Grapefruit • Citrus",
+
 primary:"#d400ff",
 secondary:"#00ffee",
 bg:"#090012"
@@ -1003,7 +1024,7 @@ bg:"#090012"
 
 const exoticDrops = [
 "Lemon Cherry Gelato",
-"Exotic Zkittlez"
+"Original Zkittlez"
 ];
 
 let found = null;
@@ -1073,7 +1094,7 @@ emoji.style.left =
 Math.random() * 100 + "vw";
 
 emoji.style.animationDuration =
-(2 + Math.random() * 2) + "s";
+(4 + Math.random() * 3) + "s";
 
 document.body.appendChild(emoji);
 
@@ -1081,11 +1102,11 @@ setTimeout(()=>{
 
 emoji.remove();
 
-},5000);
+},7000);
 
 }
 
-setInterval(createEmoji,220);
+setInterval(createEmoji,850);
 
 function createSparkle(){
 
@@ -1101,7 +1122,7 @@ sparkle.style.top =
 (40 + Math.random() * 60) + "vh";
 
 sparkle.style.animationDuration =
-(3 + Math.random() * 3) + "s";
+(4 + Math.random() * 4) + "s";
 
 document.body.appendChild(sparkle);
 
@@ -1109,11 +1130,11 @@ setTimeout(()=>{
 
 sparkle.remove();
 
-},6000);
+},7000);
 
 }
 
-setInterval(createSparkle,220);
+setInterval(createSparkle,550);
 
 if(exoticDrops.includes(found.name)){
 
